@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSE案例演示（EventSource 单流版）</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 24px;
+      text-align: center;
+    }
+    .header h1 { font-size: 28px; margin-bottom: 8px; }
+    .chat-container { display: flex; flex-direction: column; height: 600px; }
+    .chat-history {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+    .message { margin-bottom: 16px; display: flex; align-items: flex-start; }
+    .message.user { justify-content: flex-end; }
+    .message.assistant { justify-content: flex-start; }
+    .message-content {
+      max-width: 70%;
+      padding: 12px 16px;
+      border-radius: 18px;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+    .message.user .message-content {
+      background: #007aff;
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .message.assistant .message-content {
+      background: #fff;
+      color: #333;
+      border: 1px solid #e0e0e0;
+      border-bottom-left-radius: 4px;
+    }
+
+    .status-indicator {
+      padding: 8px 16px;
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      margin: 8px 20px;
+      border-radius: 4px;
+      font-size: 14px;
+      display: none;
+    }
+    .status-indicator.active { display: block; }
+
+    .typing-indicator {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid #e0e0e0;
+    }
+    .typing-dots { display: flex; margin-left: 8px; }
+    .typing-dots span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #999; margin: 0 2px;
+      animation: typing 1.4s infinite both;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.3; }
+      30% { transform: translateY(-5px); opacity: 1; }
+    }
+
+    .input-area {
+      padding: 20px;
+      border-top: 1px solid #e0e0e0;
+      background: #fff;
+    }
+    .input-container { display: flex; gap: 12px; }
+    #messageInput {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: 24px;
+      font-size: 16px;
+      outline: none;
+    }
+    #messageInput:focus { border-color: #007aff; }
+    #sendButton {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    #sendButton:hover:not(:disabled) { transform: translateY(-1px); opacity: 0.95; }
+    #sendButton:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .tool-call {
+      background: #e8f4fd;
+      border-left: 3px solid #2196f3;
+      padding: 8px 12px;
+      margin: 8px 0;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .error-message {
+      background: #fde8e8;
+      border-left: 3px solid #f44336;
+      padding: 8px 12px;
+      margin: 8px 0;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #c53030;
+    }
+    .conversation-id {
+      font-size: 12px;
+      color: #666;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .container { border-radius: 0; }
+      .chat-container { height: 500px; }
+      .message-content { max-width: 85%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🤖 SSE案例演示</h1>
+      <p>FastAPI /Agent/ SSE</p>
+    </div>
+
+    <div class="chat-container">
+      <div class="chat-history" id="chatHistory">
+        <div class="message assistant">
+          <div class="message-content">您好！我已就绪。你可以问“武汉天气怎么样？”试试。</div>
+        </div>
+      </div>
+
+      <div class="status-indicator" id="statusIndicator">
+        <span id="statusText">正在思考中...</span>
+      </div>
+
+      <div class="input-area">
+        <div class="input-container">
+          <input type="text" id="messageInput" placeholder="请输入您的问题..." autocomplete="off" />
+          <button id="sendButton" onclick="window.sendMessage()">发送</button>
+        </div>
+        <div class="conversation-id" id="conversationId">
+          对话ID: <span id="conversationIdValue">未建立</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    class ChatClient {
+      constructor() {
+        // 你说你要写死
+        this.baseUrl = "http://localhost:8200";
+        this.conversationId = null;
+
+        this.eventSource = null;
+        this.isStreaming = false;
+
+        this.currentAssistantMsgEl = null;
+        this.typingEl = null;
+
+        this.bindUI();
+        this.updateStatus("已就绪（等待发送）", false);
+      }
+
+      bindUI() {
+        const input = document.getElementById("messageInput");
+        input.addEventListener("keypress", (e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            this.sendMessage();
+          }
+        });
+      }
+
+      // ===== UI helpers =====
+      addUserMessage(text) {
+        const chatHistory = document.getElementById("chatHistory");
+
+        const wrap = document.createElement("div");
+        wrap.className = "message user";
+        const content = document.createElement("div");
+        content.className = "message-content";
+        content.textContent = text;
+        wrap.appendChild(content);
+
+        chatHistory.appendChild(wrap);
+        this.scrollToBottom();
+      }
+
+      startAssistantMessage() {
+        const chatHistory = document.getElementById("chatHistory");
+
+        // 新消息容器
+        const wrap = document.createElement("div");
+        wrap.className = "message assistant";
+        const content = document.createElement("div");
+        content.className = "message-content";
+        content.textContent = "";
+        wrap.appendChild(content);
+
+        chatHistory.appendChild(wrap);
+        this.currentAssistantMsgEl = content;
+
+        // typing indicator
+        const typingWrap = document.createElement("div");
+        typingWrap.className = "message assistant";
+        typingWrap.innerHTML = `
+          <div class="typing-indicator">
+            正在输出...
+            <div class="typing-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        `;
+        chatHistory.appendChild(typingWrap);
+        this.typingEl = typingWrap;
+
+        this.scrollToBottom();
+      }
+
+      appendAssistantDelta(delta) {
+        if (!this.currentAssistantMsgEl) this.startAssistantMessage();
+        // this.currentAssistantMsgEl.textContent += delta;
+        // 去掉开头连续换行（只在消息刚开始时处理）
+          if (this.currentAssistantMsgEl.textContent.length === 0) {
+            delta = (delta || "").replace(/^\n+/, "");
+          }
+          this.currentAssistantMsgEl.textContent += delta;
+        this.scrollToBottom();
+      }
+
+      finishAssistantMessage() {
+        if (this.typingEl) {
+          this.typingEl.remove();
+          this.typingEl = null;
+        }
+        this.currentAssistantMsgEl = null;
+        this.scrollToBottom();
+      }
+
+      showToolLine(text, ok = true) {
+        const chatHistory = document.getElementById("chatHistory");
+        const div = document.createElement("div");
+        div.className = "tool-call";
+        div.textContent = ok ? text : `❌ ${text}`;
+        chatHistory.appendChild(div);
+        this.scrollToBottom();
+      }
+
+      showError(text) {
+        const chatHistory = document.getElementById("chatHistory");
+        const div = document.createElement("div");
+        div.className = "error-message";
+        div.textContent = `❌ 错误: ${text}`;
+        chatHistory.appendChild(div);
+        this.scrollToBottom();
+      }
+
+      updateStatus(text, show) {
+        const box = document.getElementById("statusIndicator");
+        const t = document.getElementById("statusText");
+        t.textContent = text || "";
+        if (show && text) box.classList.add("active");
+        else box.classList.remove("active");
+      }
+
+      setConversationId(id) {
+        this.conversationId = id;
+        document.getElementById("conversationIdValue").textContent = id || "未建立";
+      }
+
+      setSendingDisabled(disabled) {
+        document.getElementById("sendButton").disabled = !!disabled;
+        document.getElementById("messageInput").disabled = !!disabled;
+      }
+
+      scrollToBottom() {
+        const chatHistory = document.getElementById("chatHistory");
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+      }
+
+      // ===== SSE connection =====
+      closeStream() {
+        if (this.eventSource) {
+          this.eventSource.close();
+          this.eventSource = null;
+        }
+        this.isStreaming = false;
+        this.setSendingDisabled(false);
+        this.updateStatus("", false);
+      }
+
+      openStream(queryText) {
+        // 防止并发：上一次没关就先关
+        this.closeStream();
+
+        const params = new URLSearchParams();
+        params.set("query", queryText);
+        if (this.conversationId) params.set("conversation_id", this.conversationId);
+
+        // 你要求写死 localhost:8100
+        const sseUrl = `${this.baseUrl}/api/chat/sse?${params.toString()}`;
+
+        this.eventSource = new EventSource(sseUrl);
+        this.isStreaming = true;
+
+        this.setSendingDisabled(true);
+        this.updateStatus("正在处理...", true);
+
+        // ✅ 关键：用 addEventListener 监听你后端发的 event: xxx
+        this.eventSource.addEventListener("conversation_started", (e) => {
+          try {
+            const data = JSON.parse(e.data);
+            this.setConversationId(data.conversation_id);
+          } catch (err) {
+            this.showError("conversation_started 解析失败");
+          }
+        });
+
+        this.eventSource.addEventListener("tool_started", (e) => {
+          try {
+            const data = JSON.parse(e.data);
+            this.showToolLine(`正在调用工具: ${data.tool_name}`);
+            // this.updateStatus(`正在调用工具: ${data.tool_name}`, true);
+          } catch (err) {
+            this.showError("tool_started 解析失败");
+          }
+        });
+
+        this.eventSource.addEventListener("tool_completed", (e) => {
+          try {
+            const data = JSON.parse(e.data);
+            this.showToolLine(`✅ 工具执行完成: ${data.tool_name}`);
+          } catch (err) {
+            this.showError("tool_completed 解析失败");
+          }
+        });
+
+        this.eventSource.addEventListener("text_delta", (e) => {
+          try {
+            const data = JSON.parse(e.data);
+            this.appendAssistantDelta(data.text || "");
+          } catch (err) {
+            // 这里就是你之前一直看到的“无法解析事件数据”的根因
+            this.showError("后端返回了无法解析的事件数据（text_delta）");
+          }
+        });
+
+        this.eventSource.addEventListener("agent_updated", (e) => {
+          try {
+            const data = JSON.parse(e.data);
+            this.showToolLine(`👤 Agent切换: ${data.agent_name}`);
+          } catch (err) {
+            // 可忽略
+          }
+        });
+
+        this.eventSource.addEventListener("run_completed", (e) => {
+          // run_completed：表示结束
+          try {
+            // 你要也可以读 final_output，但我们已经通过 text_delta 拼完了
+            JSON.parse(e.data);
+          } catch (_) {}
+          this.finishAssistantMessage();
+          this.updateStatus("完成", false);
+          this.closeStream();
+        });
+
+        this.eventSource.addEventListener("error", (e) => {
+          // 注意：EventSource 的 error 不保证携带 data
+          this.showError("SSE连接错误或中断（可能后端异常/跨域/接口不可达）");
+          this.finishAssistantMessage();
+          this.closeStream();
+        });
+
+        // 兜底：如果后端没指定 event:，会走 message 事件
+        this.eventSource.onmessage = (e) => {
+          // 这里尽量兼容：如果后端用了默认 message + data 里带 type
+          try {
+            const payload = JSON.parse(e.data);
+            if (payload && payload.type === "text_delta" && payload.data?.text) {
+              this.appendAssistantDelta(payload.data.text);
+            }
+          } catch (_) {
+            // 忽略
+          }
+        };
+      }
+
+      // ===== Public action =====
+      sendMessage() {
+        const input = document.getElementById("messageInput");
+        const text = (input.value || "").trim();
+        if (!text) return;
+
+        // 展示用户消息
+        this.addUserMessage(text);
+        input.value = "";
+
+        // 打开 SSE：后端会持续推送 text_delta/tool_started/tool_completed/run_completed
+        this.openStream(text);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      window.chatClient = new ChatClient();
+    });
+
+    window.sendMessage = function() {
+      if (window.chatClient) window.chatClient.sendMessage();
+    };
+  </script>
+</body>
+</html>

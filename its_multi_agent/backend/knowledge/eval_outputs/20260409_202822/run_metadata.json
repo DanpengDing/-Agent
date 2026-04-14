@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-04-09 20:32:59",
+  "crawl_dir": "D:\\BaiduNetdiskDownload\\bj250716\\its_multi_agent\\backend\\knowledge\\data\\crawl",
+  "vector_store_dir": "D:\\BaiduNetdiskDownload\\bj250716\\its_multi_agent\\backend\\knowledge\\chroma_kb1",
+  "indexed_doc_count": 747,
+  "case_count": 8,
+  "ragas_result_repr": "{'context_recall': 0.6875, 'faithfulness': 0.6705}",
+  "used_existing_rows": true,
+  "rows_file": "D:\\BaiduNetdiskDownload\\bj250716\\its_multi_agent\\backend\\knowledge\\eval_outputs\\20260409_170259\\evaluation_rows.json",
+  "include_faithfulness": true,
+  "include_factual_correctness": false
+}
