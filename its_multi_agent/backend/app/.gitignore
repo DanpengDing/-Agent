@@ -1,0 +1,40 @@
+# 环境变量（包含敏感信息）
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+
+# 虚拟环境
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 日志
+*.log
+logs/
+
+# MCP相关
+mcp_server_cache/
+
+# 测试
+.pytest_cache/
+.coverage
+htmlcov/
+
+# pydantic-settings 自动生成
+.temp_env
