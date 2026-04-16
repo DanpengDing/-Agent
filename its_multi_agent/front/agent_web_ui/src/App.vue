@@ -49,22 +49,14 @@
         <div class="sidebar-wrapper">
           <!-- 侧边栏内容 -->
           <div class="sidebar-content" :class="{ 'expanded': isSidebarExpanded }">
-            <!-- 扁平化Logo和Multi-Agent标题 -->
-            <div class="app-branding">
-              <!-- 扁平风格的Logo -->
-              <div class="its-logo-flat">
-                <img src="/its-logo.svg" alt="Multi-Agent Logo" width="40" height="40"/>
+            <!-- 简洁的顶部标题栏 -->
+            <div class="header-bar">
+              <div class="header-logo">
+                <img src="/its-logo.svg" alt="Logo" width="32" height="32"/>
+                <span class="header-title">智慧服务</span>
               </div>
-              
-              <!-- 标题 - 仅在展开状态显示 -->
-              <!-- 已注释掉Multi-Agent文本显示 -->
-              <!-- <div v-show="isSidebarExpanded" class="sidebar-text-content">
-                <h1 class="its-title">售后多智能体</h1>
-              </div> -->
-              
-              <!-- 侧边栏展开/收起按钮 - 与logo水平对齐 -->
-              <button 
-                class="toggle-sidebar-btn" 
+              <button
+                class="toggle-sidebar-btn"
                 @click="toggleSidebar"
                 :title="isSidebarExpanded ? '收起侧边栏' : '展开侧边栏'"
               >
@@ -90,45 +82,20 @@
               </a>
             </div>
             
-            <!-- 导航栏 -->
-            <div class="navigation-container" v-show="isSidebarExpanded">
-              <div class="navigation-item" :class="{ 'selected': selectedNavItem === 'knowledge' }" @click="handleKnowledgeBase">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" class="nav-icon">
-                  <path fill="currentColor" fill-rule="evenodd" d="M3.75 7h16.563c0 .48-.007 1.933-.016 3.685.703.172 1.36.458 1.953.837V5.937a2 2 0 0 0-2-2h-6.227a3 3 0 0 1-1.015-.176L9.992 2.677A3 3 0 0 0 8.979 2.5h-5.23a2 2 0 0 0-1.999 2v14.548a2 2 0 0 0 2 2h10.31a6.5 6.5 0 0 1-1.312-2H3.75S3.742 8.5 3.75 7m15.002 14.5a.514.514 0 0 0 .512-.454c.24-1.433.451-2.169.907-2.625.454-.455 1.186-.666 2.611-.907a.513.513 0 0 0-.002-1.026c-1.423-.241-2.155-.453-2.61-.908-.455-.457-.666-1.191-.906-2.622a.514.514 0 0 0-.512-.458.52.52 0 0 0-.515.456c-.24 1.432-.452 2.167-.907 2.624-.454.455-1.185.667-2.607.909a.514.514 0 0 0-.473.513.52.52 0 0 0 .47.512c1.425.24 2.157.447 2.61.9.455.454.666 1.19.907 2.634a.52.52 0 0 0 .515.452" clip-rule="evenodd"></path>
-                </svg>
-                <span class="nav-text">知识库查询</span>
-              </div>
-              <div class="navigation-item" :class="{ 'selected': selectedNavItem === 'service' }" @click="handleServiceStation">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" class="nav-icon">
-                  <path fill="currentColor" fill-rule="evenodd" d="M12 20.571a8.5 8.5 0 0 1 2.5-6.08c1.43-1.429 3.5-2.49 6.071-2.491-2.571.002-4.617-1.075-6.05-2.508S12 6 12 3.428C12 6 10.954 8.095 9.517 9.532 8.081 10.968 6 12 3.428 12a8.52 8.52 0 0 1 6.082 2.516c1.43 1.43 2.487 3.484 2.49 6.055m-9.853-7.314c3.485.588 5.053 1.331 6.163 2.44s1.847 2.667 2.435 6.198c.105.627.603 1.105 1.26 1.105.664 0 1.156-.479 1.25-1.11.588-3.502 1.329-5.085 2.441-6.2 1.111-1.114 2.677-1.845 6.16-2.433.638-.075 1.144-.586 1.144-1.253 0-.668-.5-1.188-1.147-1.254-3.481-.59-5.026-1.347-6.137-2.46-1.112-1.115-1.872-2.674-2.46-6.171C13.16 1.482 12.671 1 12.003 1c-.66 0-1.155.481-1.259 1.114-.588 3.5-1.323 5.087-2.435 6.203C7.2 9.43 5.632 10.159 2.156 10.75 1.503 10.816 1 11.333 1 12.004c0 .68.52 1.17 1.147 1.253" clip-rule="evenodd"></path>
-                </svg>
-                <span class="nav-text">服务站查询</span>
-              </div>
-              <div class="navigation-item" :class="{ 'selected': selectedNavItem === 'network' }" @click="handleNetworkSearch">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" class="nav-icon">
-                  <path fill="currentColor" fill-rule="evenodd" d="M11 4a7 7 0 1 0 6.993 7.328c-.039-.53-.586-.93-1.131-.891a5.5 5.5 0 1 1-6.203-6.203.75.75 0 0 0-1.317-.63C4.617 5.458 2.75 8.425 2.75 12c0 4.418 3.582 8 8 8s8-3.582 8-8a7.961 7.961 0 0 0-1.996-5.38" clip-rule="evenodd"></path>
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21 21-3.5-3.5"></path>
-                </svg>
-                <span class="nav-text">联网搜索</span>
-              </div>
-              
-
-            </div>
-
-            <!-- 历史会话列表 - 仅在展开状态显示 -->
-            <div v-show="isSidebarExpanded" class="sidebar-main">
-              <div class="navigation-item" @click="toggleSessions">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024" class="nav-icon">
+            <!-- 历史会话列表 -->
+            <div class="history-section">
+              <div class="history-header" @click="toggleSessions">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1024 1024" class="nav-icon">
                   <path d="M512 81.066667c-233.301333 0-422.4 189.098667-422.4 422.4s189.098667 422.4 422.4 422.4 422.4-189.098667 422.4-422.4-189.098667-422.4-422.4-422.4z m-345.6 422.4a345.6 345.6 0 1 1 691.2 0 345.6 345.6 0 1 1-691.2 0z m379.733333-174.933334a38.4 38.4 0 0 0-76.8 0v187.733334a38.4 38.4 0 0 0 11.264 27.136l93.866667 93.866666a38.4 38.4 0 1 0 54.272-54.272L546.133333 500.352V328.533333z" fill="currentColor"></path>
                 </svg>
                 <span class="nav-text">历史会话</span>
               </div>
               <div class="sessions-list" v-show="showSessions">
                 <div v-if="isLoadingSessions" class="loading-sessions">
-                  加载历史对话中...
+                  加载中...
                 </div>
                 <div v-else-if="sessions.length === 0" class="no-sessions">
-                  暂无历史对话
+                  暂无记录
                 </div>
                 <div
                   v-for="session in sessions"
@@ -136,12 +103,8 @@
                   :class="['session-item', { 'selected': session.session_id === selectedSessionId }]"
                   @click="selectSession(session.session_id)"
                 >
-                  <div class="session-info">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <img alt="豆包" src="//lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/chat/static/image/default.light.2ea4b2b4.png" class="session-icon" style="width: 24px; height: 24px; border-radius: 4px; object-fit: cover;">
-                      <div class="session-preview">{{ session.memory[0]?.content || '空对话' }}</div>
-                    </div>
-                  </div>
+                  <img alt="会话" src="//lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/chat/static/image/default.light.2ea4b2b4.png" class="session-icon">
+                  <div class="session-preview">{{ session.memory[0]?.content || '空对话' }}</div>
                 </div>
               </div>
             </div>
@@ -152,53 +115,56 @@
         
         <!-- 右侧显示区域 -->
         <div class="main-container">
-          <!-- 最终结果显示框 -->
-          <div class="result-container" :class="{ 'processing': isProcessing }">
-            <!-- 顶部区域，包含用户信息 -->
+          <!-- 简洁的聊天界面 -->
+          <div class="chat-container" :class="{ 'processing': isProcessing }">
+            <!-- 顶部用户信息 -->
             <div class="top-user-section">
-              <!-- 用户信息和操作按钮 - 放在流程框上方 -->
               <div class="user-avatar-container" ref="avatarContainerRef">
-                <!-- 头像，点击时切换用户信息显示状态 -->
-                <img 
-                  src="https://p3-flow-imagex-sign.byteimg.com/user-avatar/assets/e7b19241fb224cea967dfaea35448102_1080_1080.png~tplv-a9rns2rl98-icon-tiny.png?rcl=202511070904143F9B891FA2E40D7123F0&rk3s=8e244e95&rrcfp=76e58463&x-expires=1765155855&x-signature=nqQBx1W9ABfrm%2FRKkEYZUzsYjE0%3D" 
-                  class="user-avatar" 
-                  alt="用户头像" 
+                <img
+                  src="https://p3-flow-imagex-sign.byteimg.com/user-avatar/assets/e7b19241fb224cea967dfaea35448102_1080_1080.png~tplv-a9rns2rl98-icon-tiny.png?rcl=202511070904143F9B891FA2E40D7123F0&rk3s=8e244e95&rrcfp=76e58463&x-expires=1765155855&x-signature=nqQBx1W9ABfrm%2FRKkEYZUzsYjE0%3D"
+                  class="user-avatar"
+                  alt="用户头像"
                   @click="toggleUserInfo"
                   tabindex="0"
                 />
-                
-                <!-- 用户信息下拉框，点击头像时显示/隐藏 -->
                 <div class="user-info-dropdown" v-show="showUserInfo">
                   <template v-if="currentUser">
                     <span class="user-name">{{ currentUser }}</span>
-                    <button data-testid="setup_logout" class="btn-tertiary" style="width: 100%; justify-content: flex-start;" @click="handleLogout"><span role="img" class="semi-icon semi-icon-default text-16"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14 3H4.5v18H14v-5h2v5a2 2 0 0 1-2 2H4.5a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v5h-2zm5.207 4.793a1 1 0 1 0-1.414 1.414L19.586 11H10.5a1 1 0 1 0 0 2h9.086l-1.793 1.793a1 1 0 0 0 1.414 1.414l3.5-3.5a1 1 0 0 0 0-1.414z" clip-rule="evenodd"></path></svg></span>退出登录</button>
+                    <button class="btn-logout" @click="handleLogout">退出登录</button>
                   </template>
                   <template v-else>
                     <span class="user-name">当前未登录</span>
-                    <button class="login-button btn-primary" @click="goToLogin">请登录</button>
+                    <button class="btn-primary" @click="goToLogin">请登录</button>
                   </template>
                 </div>
               </div>
             </div>
 
-          
-            
-            <!-- 统一的消息展示区域 -->
+            <!-- 欢迎消息 - 仅在没有消息时显示 -->
+            <div class="welcome-area" v-if="chatMessages.length === 0">
+              <div class="welcome-icon">
+                <img src="/its-logo.svg" alt="Logo" width="64" height="64"/>
+              </div>
+              <h2 class="welcome-title">你好，我是联想智能售后客服</h2>
+              <p class="welcome-subtitle">请问有什么可以帮您？</p>
+            </div>
+
+            <!-- 消息展示区域 -->
             <div class="chat-message-container" ref="processContent">
               <div v-for="(msg, index) in chatMessages" :key="index" :class="['message-wrapper', msg.type]">
                  <!-- 消息头/角色标识 -->
                  <div class="message-role-label" v-if="msg.type === 'THINKING'" @click="toggleThinking(index)">
                    <div class="thinking-header">
                      <span class="thinking-text">{{ isProcessing && index === chatMessages.length - 1 ? '思考中...' : '思考过程' }}</span>
-                     <svg 
-                       xmlns="http://www.w3.org/2000/svg" 
-                       width="16" 
-                       height="16" 
-                       viewBox="0 0 24 24" 
-                       fill="none" 
-                       stroke="currentColor" 
-                       stroke-width="2" 
-                       stroke-linecap="round" 
+                     <svg
+                       xmlns="http://www.w3.org/2000/svg"
+                       width="16"
+                       height="16"
+                       viewBox="0 0 24 24"
+                       fill="none"
+                       stroke="currentColor"
+                       stroke-width="2"
+                       stroke-linecap="round"
                        stroke-linejoin="round"
                        class="thinking-icon"
                        :class="{ 'collapsed': msg.collapsed }"
@@ -207,47 +173,55 @@
                      </svg>
                    </div>
                  </div>
-                 
+
                  <!-- 消息内容 -->
                  <div class="message-content" v-show="msg.type !== 'THINKING' || !msg.collapsed">
                    <div class="markdown-body" v-html="renderMarkdown(msg.content)"></div>
                  </div>
               </div>
             </div>
-              
-              <!-- 用户输入框 - 移动到最终结果输出框内 -->
-              <div class="input-container">
-                <!-- 收到后端的 HITL 事件后，这里展示人工确认卡片，而不是普通消息气泡。 -->
-                <div v-if="pendingApproval" class="approval-card">
-                  <div class="approval-title">{{ pendingApproval.title }}</div>
-                  <div class="approval-question">{{ pendingApproval.question }}</div>
-                  <div v-if="pendingApproval.details" class="approval-details">{{ pendingApproval.details }}</div>
-                  <div class="approval-actions">
-                    <button class="btn-primary" :disabled="isApprovalSubmitting" @click="handleHumanApproval('approved')">
-                      {{ isApprovalSubmitting ? '处理中...' : (pendingApproval.approveLabel || '确认') }}
-                    </button>
-                    <button class="btn-secondary" :disabled="isApprovalSubmitting" @click="handleHumanApproval('rejected')">
-                      {{ pendingApproval.rejectLabel || '取消' }}
-                    </button>
-                  </div>
-                </div>
-                <div class="textarea-with-button">
-                  <textarea
-                    v-model="userInput"
-                    placeholder="请输入您的请求..."
-                    @keyup.enter.exact="handleSend($event)"
-                    :disabled="isProcessing || !!pendingApproval"
-                  ></textarea>
-                  <button 
-                    class="send-button btn-primary"
-                    :class="{ 'cancel-button': isProcessing, 'disabled': ((!userInput.trim() && !isProcessing) || !!pendingApproval) }"
-                    :disabled="((!userInput.trim() && !isProcessing) || !!pendingApproval)"
-                    @click="isProcessing ? handleCancel() : handleSend()"
-                  >
-                    {{ isProcessing ? '■' : '发送' }}
+
+            <!-- 底部输入框 -->
+            <div class="input-area">
+              <!-- 审批卡片 -->
+              <div v-if="pendingApproval" class="approval-card">
+                <div class="approval-title">{{ pendingApproval.title }}</div>
+                <div class="approval-question">{{ pendingApproval.question }}</div>
+                <div v-if="pendingApproval.details" class="approval-details">{{ pendingApproval.details }}</div>
+                <div class="approval-actions">
+                  <button class="btn-primary" :disabled="isApprovalSubmitting" @click="handleHumanApproval('approved')">
+                    {{ isApprovalSubmitting ? '处理中...' : (pendingApproval.approveLabel || '确认') }}
+                  </button>
+                  <button class="btn-secondary" :disabled="isApprovalSubmitting" @click="handleHumanApproval('rejected')">
+                    {{ pendingApproval.rejectLabel || '取消' }}
                   </button>
                 </div>
               </div>
+
+              <!-- 输入框 -->
+              <div class="input-box">
+                <input
+                  type="text"
+                  v-model="userInput"
+                  class="chat-input"
+                  placeholder="请输入您的问题..."
+                  @keyup.enter.exact="handleSend($event)"
+                  :disabled="isProcessing || !!pendingApproval"
+                />
+                <button
+                  class="send-btn"
+                  :class="{ 'cancel-btn': isProcessing }"
+                  :disabled="((!userInput.trim() && !isProcessing) || !!pendingApproval)"
+                  @click="isProcessing ? handleCancel() : handleSend()"
+                >
+                  <svg v-if="!isProcessing" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                  <span v-else class="stop-icon">■</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1134,863 +1108,9 @@ const handleServiceStation = () => {
 </script>
 
 <style scoped>
-/* 思考过程头部样式 */
-.thinking-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  user-select: none;
-  transition: color 0.2s;
-}
-
-.thinking-header:hover {
-  color: var(--tech-text-main);
-}
-
-.thinking-text {
-  font-weight: 500;
-}
-
-.thinking-icon {
-  transition: transform 0.3s ease;
-  opacity: 0.7;
-}
-
-.thinking-icon.collapsed {
-  transform: rotate(-90deg);
-}
-
-.app-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 5px;
-  padding-bottom: 10px; /* 减小下边距 */
-  box-sizing: border-box;
-  min-height: 100vh;
-  overflow: hidden; /* 防止页面整体滚动 */
-}
-
-/* 主内容区域布局 */
-.main-content {
-  display: flex;
-  flex: 1;
-  gap: 20px;
-  overflow: hidden;
-}
-
-/* 左侧历史会话列表样式 */
-.sessions-sidebar {
-  width: 300px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.sidebar-header {
-  padding: 15px;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.sidebar-header h3 {
-  margin: 0;
-  font-size: 18px;
-  color: #333;
-}
-
-.refresh-button {
-  padding: 6px 12px;
-  background-color: #2196F3;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.refresh-button:hover:not(:disabled) {
-  background-color: #1976D2;
-}
-
-.refresh-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.sessions-list {
-  flex: 1;
-  overflow-y: auto;
-  padding: 10px;
-}
-
-
-
-/* 登录页面样式 */
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  padding: 20px;
-}
-
-.login-form {
-  background: white;
-  border-radius: 12px;
-  padding: 40px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
-
-.login-logo {
-  margin: 0 auto 20px;
-}
-
-.login-title {
-  margin: 0 0 30px;
-  font-size: 28px;
-  font-weight: 700;
-  color: #333;
-  background: linear-gradient(90deg, #4CAF50, #2196F3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.login-input-group {
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.login-input-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: #555;
-}
-
-.login-input-group input {
-  width: 100%;
-  padding: 12px 16px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
-  box-sizing: border-box;
-}
-
-.login-input-group input:focus {
-  outline: none;
-  border-color: #2196F3;
-  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
-}
-
-.login-error {
-  color: #f44336;
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #ffebee;
-  border-radius: 4px;
-}
-
-.login-button {
-    width: 100%;
-    padding: 14px;
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .login-button:hover {
-    background-color: #1976D2;
-  }
-
-.login-hint {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #f5f5f5;
-  border-radius: 6px;
-  font-size: 14px;
-  color: #666;
-}
-
-.login-hint p {
-  margin: 5px 0;
-}
-
-/* 用户信息和登出按钮 */
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.current-user {
-  font-size: 14px;
-  color: #666;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.logout-button {
-  padding: 8px 10.67px;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.logout-button:hover {
-  background-color: #d32f2f;
-}
-
-/* 顶部标题区域 */
-.app-header {
-  background-color: white;
-  border-radius: 8px;
-  padding: 10px 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.app-branding {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-/* 扁平风格Logo */
-.its-logo-flat {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.its-logo-flat svg {
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
-}
-
-/* 扁平风格标题 */
-.its-title {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  text-transform: uppercase;
-  /* 蓝色渐变效果 */
-  background: linear-gradient(90deg, #2196F3, #90CAF9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
-
-.display-container {
-  display: flex;
-  flex: 1;
-  overflow: hidden;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  min-height: 500px; /* 设置最小高度确保有足够空间显示 */
-}
-
-.result-container {
-  flex: 1;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  /* background-color: #f5f5f5; */
-  overflow: visible;
-  height: auto;
-  box-sizing: border-box;
-  border-radius: 8px;
-  border: 1px solid #fff; /* 添加默认边框 */
-}
-
-/* 程序处理中时的渐变闪烁动画 */
-.result-container.processing {
-  animation: gradient-pulse 1.5s infinite ease-in-out;
-}
-
-@keyframes gradient-pulse {
-  0% {
-    border-color: #fff;
-  }
-  50% {
-    border-color: #2196F3; /* 蓝色边框 */
-  }
-  100% {
-    border-color: #fff;
-  }
-}
-
-
-/* 中间流程框样式 */
-.process-container {
-  width: 100%;
-  max-height: 30%; /* 限制最大高度 */
-  min-height: 100px;
-  margin: 0 0 15px 0; /* 正常的下边距 */
-  padding: 10px;
-  background-color: #f8f9fa; 
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.process-container h3,
-.result-container h3 {
-  margin: 0 0 10px 0;
-  color: #333;
-  font-size: 16px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-}
-
-/* 确保标题前有小图标提示 */
-.process-container h3::before {
-  content: '';
-  display: inline-block;
-  width: 4px;
-  height: 16px;
-  background-color: #2196F3;
-  margin-right: 8px;
-  border-radius: 2px;
-}
-
-.process-content {
-    flex: 1;
-    overflow-y: auto;
-    padding: 5px;
-    background-color: white;
-    border-radius: 4px;
-    font-size: 13px;
-    border: 1px solid #eee;
-  }
-
-.result-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 0 10px 10px 10px; /* 将上边距减小到0 */
-  background-color: white;
-  border-radius: 4px;
-  white-space: pre-wrap;
-  text-align: left;
-  font-size: 14px;
-  margin-top: 0; /* 确保上边距为0 */
-}
-
-.message-item {
-    margin-bottom: 8px;
-    padding: 5px;
-    border-radius: 4px;
-    text-align: left;
-    line-height: 1.5;
-    word-wrap: break-word;
-    font-size: 16px !important;
-  }
-
-  /* 添加markdown样式 */
-  .markdown {
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-  }
-
-  .markdown .paragraph {
-    margin-bottom: 16px !important;
-    font-size: 16px !important;
-    line-height: 1.8 !important;
-    color: #333 !important;
-  }
-  
-  /* 确保结果内容中的文本样式 */
-  .result-content {
-    font-size: 16px !important;
-  }
-  
-  /* 确保段落样式 */
-  .result-content p {
-    font-size: 16px !important;
-    line-height: 1.8 !important;
-    margin-bottom: 1px !important;
-    margin-top: 1px !important;
-    color: #333 !important;
-    display: inline-block !important;
-  }
-  
-  /* 添加更多样式以确保匹配用户要求的格式 */
-  .result-content > div {
-    font-size: 16px !important;
-    line-height: 1.8 !important;
-  }
-  
-  /* 确保所有文本元素的样式 */
-  .result-content * {
-    font-size: 16px !important;
-    line-height: 1.8 !important;
-    color: #333 !important;
-  }
-  
-  /* 使用深度选择器确保样式穿透组件边界 */
-  :deep(.result-content) {
-    font-size: 16px !important;
-  }
-  
-  :deep(.result-content) * {
-    font-size: 16px !important;
-    line-height: 1.8 !important;
-    color: #333 !important;
-  }
-  
-  /* 确保段落样式 */
-  :deep(.result-content p) {
-    font-size: 16px !important;
-    line-height: 1.8 !important;
-    margin-bottom: 1px !important;
-    margin-top: 1px !important;
-    color: #333 !important;
-    display: inline-block !important;
-  }
-
-  /* 用户消息样式 - 右对齐、宽度限制（不超过三分之二）、背景色 */
-  /* 在结果框中为用户消息添加样式 */
-  :deep(.result-content) {
-    position: relative;
-  }
-  
-  :deep(.result-content) [v-pre] {
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-  
-  /* 使用CSS伪元素和属性选择器处理标记的用户消息 */
-  :deep(.result-content) [v-pre] {
-    line-height: 1.6;
-  }
-  
-  /* 用户消息样式 - 使用正则匹配[USER]标记的消息 */
-  :deep(.result-content) [v-pre] {
-    /* 基础样式 */
-    font-size: 14px;
-  }
-  
-  /* 为最终结果框中的用户消息和助手消息添加样式 */
-  :deep(.result-content) .user-message {
-    background-color: #f5f5f5; /* 浅灰色背景 */
-    color: #1565c0;
-    display: inline-block; /* 使元素宽度适应内容 */
-    text-align: left; /* 默认左对齐 */
-    margin-left: auto;
-    margin-right: 0;
-    max-width: 66.6%; /* 不超过容器的三分之二 */
-    border-radius: 8px;
-    padding: 10px 15px;
-    margin-bottom: 8px;
-    word-break: break-word;
-    line-height: 1.6;
-    white-space: pre-wrap;
-  }
-  
-  /* 使用伪元素技巧实现单行右对齐，多行左对齐 */
-  :deep(.result-content) .user-message {
-    text-align: left;
-  }
-
-  /* 让整个消息块右对齐 */
-  :deep(.result-content) {
-    text-align: left;
-  }
-  
-  /* 确保助手消息仍然左对齐 */
-  :deep(.result-content) .assistant-message {
-    text-align: left;
-    display: block;
-  }
-  
-  :deep(.result-content) .assistant-message {
-    background-color: #ffffff; /* 白色背景 */
-    color: #333;
-    text-align: left;
-    margin-left: 0;
-    margin-right: auto;
-    max-width: 100%;
-    padding: 10px 15px;
-    margin-bottom: 8px;
-    word-break: break-word;
-    line-height: 1.6;
-  }
-  
-  /* 保留.message-item.user样式，以备后续可能的其他用途 */
-  .message-item.user {
-    background-color: #e3f2fd;
-    color: #1565c0;
-    text-align: right;
-    margin-left: auto;
-    max-width: 66.6%; /* 不超过容器的三分之二 */
-    border-radius: 8px;
-    padding: 10px;
-  }
-
-  .message-item.THINKING {
-    background-color: #f0f7ff;
-    color: #0066cc;
-    white-space: pre-wrap; /* 保留空格和换行，但长行依然换行 */
-    word-break: break-all; /* 确保超长单词能被截断 */
-  }
-
-  .message-item.PROCESS {
-    background-color: #f0f7ff;
-    color: #0066cc;
-    /*background-color: #fff9f0;
-    color: #cc6600;
-    font-weight: bold; */
-  }
-
-  /* Markdown 样式 */
-  :deep(h1) {
-    font-size: 24px;
-    margin: 16px 0 8px;
-    color: #333;
-  }
-
-  :deep(h2) {
-    font-size: 20px;
-    margin: 14px 0 7px;
-    color: #444;
-  }
-
-  :deep(h3) {
-    font-size: 18px;
-    margin: 12px 0 6px;
-    color: #555;
-  }
-
-  :deep(p) {
-    margin: 8px 0;
-    line-height: 1.6;
-  }
-
-  :deep(ul), :deep(ol) {
-    margin: 8px 0;
-    padding-left: 24px;
-  }
-
-  :deep(li) {
-    margin: 4px 0;
-  }
-
-  :deep(pre) {
-    background-color: #f5f5f5;
-    padding: 12px;
-    border-radius: 4px;
-    overflow-x: auto;
-    font-family: 'Courier New', monospace;
-  }
-
-  :deep(code) {
-    background-color: #f5f5f5;
-    padding: 2px 4px;
-    border-radius: 3px;
-    font-family: 'Courier New', monospace;
-  }
-
-  :deep(strong) {
-    font-weight: bold;
-  }
-
-  :deep(em) {
-    font-style: italic;
-  }
-
-  :deep(a) {
-    color: #2196f3;
-    text-decoration: none;
-  }
-
-  :deep(a:hover) {
-    text-decoration: underline;
-  }
-
-.input-container {
-  padding: 0;
-  margin-top: auto;
-}
-
-.approval-card {
-  max-width: 50vw;
-  margin: 0 0 12px 0;
-  padding: 14px 16px;
-  border: 1px solid #f0c36d;
-  background: #fff8e8;
-  border-radius: 12px;
-}
-
-.approval-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: #7a4b00;
-  margin-bottom: 6px;
-}
-
-.approval-question {
-  font-size: 14px;
-  color: #4a3a17;
-  margin-bottom: 6px;
-}
-
-.approval-details {
-  font-size: 13px;
-  color: #6b5b34;
-  white-space: pre-wrap;
-  margin-bottom: 12px;
-}
-
-.approval-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.btn-secondary {
-  background-color: #e9ecef;
-  color: #333;
-}
-
-.textarea-with-button {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  max-width: 50vw;
-}
-
-.textarea-with-button textarea {
-  width: 100%;
-  padding: 12px 48px 12px 12px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  resize: none;
-  height: 100px;
-  font-size: 16px;
-  font-family: inherit;
-}
-
-.textarea-with-button .send-button {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  border: none;
-  background-color: #4CAF50;
-  color: white;
-  font-size: 12px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-  .textarea-with-button textarea:focus {
-    outline: none;
-    border-color: #4CAF50;
-    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
-  }
-  
-  /* Send button styles removed from App.vue to use style.css */
-
-  .textarea-with-button textarea:disabled {
-    background-color: #f5f5f5;
-    cursor: not-allowed;
-  }
-
-  .input-container button {
-    padding: 12px 24px;
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-  }
-
-  .input-container button:hover {
-    background-color: #1976D2;
-  }
-
-  .input-container button:active {
-    background-color: #1565C0;
-  }
-
-  .input-container button.cancel-button {
-    background-color: #f44336;
-    width: 40px;
-    padding: 12px;
-    font-size: 16px;
-    line-height: 1;
-  }
-
-  .input-container button.cancel-button:hover {
-    background-color: #d32f2f;
-  }
-
-/* 美化滚动条 - 默认隐藏，鼠标悬停时显示 */
-.process-content::-webkit-scrollbar {
-  width: 0;
-  position: absolute;
-  right: 0;
-  transition: width 0.2s ease;
-}
-
-.process-content::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 4px;
-}
-
-.process-content::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-.process-content::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* 鼠标悬停时显示滚动条 */
-.process-content:hover::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* 最终结果框滚动条样式 - 默认隐藏，鼠标悬停时显示 */
-.result-content::-webkit-scrollbar {
-  width: 0;
-  position: absolute;
-  right: 0;
-  transition: width 0.2s ease;
-}
-
-.result-content:hover::-webkit-scrollbar {
-  width: 8px;
-}
-
-.result-content::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 4px;
-}
-
-.result-content::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-.result-content::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .app-container {
-    padding: 8px;
-    gap: 8px;
-  }
-  
-  .display-container {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .process-container,
-  .result-container {
-    min-height: 180px;
-  }
-  
-  .input-container textarea {
-    height: 80px;
-    font-size: 14px;
-  }
-  
-  /* 响应式登录页面 */
-  .login-form {
-    padding: 30px 20px;
-  }
-  
-  .login-title {
-    font-size: 24px;
-  }
-  
-  /* 响应式顶部导航 */
-  .app-header {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-  
-  .user-info {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .app-container {
-    padding: 10px;
-    gap: 10px;
-  }
-  
-  .process-container h3,
-  .result-container h3 {
-    font-size: 16px;
-  }
-  
-  .input-container {
-    flex-direction: column;
-  }
-  
-  .input-container button {
-    align-self: flex-end;
-    padding: 10px 20px;
-  }
-  
-  /* 小屏幕登录页面 */
-  .login-form {
-    padding: 20px 15px;
-  }
-  
-  .login-logo svg {
-    width: 50px;
-    height: 50px;
-  }
-}
+/* 主要样式已在 style.css 中定义，这里仅保留必要的覆盖样式 */
 .model-down {
-     padding-left: 50px;
-     margin-top: 10px;
+  padding-left: 50px;
+  margin-top: 10px;
 }
 </style>

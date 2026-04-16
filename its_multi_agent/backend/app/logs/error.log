@@ -1,2 +1,1 @@
-2026-01-21 11:35:41,377 | ERROR    | ITS_App:23 | MCP连接建立失败: name 'mcp_connect' is not defined
-2026-01-21 11:36:18,572 | ERROR    | ITS_App:33 | MCP连接清理失败: name 'mcp_cleanup' is not defined
+2026-04-15 14:58:38,692 | ERROR    | MultiAgent_App:218 | [ContextCompression] LLM extraction failed: 'OpenAIChatCompletionsModel' object has no attribute 'openai_client'

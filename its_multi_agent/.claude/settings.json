@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(python:*)",
+      "Bash(pytest:*)",
+      "Bash(uvicorn:*)",
+      "Bash(docker:*)",
+      "Bash(docker-compose:*)",
+      "Bash(npm:*)",
+      "Bash(node:*)",
+      "Bash(curl:*)",
+      "Read",
+      "Edit(.claude)",
+      "Write(.claude)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(git push --force:*)",
+      "Bash(git reset --hard:*)"
+    ],
+    "defaultMode": "bypassPermissions"
+  }
+}

@@ -39,9 +39,6 @@ async def lifespan(app: FastAPI):
 
 
 def create_fast_api() -> FastAPI:
-    # 初始化链路追踪
-    tracer = get_tracer("multi-agent-api")
-
     # 1. 创建FastApi实例,绑定了生命周期事件
     app = FastAPI(title="Multi-Agent API", lifespan=lifespan)
 

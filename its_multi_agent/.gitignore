@@ -68,6 +68,9 @@ Thumbs.db
 # Docker
 .docker/
 
+# Claude Code settings (personal)
+.claude/settings.local.json
+
 # GitHub Actions
 .github/workflows/*.local.yml
 
