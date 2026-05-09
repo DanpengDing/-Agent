@@ -11,6 +11,7 @@ from infrastructure.tracing import get_tracer
 from multi_agent.orchestrator_agent import orchestrator_agent
 from schemas.request import ChatMessageRequest
 from schemas.response import ContentKind
+from services.approval_details_service import build_service_station_approval_details
 from services.hitl_service import hitl_service
 from services.query_rewrite_service import query_rewrite_service
 from services.session_service import session_service
@@ -172,7 +173,7 @@ class MultiAgentService:
                         interruptions=interruptions,
                         title="需要人工确认",
                         question="是否允许智能体查询维修站并继续执行？",
-                        details=f"待执行请求：{user_query}",
+                        details=build_service_station_approval_details(user_query),
                         approve_label="允许查询",
                         reject_label="取消操作",
                     )

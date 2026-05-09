@@ -5,7 +5,8 @@ from agents import Agent, ModelSettings
 from infrastructure.ai.openai_client import sub_model
 from infrastructure.tools.local.service_station import (
     resolve_user_location_from_text,
-    query_nearest_repair_shops_by_coords
+    query_nearest_repair_shops_by_coords,
+    map_uri,
 )
 
 from infrastructure.tools.mcp.mcp_servers import (
@@ -25,6 +26,7 @@ comprehensive_service_agent = Agent(
     tools=[
         resolve_user_location_from_text,
         query_nearest_repair_shops_by_coords,
+        map_uri,
     ],
     # 远程MCP工具：地图
     mcp_servers=[

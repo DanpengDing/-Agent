@@ -7,6 +7,7 @@ openai
 httpx
 openai-agents
 pystun3
+mcp
 
 # OpenTelemetry 链路追踪
 opentelemetry-api==1.24.0

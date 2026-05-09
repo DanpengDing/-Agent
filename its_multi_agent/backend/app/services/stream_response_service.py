@@ -14,6 +14,29 @@ from utils.response_util import ResponseFactory
 from utils.text_util import format_agent_update_html, format_tool_call_html
 
 
+def extract_backend_error_details(output: str):
+    text = str(output or "")
+    marker = "后端错误详情："
+    index = text.find(marker)
+    if index < 0:
+        return None
+    return text[index:].strip()
+
+
+def extract_backend_error_details_from_result(result) -> list:
+    details = []
+    for attr_name in ("new_items", "items", "generated_items"):
+        for item in getattr(result, attr_name, None) or []:
+            output = getattr(item, "output", None)
+            if output is None:
+                raw_item = getattr(item, "raw_item", None)
+                output = getattr(raw_item, "output", None) if raw_item is not None else None
+            detail = extract_backend_error_details(str(output or ""))
+            if detail and detail not in details:
+                details.append(detail)
+    return details
+
+
 async def process_stream_response(streaming_result: RunResultStreaming) -> AsyncGenerator:
     async for event in streaming_result.stream_events():
         logger.debug("[Stream] event type=%s", event.type)
@@ -55,6 +78,11 @@ async def process_stream_response(streaming_result: RunResultStreaming) -> Async
             elif hasattr(event, "name") and event.name == "tool_output":
                 output = getattr(event.item, "output", "")
                 logger.info("[Stream] tool_output=%s", str(output)[:1000])
+                details = extract_backend_error_details(str(output))
+                if details:
+                    yield "data: " + ResponseFactory.build_text(
+                        details, ContentKind.PROCESS
+                    ).model_dump_json() + "\n\n"
 
         elif event.type == "agent_updated_stream_event":
             new_agent_name = event.new_agent.name

@@ -9,10 +9,12 @@ from infrastructure.tracing import get_tracer
 from multi_agent.orchestrator_agent import orchestrator_agent
 from schemas.request import ChatMessageRequest, HumanApprovalRequest, UserSessionsRequest
 from schemas.response import ContentKind
+from services.approval_details_service import build_service_station_approval_details
 from services.agent_service import MultiAgentService
 from services.guardrail_service import guardrail_service
 from services.hitl_service import hitl_service
 from services.session_service import session_service
+from services.stream_response_service import extract_backend_error_details_from_result
 from services.structured_output_service import structured_output_service
 from utils.response_util import ResponseFactory
 
@@ -126,7 +128,7 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
                     interruptions=interruptions,
                     title="需要人工确认",
                     question="是否允许智能体继续执行下一步敏感操作？",
-                    details=f"继续执行请求：{approval.query}",
+                    details=build_service_station_approval_details(approval.query),
                     approve_label="继续",
                     reject_label="取消",
                 )
@@ -148,6 +150,11 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
 
             final_output = result.final_output or ""
             structured_output = structured_output_service.parse_final_output(final_output)
+            for backend_error_detail in extract_backend_error_details_from_result(result):
+                yield "data: " + ResponseFactory.build_text(
+                    backend_error_detail,
+                    ContentKind.PROCESS,
+                ).model_dump_json() + "\n\n"
             logger.info(
                 "[Approval] resumed run token=%s final_output=%s structured_intent=%s",
                 approval.token,

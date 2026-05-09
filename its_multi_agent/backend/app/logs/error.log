@@ -1,1 +1,380 @@
-2026-04-15 14:58:38,692 | ERROR    | MultiAgent_App:218 | [ContextCompression] LLM extraction failed: 'OpenAIChatCompletionsModel' object has no attribute 'openai_client'
+2026-05-09 09:38:31,099 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=维修站修电脑 error=
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 732, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 199, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 189, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 215, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 245, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 790, in list_tools
+    result = await self._run_with_retries(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 696, in _run_with_retries
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 561, in _maybe_serialize_request
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\client\session.py", line 529, in list_tools
+    result = await self.send_request(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\shared\session.py", line 281, in send_request
+    await self._write_stream.send(SessionMessage(message=JSONRPCMessage(jsonrpc_request), metadata=metadata))
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 249, in send
+    self.send_nowait(item)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 218, in send_nowait
+    raise ClosedResourceError
+anyio.ClosedResourceError
+2026-05-09 09:38:36,663 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=电脑维修站 error=
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 732, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 199, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 189, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 215, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 245, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 790, in list_tools
+    result = await self._run_with_retries(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 696, in _run_with_retries
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 561, in _maybe_serialize_request
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\client\session.py", line 529, in list_tools
+    result = await self.send_request(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\shared\session.py", line 281, in send_request
+    await self._write_stream.send(SessionMessage(message=JSONRPCMessage(jsonrpc_request), metadata=metadata))
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 249, in send
+    self.send_nowait(item)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 218, in send_nowait
+    raise ClosedResourceError
+anyio.ClosedResourceError
+2026-05-09 09:38:40,246 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=查找附近的电脑维修站并导航 error=
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 732, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 199, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 189, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 215, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 245, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 790, in list_tools
+    result = await self._run_with_retries(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 696, in _run_with_retries
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 561, in _maybe_serialize_request
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\client\session.py", line 529, in list_tools
+    result = await self.send_request(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\shared\session.py", line 281, in send_request
+    await self._write_stream.send(SessionMessage(message=JSONRPCMessage(jsonrpc_request), metadata=metadata))
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 249, in send
+    self.send_nowait(item)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 218, in send_nowait
+    raise ClosedResourceError
+anyio.ClosedResourceError
+2026-05-09 09:40:50,204 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=修电脑的维修站 error=
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 732, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 199, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 189, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 215, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 245, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 790, in list_tools
+    result = await self._run_with_retries(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 696, in _run_with_retries
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 561, in _maybe_serialize_request
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\client\session.py", line 529, in list_tools
+    result = await self.send_request(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\shared\session.py", line 281, in send_request
+    await self._write_stream.send(SessionMessage(message=JSONRPCMessage(jsonrpc_request), metadata=metadata))
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 249, in send
+    self.send_nowait(item)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 218, in send_nowait
+    raise ClosedResourceError
+anyio.ClosedResourceError
+2026-05-09 09:40:53,762 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=修电脑的维修站 error=
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 732, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 199, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 189, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 215, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 245, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 790, in list_tools
+    result = await self._run_with_retries(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 696, in _run_with_retries
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 561, in _maybe_serialize_request
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\client\session.py", line 529, in list_tools
+    result = await self.send_request(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\shared\session.py", line 281, in send_request
+    await self._write_stream.send(SessionMessage(message=JSONRPCMessage(jsonrpc_request), metadata=metadata))
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 249, in send
+    self.send_nowait(item)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 218, in send_nowait
+    raise ClosedResourceError
+anyio.ClosedResourceError
+2026-05-09 10:40:08,109 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=修电脑的服务站 error=
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 732, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 199, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 189, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 215, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 245, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 790, in list_tools
+    result = await self._run_with_retries(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 696, in _run_with_retries
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 561, in _maybe_serialize_request
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\client\session.py", line 529, in list_tools
+    result = await self.send_request(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\shared\session.py", line 281, in send_request
+    await self._write_stream.send(SessionMessage(message=JSONRPCMessage(jsonrpc_request), metadata=metadata))
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 249, in send
+    self.send_nowait(item)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 218, in send_nowait
+    raise ClosedResourceError
+anyio.ClosedResourceError
+2026-05-09 11:05:33,360 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:05:33,364 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:05:33,366 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:05:48,251 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:05:48,253 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:05:48,256 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:13:47,256 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=修电脑的服务站 error=list_tools() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 669, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 195, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 185, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 186, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 216, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+TypeError: list_tools() takes 1 positional argument but 3 were given
+2026-05-09 11:13:53,798 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=修电脑的服务站 error=list_tools() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 669, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 195, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 185, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 186, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 216, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+TypeError: list_tools() takes 1 positional argument but 3 were given
+2026-05-09 11:13:57,550 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=修电脑的服务站 error=list_tools() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 669, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 195, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 185, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 186, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 216, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+TypeError: list_tools() takes 1 positional argument but 3 were given
+2026-05-09 11:17:50,802 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:17:50,805 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:17:50,809 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:20:29,149 | ERROR    | MultiAgent_App:130 | [Route] service station failed query=修电脑的服务站 error=list_tools() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 126, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 80, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 669, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 195, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 185, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 186, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 216, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+TypeError: list_tools() takes 1 positional argument but 3 were given
+2026-05-09 11:20:34,531 | ERROR    | MultiAgent_App:130 | [Route] service station failed query=修电脑的服务站 error=list_tools() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 126, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 80, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 669, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 195, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 185, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 186, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 216, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+TypeError: list_tools() takes 1 positional argument but 3 were given
+2026-05-09 11:20:36,881 | ERROR    | MultiAgent_App:130 | [Route] service station failed query=修电脑的服务站 error=list_tools() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 126, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 80, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 669, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 195, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 185, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 186, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 216, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+TypeError: list_tools() takes 1 positional argument but 3 were given
+2026-05-09 11:24:09,026 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:24:09,029 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:24:09,032 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:24:22,867 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:24:22,869 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:24:22,872 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:27:09,397 | ERROR    | MultiAgent_App:130 | [Route] service station failed query=修电脑的服务站 error=Tool map_uri not found in agent 全能业务智能体
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 126, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 80, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 831, in start_streaming
+    turn_result = await run_single_turn_streamed(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 1264, in run_single_turn_streamed
+    single_step_result = await get_single_step_result_from_response(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_resolution.py", line 1587, in get_single_step_result_from_response
+    processed_response = process_model_response(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_resolution.py", line 1545, in process_model_response
+    raise ModelBehaviorError(error)
+agents.exceptions.ModelBehaviorError: Tool map_uri not found in agent 全能业务智能体
+2026-05-09 11:30:33,898 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:30:33,902 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:30:33,905 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:30:50,577 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:30:50,581 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:30:50,584 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 15:17:28,923 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 15:17:28,925 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 15:17:28,926 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 15:53:41,740 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: Failed to connect to MCP server '通用联网搜索': HTTP error 500 (Internal Server Error)
+2026-05-09 15:53:43,973 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: Failed to connect to MCP server '知识库问答': HTTP error 502 (Bad Gateway)
+2026-05-09 16:04:10,116 | ERROR    | MultiAgent_App:37 | 搜索 MCP 连接失败: Failed to connect to MCP server '通用联网搜索': HTTP error 500 (Internal Server Error)

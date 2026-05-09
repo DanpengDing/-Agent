@@ -1,3 +1,6 @@
+import json
+from typing import Optional
+
 from agents import Runner, function_tool
 from agents.items import ToolCallItem, ToolCallOutputItem
 from agents.run import RunConfig
@@ -5,6 +8,39 @@ from agents.run import RunConfig
 from infrastructure.logging.logger import logger
 from multi_agent.service_agent import comprehensive_service_agent
 from multi_agent.technical_agent import technical_agent
+
+
+def collect_tool_diagnostic(tool_name: str, output_text: str) -> Optional[str]:
+    text = str(output_text or "").strip()
+    if not text:
+        return None
+
+    try:
+        payload = json.loads(text)
+    except Exception:
+        lowered = text.lower()
+        if "error" in lowered or "exception" in lowered or "failed" in lowered or "失败" in text:
+            return f"{tool_name}: {text[:1000]}"
+        return None
+
+    if not isinstance(payload, dict):
+        return None
+
+    is_error = payload.get("ok") is False or payload.get("status") == "error"
+    error_message = payload.get("error") or payload.get("error_msg") or payload.get("message")
+    if is_error or error_message:
+        detail = error_message or json.dumps(payload, ensure_ascii=False, default=str)
+        return f"{tool_name}: {detail}"
+
+    return None
+
+
+def format_service_agent_diagnostics(final_output: str, diagnostics: list[str]) -> str:
+    if not diagnostics:
+        return final_output
+
+    detail_lines = "\n".join(f"- {item}" for item in diagnostics)
+    return f"{final_output}\n\n后端错误详情：\n{detail_lines}"
 
 
 @function_tool
@@ -39,6 +75,7 @@ async def _run_service_agent_with_logging(query: str) -> str:
         input=query,
         run_config=RunConfig(tracing_disabled=True),
     )
+    diagnostics: list[str] = []
 
     async for event in streaming_result.stream_events():
         if event.type != "run_item_stream_event":
@@ -68,8 +105,12 @@ async def _run_service_agent_with_logging(query: str) -> str:
                 tool_name,
                 str(output_text)[:1500],
             )
+            diagnostic = collect_tool_diagnostic(tool_name, str(output_text))
+            if diagnostic:
+                diagnostics.append(diagnostic)
 
     final_output = streaming_result.final_output or ""
+    final_output = format_service_agent_diagnostics(final_output, diagnostics)
     logger.info("[ServiceAgent] final_output query=%s output=%s", query[:100], str(final_output)[:1500])
     return final_output
 
@@ -87,7 +128,7 @@ async def query_service_station_and_navigate(query: str) -> str:
         return result_text
     except Exception as exc:
         logger.error("[Route] service station failed query=%s error=%s", query, exc, exc_info=True)
-        raise
+        return f"服务站查询失败。\n\n后端错误详情：\n- query_service_station_and_navigate: {exc}"
 
 
 AGENT_TOOLS = [

@@ -2,7 +2,30 @@
 import json
 from typing import Any, Dict
 
-from agents.mcp import MCPServerSse
+try:
+    from agents.mcp import MCPServerSse
+except ImportError:
+    try:
+        from agents.mcp.server import MCPServerSse
+    except ImportError as mcp_import_error:
+        MCP_IMPORT_ERROR = str(mcp_import_error)
+
+        class MCPServerSse:
+            def __init__(self, name: str, *args, **kwargs):
+                self.name = name
+                self._import_error = MCP_IMPORT_ERROR
+
+            async def connect(self):
+                raise RuntimeError(f"MCP client unavailable: {self._import_error}")
+
+            async def cleanup(self):
+                return None
+
+            async def list_tools(self, *args, **kwargs):
+                return []
+
+            async def call_tool(self, *args, **kwargs):
+                raise RuntimeError(f"MCP client unavailable: {self._import_error}")
 
 from config.settings import settings
 

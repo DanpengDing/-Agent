@@ -1,33 +1,1160 @@
-2026-04-15 14:24:25,247 | INFO     | MultiAgent_App:127 | [ContextCompression] triggered: message_count=11 threshold=10
-2026-04-15 14:24:25,265 | INFO     | MultiAgent_App:202 | [ContextCompression] compressed: version=2 entities=20 preferences=0 facts=4 issues=4
-2026-04-15 14:26:24,728 | INFO     | MultiAgent_App:99 | [ContextCompression] triggered: message_count=11 threshold=10
-2026-04-15 14:26:24,738 | INFO     | MultiAgent_App:174 | [ContextCompression] compressed: version=2 entities=4 preferences=0 facts=5 issues=2
-2026-04-15 14:27:15,281 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
-2026-04-15 14:27:15,288 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
-2026-04-15 14:27:15,293 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
-2026-04-15 14:57:59,200 | INFO     | MultiAgent_App:101 | [ContextCompression] triggered: message_count=11 threshold=10
-2026-04-15 14:58:38,691 | INFO     | MultiAgent_App:101 | [ContextCompression] triggered: message_count=11 threshold=10
-2026-04-15 14:58:38,692 | ERROR    | MultiAgent_App:218 | [ContextCompression] LLM extraction failed: 'OpenAIChatCompletionsModel' object has no attribute 'openai_client'
-2026-04-15 14:58:38,696 | INFO     | MultiAgent_App:152 | [ContextCompression] compressed: version=2 summary_text=对话摘要生成失败 entities=0 ongoing_issues=0
-2026-04-15 14:59:23,754 | INFO     | MultiAgent_App:101 | [ContextCompression] triggered: message_count=11 threshold=10
-2026-04-15 14:59:30,169 | DEBUG    | MultiAgent_App:213 | [ContextCompression] LLM raw output: {
-    "summary_text": "用户反映其联想ThinkPad T480笔记本无法开机，屏幕黑屏但风扇转动，已提供住址并请求查找最近的维修站。",
-    "entities": ["联想", "ThinkPad T480", "昌平区"],
+2026-05-09 09:23:07,258 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:23:07,916 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:23:11,444 | INFO     | MultiAgent_App:64 | user=root1 query=你好
+2026-05-09 09:23:11,445 | INFO     | MultiAgent_App:62 | [AgentService] start user=root1 session=session_1778247371378_0hoxbyp3c retry=True skip_user_message=False query=你好
+2026-05-09 09:23:11,447 | INFO     | MultiAgent_App:96 | [AgentService] query rewritten user=root1 session=session_1778247371378_0hoxbyp3c original=你好 rewritten=你好
+2026-05-09 09:23:11,452 | DEBUG    | MultiAgent_App:111 | [AgentService] prepared history user=root1 session=session_1778247371378_0hoxbyp3c messages=6
+2026-05-09 09:23:11,456 | INFO     | MultiAgent_App:145 | [AgentService] orchestrator started user=root1 session=session_1778247371378_0hoxbyp3c
+2026-05-09 09:23:11,457 | DEBUG    | MultiAgent_App:19 | [Stream] event type=agent_updated_stream_event
+2026-05-09 09:23:11,457 | INFO     | MultiAgent_App:61 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 09:23:11,996 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:11,997 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:11,997 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:11,997 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:11,997 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:23:11,997 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:11,997 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=你好
+2026-05-09 09:23:12,125 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:12,125 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=！我主要
+2026-05-09 09:23:12,142 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:12,142 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=协助处理技术咨询与服务
+2026-05-09 09:23:12,217 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:12,217 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=站导航相关的问题。有什么
+2026-05-09 09:23:12,399 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:12,399 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=我可以帮您的吗？
+2026-05-09 09:23:12,416 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:12,416 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:23:12,417 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:12,417 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:12,417 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:23:12,419 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 09:23:12,419 | INFO     | MultiAgent_App:68 | [Stream] finished
+2026-05-09 09:23:12,420 | INFO     | MultiAgent_App:204 | [AgentService] orchestrator finished user=root1 session=session_1778247371378_0hoxbyp3c final_output=你好！我主要协助处理技术咨询与服务站导航相关的问题。有什么我可以帮您的吗？ structured_intent=general
+2026-05-09 09:23:12,424 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:25:25,220 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:25:26,040 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:25:27,508 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:25:30,078 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:25:31,028 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:25:32,305 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:33:23,302 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 09:33:23,309 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 09:33:23,312 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 09:37:46,261 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:37:47,059 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:37:50,985 | INFO     | MultiAgent_App:64 | user=root1 query=你好
+2026-05-09 09:37:50,986 | INFO     | MultiAgent_App:62 | [AgentService] start user=root1 session=session_1778247371378_0hoxbyp3c retry=True skip_user_message=False query=你好
+2026-05-09 09:37:50,988 | INFO     | MultiAgent_App:96 | [AgentService] query rewritten user=root1 session=session_1778247371378_0hoxbyp3c original=你好 rewritten=你好
+2026-05-09 09:37:50,988 | DEBUG    | MultiAgent_App:111 | [AgentService] prepared history user=root1 session=session_1778247371378_0hoxbyp3c messages=8
+2026-05-09 09:37:50,991 | INFO     | MultiAgent_App:145 | [AgentService] orchestrator started user=root1 session=session_1778247371378_0hoxbyp3c
+2026-05-09 09:37:50,991 | DEBUG    | MultiAgent_App:19 | [Stream] event type=agent_updated_stream_event
+2026-05-09 09:37:50,991 | INFO     | MultiAgent_App:61 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 09:37:51,466 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,466 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,466 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,466 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,466 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:37:51,466 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,466 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=你好
+2026-05-09 09:37:51,524 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,524 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=！我主要
+2026-05-09 09:37:51,601 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,601 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=协助处理技术咨询与服务
+2026-05-09 09:37:51,668 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,669 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=站导航相关的问题。有什么
+2026-05-09 09:37:51,872 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,872 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=我可以帮您的吗？
+2026-05-09 09:37:51,895 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,895 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:37:51,897 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,897 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,897 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:37:51,898 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 09:37:51,898 | INFO     | MultiAgent_App:68 | [Stream] finished
+2026-05-09 09:37:51,898 | INFO     | MultiAgent_App:204 | [AgentService] orchestrator finished user=root1 session=session_1778247371378_0hoxbyp3c final_output=你好！我主要协助处理技术咨询与服务站导航相关的问题。有什么我可以帮您的吗？ structured_intent=general
+2026-05-09 09:37:51,904 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:38:02,741 | INFO     | MultiAgent_App:64 | user=root1 query=你能干嘛
+2026-05-09 09:38:02,741 | INFO     | MultiAgent_App:62 | [AgentService] start user=root1 session=session_1778247371378_0hoxbyp3c retry=True skip_user_message=False query=你能干嘛
+2026-05-09 09:38:02,742 | INFO     | MultiAgent_App:96 | [AgentService] query rewritten user=root1 session=session_1778247371378_0hoxbyp3c original=你能干嘛 rewritten=你能干嘛
+2026-05-09 09:38:02,743 | DEBUG    | MultiAgent_App:111 | [AgentService] prepared history user=root1 session=session_1778247371378_0hoxbyp3c messages=10
+2026-05-09 09:38:02,746 | INFO     | MultiAgent_App:145 | [AgentService] orchestrator started user=root1 session=session_1778247371378_0hoxbyp3c
+2026-05-09 09:38:02,747 | DEBUG    | MultiAgent_App:19 | [Stream] event type=agent_updated_stream_event
+2026-05-09 09:38:02,747 | INFO     | MultiAgent_App:61 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 09:38:03,516 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:03,516 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:03,516 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:03,516 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:03,516 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:38:03,517 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:03,517 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=我
+2026-05-09 09:38:03,545 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:03,545 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=主要协助处理
+2026-05-09 09:38:03,649 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:03,649 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=技术咨询与服务站导航
+2026-05-09 09:38:03,818 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:03,818 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=，其他问题暂不支持
+2026-05-09 09:38:03,972 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:03,972 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=。如有技术或位置相关
+2026-05-09 09:38:04,132 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:04,132 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=需求，随时可以问我。
+2026-05-09 09:38:04,331 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:04,332 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:38:04,333 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:04,333 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:04,333 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:04,334 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 09:38:04,335 | INFO     | MultiAgent_App:68 | [Stream] finished
+2026-05-09 09:38:04,335 | INFO     | MultiAgent_App:204 | [AgentService] orchestrator finished user=root1 session=session_1778247371378_0hoxbyp3c final_output=我主要协助处理技术咨询与服务站导航，其他问题暂不支持。如有技术或位置相关需求，随时可以问我。 structured_intent=general
+2026-05-09 09:38:04,341 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:38:22,422 | INFO     | MultiAgent_App:64 | user=root1 query=我要去维修站修电脑
+2026-05-09 09:38:22,422 | INFO     | MultiAgent_App:62 | [AgentService] start user=root1 session=session_1778247371378_0hoxbyp3c retry=True skip_user_message=False query=我要去维修站修电脑
+2026-05-09 09:38:22,424 | INFO     | MultiAgent_App:101 | [ContextCompression] triggered: message_count=10 threshold=10
+2026-05-09 09:38:24,946 | DEBUG    | MultiAgent_App:213 | [ContextCompression] LLM raw output: {
+    "summary_text": "用户表示要去维修站修电脑，但尚未提供具体设备信息或地点。",
+    "entities": ["维修站", "电脑"],
     "preferences": [],
-    "facts": ["电脑是ThinkPad T480", "住在昌平区", "屏幕黑屏但风扇在转"],
-    "ongoing_issues": ["笔记本开不了机", "屏幕黑屏"],
+    "facts": [],
+    "ongoing_issues": ["电脑需要维修"],
     "resolved_issues": [],
     "decisions": []
 }
-2026-04-15 14:59:30,169 | INFO     | MultiAgent_App:152 | [ContextCompression] compressed: version=2 summary_text=用户反映其联想ThinkPad T480笔记本无法开机，屏幕黑屏但风扇转动，已提供住址并请求查找最近 entities=3 ongoing_issues=2
-2026-04-15 15:01:11,820 | INFO     | MultiAgent_App:101 | [ContextCompression] triggered: message_count=11 threshold=10
-2026-04-15 15:01:16,984 | DEBUG    | MultiAgent_App:213 | [ContextCompression] LLM raw output: {
-    "summary_text": "用户反映其联想ThinkPad T480笔记本无法开机，屏幕黑屏但风扇转动，已提供居住地为昌平区，并请求查找最近的维修站。",
-    "entities": ["联想", "ThinkPad T480", "昌平区"],
-    "preferences": [],
-    "facts": ["电脑是ThinkPad T480", "住在昌平区", "屏幕黑屏但风扇在转"],
-    "ongoing_issues": ["笔记本开不了机", "屏幕黑屏"],
-    "resolved_issues": [],
-    "decisions": []
-}
-2026-04-15 15:01:16,985 | INFO     | MultiAgent_App:152 | [ContextCompression] compressed: version=2 summary_text=用户反映其联想ThinkPad T480笔记本无法开机，屏幕黑屏但风扇转动，已提供居住地为昌平区，并 entities=3 ongoing_issues=2
+2026-05-09 09:38:24,947 | INFO     | MultiAgent_App:152 | [ContextCompression] compressed: version=2 summary_text=用户表示要去维修站修电脑，但尚未提供具体设备信息或地点。 entities=2 ongoing_issues=1
+2026-05-09 09:38:24,947 | INFO     | MultiAgent_App:30 | [SessionService] compression triggered user=root1 session=session_1778247371378_0hoxbyp3c should_persist=True
+2026-05-09 09:38:24,949 | INFO     | MultiAgent_App:96 | [AgentService] query rewritten user=root1 session=session_1778247371378_0hoxbyp3c original=我要去维修站修电脑 rewritten=我要去维修站修电脑
+2026-05-09 09:38:24,949 | DEBUG    | MultiAgent_App:111 | [AgentService] prepared history user=root1 session=session_1778247371378_0hoxbyp3c messages=3
+2026-05-09 09:38:24,951 | INFO     | MultiAgent_App:145 | [AgentService] orchestrator started user=root1 session=session_1778247371378_0hoxbyp3c
+2026-05-09 09:38:24,951 | DEBUG    | MultiAgent_App:19 | [Stream] event type=agent_updated_stream_event
+2026-05-09 09:38:24,952 | INFO     | MultiAgent_App:61 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 09:38:25,593 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:25,593 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:25,593 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:25,594 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:25,594 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:38:25,594 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:25,594 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:25,594 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:38:25,761 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:25,761 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:38:25,762 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:25,915 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:25,915 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:38:25,915 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:26,120 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:26,120 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:38:26,122 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:26,122 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:26,122 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 09:38:26,122 | INFO     | MultiAgent_App:48 | [Stream] tool_called name=query_service_station_and_navigate args={"query": "维修站修电脑"}
+2026-05-09 09:38:26,123 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:26,123 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:38:26,127 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 09:38:26,127 | INFO     | MultiAgent_App:68 | [Stream] finished
+2026-05-09 09:38:26,128 | INFO     | MultiAgent_App:170 | [AgentService] approval interruption user=root1 session=session_1778247371378_0hoxbyp3c count=1
+2026-05-09 09:38:26,133 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:38:31,093 | INFO     | MultiAgent_App:84 | [Route] service station query=维修站修电脑
+2026-05-09 09:38:31,099 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=维修站修电脑 error=
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 732, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 199, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 189, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 215, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 245, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 790, in list_tools
+    result = await self._run_with_retries(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 696, in _run_with_retries
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 561, in _maybe_serialize_request
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\client\session.py", line 529, in list_tools
+    result = await self.send_request(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\shared\session.py", line 281, in send_request
+    await self._write_stream.send(SessionMessage(message=JSONRPCMessage(jsonrpc_request), metadata=metadata))
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 249, in send
+    self.send_nowait(item)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 218, in send_nowait
+    raise ClosedResourceError
+anyio.ClosedResourceError
+2026-05-09 09:38:32,702 | INFO     | MultiAgent_App:133 | [Approval] resumed run created next interruption token=8680522f-1949-49ae-ba2e-5fce552b20a6 count=1
+2026-05-09 09:38:32,706 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:38:36,663 | INFO     | MultiAgent_App:84 | [Route] service station query=电脑维修站
+2026-05-09 09:38:36,663 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=电脑维修站 error=
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 732, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 199, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 189, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 215, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 245, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 790, in list_tools
+    result = await self._run_with_retries(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 696, in _run_with_retries
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 561, in _maybe_serialize_request
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\client\session.py", line 529, in list_tools
+    result = await self.send_request(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\shared\session.py", line 281, in send_request
+    await self._write_stream.send(SessionMessage(message=JSONRPCMessage(jsonrpc_request), metadata=metadata))
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 249, in send
+    self.send_nowait(item)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 218, in send_nowait
+    raise ClosedResourceError
+anyio.ClosedResourceError
+2026-05-09 09:38:38,402 | INFO     | MultiAgent_App:133 | [Approval] resumed run created next interruption token=98c8f35d-540c-4b63-8eb8-0318d6c35e9e count=1
+2026-05-09 09:38:38,408 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:38:40,245 | INFO     | MultiAgent_App:84 | [Route] service station query=查找附近的电脑维修站并导航
+2026-05-09 09:38:40,246 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=查找附近的电脑维修站并导航 error=
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 732, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 199, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 189, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 215, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 245, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 790, in list_tools
+    result = await self._run_with_retries(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 696, in _run_with_retries
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 561, in _maybe_serialize_request
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\client\session.py", line 529, in list_tools
+    result = await self.send_request(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\shared\session.py", line 281, in send_request
+    await self._write_stream.send(SessionMessage(message=JSONRPCMessage(jsonrpc_request), metadata=metadata))
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 249, in send
+    self.send_nowait(item)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 218, in send_nowait
+    raise ClosedResourceError
+anyio.ClosedResourceError
+2026-05-09 09:38:44,242 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:40:29,990 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:40:36,225 | INFO     | MultiAgent_App:64 | user=root1 query=你能干嘛
+2026-05-09 09:40:36,225 | INFO     | MultiAgent_App:62 | [AgentService] start user=root1 session=session_1778247371378_0hoxbyp3c retry=True skip_user_message=False query=你能干嘛
+2026-05-09 09:40:36,225 | INFO     | MultiAgent_App:96 | [AgentService] query rewritten user=root1 session=session_1778247371378_0hoxbyp3c original=你能干嘛 rewritten=你能干嘛
+2026-05-09 09:40:36,225 | DEBUG    | MultiAgent_App:111 | [AgentService] prepared history user=root1 session=session_1778247371378_0hoxbyp3c messages=4
+2026-05-09 09:40:36,231 | INFO     | MultiAgent_App:145 | [AgentService] orchestrator started user=root1 session=session_1778247371378_0hoxbyp3c
+2026-05-09 09:40:36,232 | DEBUG    | MultiAgent_App:19 | [Stream] event type=agent_updated_stream_event
+2026-05-09 09:40:36,232 | INFO     | MultiAgent_App:61 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 09:40:36,780 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:36,780 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:36,780 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:36,781 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:36,781 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:40:36,781 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:36,781 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=我
+2026-05-09 09:40:36,832 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:36,833 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=主要协助处理
+2026-05-09 09:40:36,910 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:36,910 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=技术咨询与服务站导航
+2026-05-09 09:40:37,002 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:37,002 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=，其他问题暂不支持
+2026-05-09 09:40:37,201 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:37,201 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=。如有技术或位置
+2026-05-09 09:40:37,333 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:37,333 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=相关需求，随时可以问我
+2026-05-09 09:40:37,514 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:37,514 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=。
+2026-05-09 09:40:37,550 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:37,551 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:40:37,551 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:37,551 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:37,552 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:37,553 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 09:40:37,553 | INFO     | MultiAgent_App:68 | [Stream] finished
+2026-05-09 09:40:37,553 | INFO     | MultiAgent_App:204 | [AgentService] orchestrator finished user=root1 session=session_1778247371378_0hoxbyp3c final_output=我主要协助处理技术咨询与服务站导航，其他问题暂不支持。如有技术或位置相关需求，随时可以问我。 structured_intent=general
+2026-05-09 09:40:37,559 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:40:46,366 | INFO     | MultiAgent_App:64 | user=root1 query=我要修电脑
+2026-05-09 09:40:46,367 | INFO     | MultiAgent_App:62 | [AgentService] start user=root1 session=session_1778247371378_0hoxbyp3c retry=True skip_user_message=False query=我要修电脑
+2026-05-09 09:40:46,367 | INFO     | MultiAgent_App:96 | [AgentService] query rewritten user=root1 session=session_1778247371378_0hoxbyp3c original=我要修电脑 rewritten=我要修电脑
+2026-05-09 09:40:46,368 | DEBUG    | MultiAgent_App:111 | [AgentService] prepared history user=root1 session=session_1778247371378_0hoxbyp3c messages=6
+2026-05-09 09:40:46,371 | INFO     | MultiAgent_App:145 | [AgentService] orchestrator started user=root1 session=session_1778247371378_0hoxbyp3c
+2026-05-09 09:40:46,371 | DEBUG    | MultiAgent_App:19 | [Stream] event type=agent_updated_stream_event
+2026-05-09 09:40:46,371 | INFO     | MultiAgent_App:61 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 09:40:47,141 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,141 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,141 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,141 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,141 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:40:47,142 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,142 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,142 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:40:47,281 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,281 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:40:47,281 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,467 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,467 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:40:47,468 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,668 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,669 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 09:40:47,670 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,670 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,670 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 09:40:47,670 | INFO     | MultiAgent_App:48 | [Stream] tool_called name=query_service_station_and_navigate args={"query": "修电脑的维修站"}
+2026-05-09 09:40:47,670 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,670 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 09:40:47,672 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 09:40:47,672 | INFO     | MultiAgent_App:68 | [Stream] finished
+2026-05-09 09:40:47,673 | INFO     | MultiAgent_App:170 | [AgentService] approval interruption user=root1 session=session_1778247371378_0hoxbyp3c count=1
+2026-05-09 09:40:47,677 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:40:50,203 | INFO     | MultiAgent_App:84 | [Route] service station query=修电脑的维修站
+2026-05-09 09:40:50,204 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=修电脑的维修站 error=
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 732, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 199, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 189, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 215, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 245, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 790, in list_tools
+    result = await self._run_with_retries(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 696, in _run_with_retries
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 561, in _maybe_serialize_request
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\client\session.py", line 529, in list_tools
+    result = await self.send_request(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\shared\session.py", line 281, in send_request
+    await self._write_stream.send(SessionMessage(message=JSONRPCMessage(jsonrpc_request), metadata=metadata))
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 249, in send
+    self.send_nowait(item)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 218, in send_nowait
+    raise ClosedResourceError
+anyio.ClosedResourceError
+2026-05-09 09:40:51,975 | INFO     | MultiAgent_App:133 | [Approval] resumed run created next interruption token=e1f7381a-30ef-4a26-b1e8-83de2d78cb6c count=1
+2026-05-09 09:40:51,981 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:40:53,761 | INFO     | MultiAgent_App:84 | [Route] service station query=修电脑的维修站
+2026-05-09 09:40:53,762 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=修电脑的维修站 error=
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 732, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 199, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 189, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 215, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 245, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 790, in list_tools
+    result = await self._run_with_retries(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 696, in _run_with_retries
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 561, in _maybe_serialize_request
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\client\session.py", line 529, in list_tools
+    result = await self.send_request(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\shared\session.py", line 281, in send_request
+    await self._write_stream.send(SessionMessage(message=JSONRPCMessage(jsonrpc_request), metadata=metadata))
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 249, in send
+    self.send_nowait(item)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 218, in send_nowait
+    raise ClosedResourceError
+anyio.ClosedResourceError
+2026-05-09 09:40:55,656 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:41:16,811 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:41:18,709 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:43:47,886 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:43:48,386 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:44:08,339 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 09:44:43,388 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 10:27:12,355 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 10:39:45,967 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 10:39:59,676 | INFO     | MultiAgent_App:64 | user=root1 query=我要修电脑
+2026-05-09 10:39:59,677 | INFO     | MultiAgent_App:62 | [AgentService] start user=root1 session=session_1778294394271_gs8sh88st retry=True skip_user_message=False query=我要修电脑
+2026-05-09 10:39:59,680 | INFO     | MultiAgent_App:96 | [AgentService] query rewritten user=root1 session=session_1778294394271_gs8sh88st original=我要修电脑 rewritten=我要修电脑
+2026-05-09 10:39:59,681 | DEBUG    | MultiAgent_App:111 | [AgentService] prepared history user=root1 session=session_1778294394271_gs8sh88st messages=2
+2026-05-09 10:39:59,688 | INFO     | MultiAgent_App:145 | [AgentService] orchestrator started user=root1 session=session_1778294394271_gs8sh88st
+2026-05-09 10:39:59,689 | DEBUG    | MultiAgent_App:19 | [Stream] event type=agent_updated_stream_event
+2026-05-09 10:39:59,690 | INFO     | MultiAgent_App:61 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 10:40:00,494 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,496 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,496 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,496 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,496 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 10:40:00,496 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,496 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,496 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 10:40:00,626 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,627 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 10:40:00,627 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,763 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,763 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 10:40:00,763 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,969 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,969 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 10:40:00,972 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,972 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,972 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 10:40:00,972 | INFO     | MultiAgent_App:48 | [Stream] tool_called name=query_service_station_and_navigate args={"query": "修电脑的服务站"}
+2026-05-09 10:40:00,973 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,973 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:40:00,975 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 10:40:00,976 | INFO     | MultiAgent_App:68 | [Stream] finished
+2026-05-09 10:40:00,976 | INFO     | MultiAgent_App:170 | [AgentService] approval interruption user=root1 session=session_1778294394271_gs8sh88st count=1
+2026-05-09 10:40:00,982 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 10:40:08,104 | INFO     | MultiAgent_App:84 | [Route] service station query=修电脑的服务站
+2026-05-09 10:40:08,109 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=修电脑的服务站 error=
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 732, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 199, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\agent.py", line 189, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 215, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\util.py", line 245, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 790, in list_tools
+    result = await self._run_with_retries(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 696, in _run_with_retries
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\mcp\server.py", line 561, in _maybe_serialize_request
+    return await func()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\client\session.py", line 529, in list_tools
+    result = await self.send_request(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\mcp\shared\session.py", line 281, in send_request
+    await self._write_stream.send(SessionMessage(message=JSONRPCMessage(jsonrpc_request), metadata=metadata))
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 249, in send
+    self.send_nowait(item)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\anyio\streams\memory.py", line 218, in send_nowait
+    raise ClosedResourceError
+anyio.ClosedResourceError
+2026-05-09 10:40:09,778 | INFO     | MultiAgent_App:133 | [Approval] resumed run created next interruption token=d653d182-1202-45c0-94a4-318c5a04d954 count=1
+2026-05-09 10:40:09,783 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 10:43:40,731 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 10:43:54,378 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 10:44:05,414 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 10:46:01,785 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 10:46:02,521 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 10:46:08,773 | INFO     | MultiAgent_App:64 | user=root1 query=我要修电脑
+2026-05-09 10:46:08,774 | INFO     | MultiAgent_App:62 | [AgentService] start user=root1 session=session_1778294394271_gs8sh88st retry=True skip_user_message=False query=我要修电脑
+2026-05-09 10:46:08,776 | INFO     | MultiAgent_App:96 | [AgentService] query rewritten user=root1 session=session_1778294394271_gs8sh88st original=我要修电脑 rewritten=我要修电脑
+2026-05-09 10:46:08,777 | DEBUG    | MultiAgent_App:111 | [AgentService] prepared history user=root1 session=session_1778294394271_gs8sh88st messages=3
+2026-05-09 10:46:08,780 | INFO     | MultiAgent_App:145 | [AgentService] orchestrator started user=root1 session=session_1778294394271_gs8sh88st
+2026-05-09 10:46:08,781 | DEBUG    | MultiAgent_App:19 | [Stream] event type=agent_updated_stream_event
+2026-05-09 10:46:08,781 | INFO     | MultiAgent_App:61 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 10:46:09,813 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:09,813 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:09,813 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:09,814 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:09,814 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 10:46:09,814 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:09,814 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:09,814 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 10:46:10,004 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:10,004 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 10:46:10,004 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:10,192 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:10,192 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 10:46:10,192 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:10,387 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:10,387 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 10:46:10,389 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:10,390 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:10,394 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 10:46:10,394 | INFO     | MultiAgent_App:48 | [Stream] tool_called name=query_service_station_and_navigate args={"query": "修电脑的服务站"}
+2026-05-09 10:46:10,395 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:10,396 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 10:46:10,398 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 10:46:10,398 | INFO     | MultiAgent_App:68 | [Stream] finished
+2026-05-09 10:46:10,399 | INFO     | MultiAgent_App:170 | [AgentService] approval interruption user=root1 session=session_1778294394271_gs8sh88st count=1
+2026-05-09 10:46:10,407 | INFO     | MultiAgent_App:176 | fetch sessions for user=root1
+2026-05-09 11:00:34,845 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:00:34,860 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:00:49,217 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:00:49,225 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:00:49,230 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:02:44,429 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:02:44,437 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:02:44,442 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:03:32,091 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:03:32,098 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:03:32,102 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:05:05,072 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:05:05,079 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:05:05,083 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:05:33,191 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:05:33,199 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:05:33,203 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:05:33,358 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 11:05:33,360 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:05:33,364 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:05:33,366 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:05:33,369 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 11:05:48,086 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:05:48,094 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:05:48,098 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:05:48,249 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 11:05:48,251 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:05:48,253 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:05:48,256 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:05:48,257 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 11:05:48,260 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 11:05:48,262 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 11:13:36,615 | INFO     | MultiAgent_App:177 | fetch sessions for user=root1
+2026-05-09 11:13:40,930 | INFO     | MultiAgent_App:65 | user=root1 query=我要修电脑
+2026-05-09 11:13:40,933 | INFO     | MultiAgent_App:57 | [AgentService] start user=root1 session=session_1778294394271_gs8sh88st retry=True skip_user_message=False query=我要修电脑
+2026-05-09 11:13:40,936 | INFO     | MultiAgent_App:87 | [AgentService] query rewritten user=root1 session=session_1778294394271_gs8sh88st original=我要修电脑 rewritten=我要修电脑
+2026-05-09 11:13:40,939 | DEBUG    | MultiAgent_App:102 | [AgentService] prepared history user=root1 session=session_1778294394271_gs8sh88st messages=4
+2026-05-09 11:13:40,945 | INFO     | MultiAgent_App:136 | [AgentService] orchestrator started user=root1 session=session_1778294394271_gs8sh88st
+2026-05-09 11:13:40,948 | DEBUG    | MultiAgent_App:19 | [Stream] event type=agent_updated_stream_event
+2026-05-09 11:13:40,948 | INFO     | MultiAgent_App:61 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 11:13:42,840 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:42,841 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:42,842 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:42,843 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:42,844 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 11:13:42,845 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:42,846 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:42,847 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 11:13:42,849 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:42,850 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 11:13:42,851 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:42,985 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:42,985 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 11:13:42,986 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:43,191 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:43,193 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 11:13:43,247 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:43,248 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:43,248 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 11:13:43,250 | INFO     | MultiAgent_App:48 | [Stream] tool_called name=query_service_station_and_navigate args={"query": "修电脑的服务站"}
+2026-05-09 11:13:43,253 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:43,253 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:13:43,256 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 11:13:43,257 | INFO     | MultiAgent_App:68 | [Stream] finished
+2026-05-09 11:13:43,260 | INFO     | MultiAgent_App:161 | [AgentService] approval interruption user=root1 session=session_1778294394271_gs8sh88st count=1
+2026-05-09 11:13:43,275 | INFO     | MultiAgent_App:177 | fetch sessions for user=root1
+2026-05-09 11:13:47,254 | INFO     | MultiAgent_App:84 | [Route] service station query=修电脑的服务站
+2026-05-09 11:13:47,256 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=修电脑的服务站 error=list_tools() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 669, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 195, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 185, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 186, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 216, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+TypeError: list_tools() takes 1 positional argument but 3 were given
+2026-05-09 11:13:48,624 | INFO     | MultiAgent_App:134 | [Approval] resumed run created next interruption token=40d030cc-9b3f-4f9f-9631-1b79042906e1 count=1
+2026-05-09 11:13:48,643 | INFO     | MultiAgent_App:177 | fetch sessions for user=root1
+2026-05-09 11:13:53,796 | INFO     | MultiAgent_App:84 | [Route] service station query=修电脑的服务站
+2026-05-09 11:13:53,798 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=修电脑的服务站 error=list_tools() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 669, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 195, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 185, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 186, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 216, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+TypeError: list_tools() takes 1 positional argument but 3 were given
+2026-05-09 11:13:55,693 | INFO     | MultiAgent_App:134 | [Approval] resumed run created next interruption token=38ecc43b-412f-484f-853f-8ba0cd041095 count=1
+2026-05-09 11:13:55,703 | INFO     | MultiAgent_App:177 | fetch sessions for user=root1
+2026-05-09 11:13:57,546 | INFO     | MultiAgent_App:84 | [Route] service station query=修电脑的服务站
+2026-05-09 11:13:57,550 | ERROR    | MultiAgent_App:89 | [Route] service station failed query=修电脑的服务站 error=list_tools() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 85, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 43, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 669, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 195, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 185, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 186, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 216, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+TypeError: list_tools() takes 1 positional argument but 3 were given
+2026-05-09 11:14:00,601 | INFO     | MultiAgent_App:152 | [Approval] resumed run token=38ecc43b-412f-484f-853f-8ba0cd041095 final_output=很抱歉，系统在查询修电脑的服务站时遇到了技术问题，暂时无法提供服务站信息。建议您稍后重试，或直接联系电脑品牌的官方客服获取维修支持。 structured_intent=general
+2026-05-09 11:14:00,615 | INFO     | MultiAgent_App:177 | fetch sessions for user=root1
+2026-05-09 11:16:35,345 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:16:35,350 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:17:02,433 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:17:02,440 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:17:20,944 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:17:20,951 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:17:50,626 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:17:50,635 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:17:50,640 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:17:50,800 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 11:17:50,802 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:17:50,805 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:17:50,809 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:17:50,811 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 11:18:07,579 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:18:07,587 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:18:07,589 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:18:07,599 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:18:37,842 | INFO     | MultiAgent_App:177 | fetch sessions for user=root1
+2026-05-09 11:20:17,825 | INFO     | MultiAgent_App:177 | fetch sessions for user=root1
+2026-05-09 11:20:20,416 | INFO     | MultiAgent_App:65 | user=root1 query=我要修电脑
+2026-05-09 11:20:20,421 | INFO     | MultiAgent_App:57 | [AgentService] start user=root1 session=session_1778294394271_gs8sh88st retry=True skip_user_message=False query=我要修电脑
+2026-05-09 11:20:20,424 | INFO     | MultiAgent_App:87 | [AgentService] query rewritten user=root1 session=session_1778294394271_gs8sh88st original=我要修电脑 rewritten=我要修电脑
+2026-05-09 11:20:20,426 | DEBUG    | MultiAgent_App:102 | [AgentService] prepared history user=root1 session=session_1778294394271_gs8sh88st messages=5
+2026-05-09 11:20:20,435 | INFO     | MultiAgent_App:136 | [AgentService] orchestrator started user=root1 session=session_1778294394271_gs8sh88st
+2026-05-09 11:20:20,438 | DEBUG    | MultiAgent_App:19 | [Stream] event type=agent_updated_stream_event
+2026-05-09 11:20:20,438 | INFO     | MultiAgent_App:61 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 11:20:22,742 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:22,742 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:22,745 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:22,746 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:22,749 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 11:20:22,752 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:22,753 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:22,754 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 11:20:22,759 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:22,761 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 11:20:22,763 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:22,882 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:22,884 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 11:20:22,885 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:23,087 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:23,088 | DEBUG    | MultiAgent_App:24 | [Stream] answer delta=
+2026-05-09 11:20:23,158 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:23,159 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:23,160 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 11:20:23,161 | INFO     | MultiAgent_App:48 | [Stream] tool_called name=query_service_station_and_navigate args={"query": "修电脑的服务站"}
+2026-05-09 11:20:23,164 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:23,165 | DEBUG    | MultiAgent_App:19 | [Stream] event type=raw_response_event
+2026-05-09 11:20:23,169 | DEBUG    | MultiAgent_App:19 | [Stream] event type=run_item_stream_event
+2026-05-09 11:20:23,170 | INFO     | MultiAgent_App:68 | [Stream] finished
+2026-05-09 11:20:23,173 | INFO     | MultiAgent_App:161 | [AgentService] approval interruption user=root1 session=session_1778294394271_gs8sh88st count=1
+2026-05-09 11:20:23,191 | INFO     | MultiAgent_App:177 | fetch sessions for user=root1
+2026-05-09 11:20:29,146 | INFO     | MultiAgent_App:125 | [Route] service station query=修电脑的服务站
+2026-05-09 11:20:29,149 | ERROR    | MultiAgent_App:130 | [Route] service station failed query=修电脑的服务站 error=list_tools() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 126, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 80, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 669, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 195, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 185, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 186, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 216, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+TypeError: list_tools() takes 1 positional argument but 3 were given
+2026-05-09 11:20:30,890 | INFO     | MultiAgent_App:134 | [Approval] resumed run created next interruption token=b4c1e65b-ef55-4d0e-b245-41a1173d9043 count=1
+2026-05-09 11:20:30,902 | INFO     | MultiAgent_App:177 | fetch sessions for user=root1
+2026-05-09 11:20:34,528 | INFO     | MultiAgent_App:125 | [Route] service station query=修电脑的服务站
+2026-05-09 11:20:34,531 | ERROR    | MultiAgent_App:130 | [Route] service station failed query=修电脑的服务站 error=list_tools() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 126, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 80, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 669, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 195, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 185, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 186, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 216, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+TypeError: list_tools() takes 1 positional argument but 3 were given
+2026-05-09 11:20:36,106 | INFO     | MultiAgent_App:134 | [Approval] resumed run created next interruption token=ac1a65f3-4112-4c03-9e70-68c4d77a2054 count=1
+2026-05-09 11:20:36,117 | INFO     | MultiAgent_App:177 | fetch sessions for user=root1
+2026-05-09 11:20:36,878 | INFO     | MultiAgent_App:125 | [Route] service station query=修电脑的服务站
+2026-05-09 11:20:36,881 | ERROR    | MultiAgent_App:130 | [Route] service station failed query=修电脑的服务站 error=list_tools() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 126, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 80, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 669, in start_streaming
+    all_tools = await get_all_tools(current_agent, context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_preparation.py", line 110, in get_all_tools
+    return await agent.get_all_tools(context_wrapper)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 195, in get_all_tools
+    mcp_tools = await self.get_mcp_tools(run_context)
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\agent.py", line 185, in get_mcp_tools
+    return await MCPUtil.get_all_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 186, in get_all_function_tools
+    server_tools = await cls.get_function_tools(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\mcp\util.py", line 216, in get_function_tools
+    tools = await server.list_tools(run_context, agent)
+TypeError: list_tools() takes 1 positional argument but 3 were given
+2026-05-09 11:20:40,035 | INFO     | MultiAgent_App:152 | [Approval] resumed run token=ac1a65f3-4112-4c03-9e70-68c4d77a2054 final_output=很抱歉，查询修电脑的服务站时遇到了系统错误。建议您尝试以下方式：
+
+1. 联系电脑品牌的官方客服获取维修点信息
+2. 在地图应用中搜索"电脑维修"查找附近的维修店
+3. 如果是品牌电脑，可访问官网查找授权服务中心
+
+如需其他帮助，请告诉我具体需求。 structured_intent=general
+2026-05-09 11:20:40,054 | INFO     | MultiAgent_App:177 | fetch sessions for user=root1
+2026-05-09 11:21:49,441 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:21:49,450 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:23:48,578 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:23:48,590 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:23:48,597 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:24:08,836 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:24:08,845 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:24:08,851 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:24:09,024 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 11:24:09,026 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:24:09,029 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:24:09,032 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:24:09,035 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 11:24:22,701 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:24:22,710 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:24:22,715 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:24:22,865 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 11:24:22,867 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:24:22,869 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:24:22,872 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:24:22,873 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 11:24:22,877 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 11:24:22,878 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 11:24:47,725 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:24:47,734 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:25:59,087 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 11:26:02,890 | INFO     | MultiAgent_App:66 | user=root1 query=我要修电脑
+2026-05-09 11:26:02,892 | INFO     | MultiAgent_App:57 | [AgentService] start user=root1 session=session_1778294394271_gs8sh88st retry=True skip_user_message=False query=我要修电脑
+2026-05-09 11:26:02,897 | INFO     | MultiAgent_App:87 | [AgentService] query rewritten user=root1 session=session_1778294394271_gs8sh88st original=我要修电脑 rewritten=我要修电脑
+2026-05-09 11:26:02,900 | DEBUG    | MultiAgent_App:102 | [AgentService] prepared history user=root1 session=session_1778294394271_gs8sh88st messages=6
+2026-05-09 11:26:02,907 | INFO     | MultiAgent_App:136 | [AgentService] orchestrator started user=root1 session=session_1778294394271_gs8sh88st
+2026-05-09 11:26:02,910 | DEBUG    | MultiAgent_App:42 | [Stream] event type=agent_updated_stream_event
+2026-05-09 11:26:02,910 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 11:26:24,618 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:24,619 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:24,620 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:24,620 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:24,621 | DEBUG    | MultiAgent_App:47 | [Stream] answer delta=
+2026-05-09 11:26:24,622 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:24,623 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:24,624 | DEBUG    | MultiAgent_App:47 | [Stream] answer delta=
+2026-05-09 11:26:24,627 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:24,628 | DEBUG    | MultiAgent_App:47 | [Stream] answer delta=
+2026-05-09 11:26:24,629 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:24,756 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:24,757 | DEBUG    | MultiAgent_App:47 | [Stream] answer delta=
+2026-05-09 11:26:24,759 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:24,965 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:24,965 | DEBUG    | MultiAgent_App:47 | [Stream] answer delta=
+2026-05-09 11:26:25,027 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:25,028 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:25,030 | DEBUG    | MultiAgent_App:42 | [Stream] event type=run_item_stream_event
+2026-05-09 11:26:25,031 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=query_service_station_and_navigate args={"query": "修电脑的服务站"}
+2026-05-09 11:26:25,033 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:25,034 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:26:25,037 | DEBUG    | MultiAgent_App:42 | [Stream] event type=run_item_stream_event
+2026-05-09 11:26:25,038 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 11:26:25,041 | INFO     | MultiAgent_App:161 | [AgentService] approval interruption user=root1 session=session_1778294394271_gs8sh88st count=1
+2026-05-09 11:26:25,054 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 11:26:28,565 | INFO     | MultiAgent_App:125 | [Route] service station query=修电脑的服务站
+2026-05-09 11:26:30,116 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=resolve_user_location_from_text args={"user_input": "修电脑的服务站"}
+2026-05-09 11:26:30,120 | INFO     | MultiAgent_App:81 | [Location] resolve start raw_input=修电脑的服务站
+2026-05-09 11:26:30,122 | INFO     | MultiAgent_App:102 | [Location] geocode start address=修电脑的服务站
+2026-05-09 11:26:30,124 | WARNING  | MultiAgent_App:129 | [Location] geocode failed address=修电脑的服务站 error=MCP client unavailable: No module named 'mcp'
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 103, in resolve_user_location_from_text
+    geo_result = await baidu_mcp_client.call_tool(
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\mcp\mcp_servers.py", line 28, in call_tool
+    raise RuntimeError(f"MCP client unavailable: {self._import_error}")
+RuntimeError: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:27:02,828 | INFO     | MultiAgent_App:132 | [Location] detected external_ip=112.47.228.186
+2026-05-09 11:27:02,830 | INFO     | MultiAgent_App:136 | [Location] ip location start ip=112.47.228.186
+2026-05-09 11:27:02,833 | WARNING  | MultiAgent_App:163 | [Location] ip location failed ip=112.47.228.186 error=MCP client unavailable: No module named 'mcp'
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 137, in resolve_user_location_from_text
+    ip_result = await baidu_mcp_client.call_tool("map_ip_location", {"ip": user_ip})
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\mcp\mcp_servers.py", line 28, in call_tool
+    raise RuntimeError(f"MCP client unavailable: {self._import_error}")
+RuntimeError: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:27:02,837 | INFO     | MultiAgent_App:176 | [Location] fallback result={"ok": false, "error": "无法可靠解析用户当前位置，已回退到默认坐标。", "lat": 39.9042, "lng": 116.4074, "source": "fallback", "original_input": "修电脑的服务站"}
+2026-05-09 11:27:02,840 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": false, "error": "无法可靠解析用户当前位置，已回退到默认坐标。", "lat": 39.9042, "lng": 116.4074, "source": "fallback", "original_input": "修电脑的服务站"}
+2026-05-09 11:27:05,598 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=query_nearest_repair_shops_by_coords args={"lat": 39.9042, "lng": 116.4074, "limit": 3}
+2026-05-09 11:27:05,602 | INFO     | MultiAgent_App:185 | [NearestShops] query start lat=39.9042 lng=116.4074 limit=3
+2026-05-09 11:27:05,626 | INFO     | MultiAgent_App:232 | [NearestShops] found count=3 lat=39.9042 lng=116.4074
+2026-05-09 11:27:05,628 | DEBUG    | MultiAgent_App:234 | [NearestShops] first_row={'id': 1, 'service_station_name': '联想ThinkPad官方服务站-海淀中关村店', 'province': '北京市', 'city': '北京市', 'district': '海淀区', 'address': '北京市海淀区中关村大街27号中关村大厦1层', 'phone': '010-62560001', 'manager': '张伟', 'manager_phone': '13800000001', 'opening_hours': '09:00-18:00', 'repair_types': '电脑维修,硬件更换', 'repair_specialties': 'ThinkPad,笔记本,主板', 'repair_services': '检测,清灰,更换电池,系统重装', 'supported_brands': '联想,ThinkPad', 'rating': Decimal('4.80'), 'established_year': 2018, 'employee_count': 12, 'service_station_description': '联想官方授权服务站，支持 ThinkPad 笔记本常见维修。', 'latitude': Decimal('39.9836200'), 'longitude': Decimal('116.3152400'), 'distance_km': 11.820125657722507}
+2026-05-09 11:27:05,630 | INFO     | MultiAgent_App:250 | [NearestShops] query result={"ok": true, "count": 3, "data": [{"id": 1, "service_station_name": "联想ThinkPad官方服务站-海淀中关村店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区中关村大街27号中关村大厦1层", "phone": "010-62560001", "manager": "张伟", "manager_phone": "13800000001", "opening_hours": "09:00-18:00", "repair_types": "电脑维修,硬件更换", "repair_specialties": "ThinkPad,笔记本,主板", "repair_services": "检测,清灰,更换电池,系统重装", "supported_brands": "联想,ThinkPad", "rating": "4.80", "established_year": 2018, "employee_count": 12, "service_station_description": "联想官方授权服务站，支持 ThinkPad 笔记本常见维修。", "latitude": "39.9836200", "longitude": "116.3152400", "distance_km": 11.820125657722507}, {"id": 3, "service_station_name": "华为客户服务中心-西二旗店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区西二旗大街39号1层", "phone": "010-62990003", "manager": "王强", "manager_phone": "13800000003", "opening_hours": "09:30-18:30", "repair_types": "手机维修,平板维修,电脑维修", "repair_specialties": "华为手机,MateBook", "repair_services": "检测,保养,换件,数据迁移咨询", "supported_brands": "华为,HUAWEI,MateBook", "rating": "4.70", "established_year": 2019, "employee_count": 10, "service_station_description": "华为官方客户服务中心，可处理电脑和移动设备售后。", "latitude": "40.0481500", "l
+2026-05-09 11:27:05,635 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": true, "count": 3, "data": [{"id": 1, "service_station_name": "联想ThinkPad官方服务站-海淀中关村店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区中关村大街27号中关村大厦1层", "phone": "010-62560001", "manager": "张伟", "manager_phone": "13800000001", "opening_hours": "09:00-18:00", "repair_types": "电脑维修,硬件更换", "repair_specialties": "ThinkPad,笔记本,主板", "repair_services": "检测,清灰,更换电池,系统重装", "supported_brands": "联想,ThinkPad", "rating": "4.80", "established_year": 2018, "employee_count": 12, "service_station_description": "联想官方授权服务站，支持 ThinkPad 笔记本常见维修。", "latitude": "39.9836200", "longitude": "116.3152400", "distance_km": 11.820125657722507}, {"id": 3, "service_station_name": "华为客户服务中心-西二旗店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区西二旗大街39号1层", "phone": "010-62990003", "manager": "王强", "manager_phone": "13800000003", "opening_hours": "09:30-18:30", "repair_types": "手机维修,平板维修,电脑维修", "repair_specialties": "华为手机,MateBook", "repair_services": "检测,保养,换件,数据迁移咨询", "supported_brands": "华为,HUAWEI,MateBook", "rating": "4.70", "established_year": 2019, "employee_count": 10, "service_station_description": "华为官方客户服务中心，可处理电脑和移动设备售后。", "latitude": "40.0481500", "longitude": "116.3068800", "distance_km": 18.154137089406674}, {"id": 2, "service_station_name": "小米授权服务中心-昌平龙域店", "province": "北京市", "city": "北京市", "district": "昌平区", "address": "北京市昌平区回龙观西大街龙域北街5号院2号楼1层", "phone": "010-81770002", "manager": "李娜", "manager_phone": "13800000002", "opening_hours": "10
+2026-05-09 11:27:09,395 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=map_uri args={"start_lat": "39.9042", "start_lng": "116.4074", "end_lat": "39.98362", "end_lng": "116.31524", "destination_name": "联想ThinkPad官方服务站-海淀中关村店"}
+2026-05-09 11:27:09,397 | ERROR    | MultiAgent_App:130 | [Route] service station failed query=修电脑的服务站 error=Tool map_uri not found in agent 全能业务智能体
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 126, in query_service_station_and_navigate
+    result_text = await _run_service_agent_with_logging(query)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 80, in _run_service_agent_with_logging
+    async for event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\result.py", line 552, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 831, in start_streaming
+    turn_result = await run_single_turn_streamed(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\run_loop.py", line 1264, in run_single_turn_streamed
+    single_step_result = await get_single_step_result_from_response(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_resolution.py", line 1587, in get_single_step_result_from_response
+    processed_response = process_model_response(
+  File "C:\Users\ding'dan'peng\AppData\Roaming\Python\Python39\site-packages\agents\run_internal\turn_resolution.py", line 1545, in process_model_response
+    raise ModelBehaviorError(error)
+agents.exceptions.ModelBehaviorError: Tool map_uri not found in agent 全能业务智能体
+2026-05-09 11:27:14,395 | INFO     | MultiAgent_App:158 | [Approval] resumed run token=6138e6ff-6eef-4ac9-a11b-57cd4531610e final_output=很抱歉，查询修电脑的服务站时遇到了系统错误。建议您尝试以下方式：
+
+1. 直接联系电脑品牌的官方客服获取维修点信息
+2. 在地图应用中搜索"电脑维修"查找附近的维修店
+3. 如果是品牌电脑，可访问官网查找授权服务中心
+
+如需其他帮助，请告诉我具体需求。 structured_intent=general
+2026-05-09 11:27:14,409 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 11:29:16,001 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:29:55,096 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:30:10,291 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:30:10,301 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:30:10,307 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:30:33,689 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:30:33,701 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:30:33,707 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:30:33,896 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 11:30:33,898 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:30:33,902 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:30:33,905 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:30:33,908 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 11:30:50,383 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 11:30:50,393 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 11:30:50,397 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 11:30:50,574 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 11:30:50,577 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:30:50,581 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:30:50,584 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:30:50,586 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 11:30:50,589 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 11:30:50,591 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 11:35:15,929 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 11:35:19,057 | INFO     | MultiAgent_App:66 | user=root1 query=我要修电脑
+2026-05-09 11:35:19,060 | INFO     | MultiAgent_App:57 | [AgentService] start user=root1 session=session_1778294394271_gs8sh88st retry=True skip_user_message=False query=我要修电脑
+2026-05-09 11:35:19,065 | INFO     | MultiAgent_App:87 | [AgentService] query rewritten user=root1 session=session_1778294394271_gs8sh88st original=我要修电脑 rewritten=我要修电脑
+2026-05-09 11:35:19,067 | DEBUG    | MultiAgent_App:102 | [AgentService] prepared history user=root1 session=session_1778294394271_gs8sh88st messages=7
+2026-05-09 11:35:19,077 | INFO     | MultiAgent_App:136 | [AgentService] orchestrator started user=root1 session=session_1778294394271_gs8sh88st
+2026-05-09 11:35:19,080 | DEBUG    | MultiAgent_App:42 | [Stream] event type=agent_updated_stream_event
+2026-05-09 11:35:19,081 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 11:35:20,954 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:20,955 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:20,956 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:20,956 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:20,958 | DEBUG    | MultiAgent_App:47 | [Stream] answer delta=
+2026-05-09 11:35:20,959 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:20,960 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:20,960 | DEBUG    | MultiAgent_App:47 | [Stream] answer delta=
+2026-05-09 11:35:20,964 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:20,965 | DEBUG    | MultiAgent_App:47 | [Stream] answer delta=
+2026-05-09 11:35:20,966 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:21,091 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:21,091 | DEBUG    | MultiAgent_App:47 | [Stream] answer delta=
+2026-05-09 11:35:21,092 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:21,217 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:21,218 | DEBUG    | MultiAgent_App:47 | [Stream] answer delta=
+2026-05-09 11:35:21,219 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:21,418 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:21,419 | DEBUG    | MultiAgent_App:47 | [Stream] answer delta=
+2026-05-09 11:35:21,483 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:21,484 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:21,486 | DEBUG    | MultiAgent_App:42 | [Stream] event type=run_item_stream_event
+2026-05-09 11:35:21,486 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=query_service_station_and_navigate args={"query": "修电脑的服务站"}
+2026-05-09 11:35:21,488 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:21,489 | DEBUG    | MultiAgent_App:42 | [Stream] event type=raw_response_event
+2026-05-09 11:35:21,492 | DEBUG    | MultiAgent_App:42 | [Stream] event type=run_item_stream_event
+2026-05-09 11:35:21,493 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 11:35:21,496 | INFO     | MultiAgent_App:161 | [AgentService] approval interruption user=root1 session=session_1778294394271_gs8sh88st count=1
+2026-05-09 11:35:21,509 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 11:35:23,160 | INFO     | MultiAgent_App:125 | [Route] service station query=修电脑的服务站
+2026-05-09 11:35:24,419 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=resolve_user_location_from_text args={"user_input": "修电脑的服务站"}
+2026-05-09 11:35:24,422 | INFO     | MultiAgent_App:143 | [Location] resolve start raw_input=修电脑的服务站
+2026-05-09 11:35:24,423 | INFO     | MultiAgent_App:164 | [Location] geocode start address=修电脑的服务站
+2026-05-09 11:35:24,426 | WARNING  | MultiAgent_App:191 | [Location] geocode failed address=修电脑的服务站 error=MCP client unavailable: No module named 'mcp'
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 165, in resolve_user_location_from_text
+    geo_result = await baidu_mcp_client.call_tool(
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\mcp\mcp_servers.py", line 28, in call_tool
+    raise RuntimeError(f"MCP client unavailable: {self._import_error}")
+RuntimeError: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:35:57,062 | INFO     | MultiAgent_App:194 | [Location] detected external_ip=112.47.228.186
+2026-05-09 11:35:57,064 | INFO     | MultiAgent_App:198 | [Location] ip location start ip=112.47.228.186
+2026-05-09 11:35:57,066 | WARNING  | MultiAgent_App:225 | [Location] ip location failed ip=112.47.228.186 error=MCP client unavailable: No module named 'mcp'
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 199, in resolve_user_location_from_text
+    ip_result = await baidu_mcp_client.call_tool("map_ip_location", {"ip": user_ip})
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\mcp\mcp_servers.py", line 28, in call_tool
+    raise RuntimeError(f"MCP client unavailable: {self._import_error}")
+RuntimeError: MCP client unavailable: No module named 'mcp'
+2026-05-09 11:35:57,070 | INFO     | MultiAgent_App:238 | [Location] fallback result={"ok": false, "error": "无法可靠解析用户当前位置，已回退到默认坐标。", "lat": 39.9042, "lng": 116.4074, "source": "fallback", "original_input": "修电脑的服务站"}
+2026-05-09 11:35:57,073 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": false, "error": "无法可靠解析用户当前位置，已回退到默认坐标。", "lat": 39.9042, "lng": 116.4074, "source": "fallback", "original_input": "修电脑的服务站"}
+2026-05-09 11:35:59,493 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=query_nearest_repair_shops_by_coords args={"lat": 39.9042, "lng": 116.4074, "limit": 3}
+2026-05-09 11:35:59,496 | INFO     | MultiAgent_App:247 | [NearestShops] query start lat=39.9042 lng=116.4074 limit=3
+2026-05-09 11:35:59,513 | INFO     | MultiAgent_App:294 | [NearestShops] found count=3 lat=39.9042 lng=116.4074
+2026-05-09 11:35:59,516 | DEBUG    | MultiAgent_App:296 | [NearestShops] first_row={'id': 1, 'service_station_name': '联想ThinkPad官方服务站-海淀中关村店', 'province': '北京市', 'city': '北京市', 'district': '海淀区', 'address': '北京市海淀区中关村大街27号中关村大厦1层', 'phone': '010-62560001', 'manager': '张伟', 'manager_phone': '13800000001', 'opening_hours': '09:00-18:00', 'repair_types': '电脑维修,硬件更换', 'repair_specialties': 'ThinkPad,笔记本,主板', 'repair_services': '检测,清灰,更换电池,系统重装', 'supported_brands': '联想,ThinkPad', 'rating': Decimal('4.80'), 'established_year': 2018, 'employee_count': 12, 'service_station_description': '联想官方授权服务站，支持 ThinkPad 笔记本常见维修。', 'latitude': Decimal('39.9836200'), 'longitude': Decimal('116.3152400'), 'distance_km': 11.820125657722507}
+2026-05-09 11:35:59,517 | INFO     | MultiAgent_App:312 | [NearestShops] query result={"ok": true, "count": 3, "data": [{"id": 1, "service_station_name": "联想ThinkPad官方服务站-海淀中关村店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区中关村大街27号中关村大厦1层", "phone": "010-62560001", "manager": "张伟", "manager_phone": "13800000001", "opening_hours": "09:00-18:00", "repair_types": "电脑维修,硬件更换", "repair_specialties": "ThinkPad,笔记本,主板", "repair_services": "检测,清灰,更换电池,系统重装", "supported_brands": "联想,ThinkPad", "rating": "4.80", "established_year": 2018, "employee_count": 12, "service_station_description": "联想官方授权服务站，支持 ThinkPad 笔记本常见维修。", "latitude": "39.9836200", "longitude": "116.3152400", "distance_km": 11.820125657722507}, {"id": 3, "service_station_name": "华为客户服务中心-西二旗店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区西二旗大街39号1层", "phone": "010-62990003", "manager": "王强", "manager_phone": "13800000003", "opening_hours": "09:30-18:30", "repair_types": "手机维修,平板维修,电脑维修", "repair_specialties": "华为手机,MateBook", "repair_services": "检测,保养,换件,数据迁移咨询", "supported_brands": "华为,HUAWEI,MateBook", "rating": "4.70", "established_year": 2019, "employee_count": 10, "service_station_description": "华为官方客户服务中心，可处理电脑和移动设备售后。", "latitude": "40.0481500", "l
+2026-05-09 11:35:59,522 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": true, "count": 3, "data": [{"id": 1, "service_station_name": "联想ThinkPad官方服务站-海淀中关村店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区中关村大街27号中关村大厦1层", "phone": "010-62560001", "manager": "张伟", "manager_phone": "13800000001", "opening_hours": "09:00-18:00", "repair_types": "电脑维修,硬件更换", "repair_specialties": "ThinkPad,笔记本,主板", "repair_services": "检测,清灰,更换电池,系统重装", "supported_brands": "联想,ThinkPad", "rating": "4.80", "established_year": 2018, "employee_count": 12, "service_station_description": "联想官方授权服务站，支持 ThinkPad 笔记本常见维修。", "latitude": "39.9836200", "longitude": "116.3152400", "distance_km": 11.820125657722507}, {"id": 3, "service_station_name": "华为客户服务中心-西二旗店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区西二旗大街39号1层", "phone": "010-62990003", "manager": "王强", "manager_phone": "13800000003", "opening_hours": "09:30-18:30", "repair_types": "手机维修,平板维修,电脑维修", "repair_specialties": "华为手机,MateBook", "repair_services": "检测,保养,换件,数据迁移咨询", "supported_brands": "华为,HUAWEI,MateBook", "rating": "4.70", "established_year": 2019, "employee_count": 10, "service_station_description": "华为官方客户服务中心，可处理电脑和移动设备售后。", "latitude": "40.0481500", "longitude": "116.3068800", "distance_km": 18.154137089406674}, {"id": 2, "service_station_name": "小米授权服务中心-昌平龙域店", "province": "北京市", "city": "北京市", "district": "昌平区", "address": "北京市昌平区回龙观西大街龙域北街5号院2号楼1层", "phone": "010-81770002", "manager": "李娜", "manager_phone": "13800000002", "opening_hours": "10
+2026-05-09 11:36:04,199 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=map_uri args={"origin_lat": 39.9042, "origin_lng": 116.4074, "destination_lat": 39.98362, "destination_lng": 116.31524, "origin_name": "用户位置", "destination_name": "联想ThinkPad官方服务站-海淀中关村店", "mode": "driving"}
+2026-05-09 11:36:04,204 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": true, "uri": "https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station", "origin": {"lat": 39.9042, "lng": 116.4074, "name": "用户位置"}, "destination": {"lat": 39.98362, "lng": 116.31524, "name": "联想ThinkPad官方服务站-海淀中关村店"}, "mode": "driving"}
+2026-05-09 11:36:23,803 | INFO     | MultiAgent_App:114 | [ServiceAgent] final_output query=修电脑的服务站 output=根据您的需求，为您找到距离最近的3家电脑维修服务站（按距离由近到远排列）：
+
+---
+
+**1. 联想ThinkPad官方服务站-海淀中关村店**  
+- **地址**：北京市海淀区中关村大街27号中关村大厦1层  
+- **电话**：010-62560001  
+- **距离**：11.82公里  
+- **服务品牌**：联想、ThinkPad  
+- **营业时间**：09:00-18:00  
+- **服务内容**：检测、清灰、更换电池、系统重装等  
+
+[点击导航至该服务站](https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station)
+
+---
+
+**2. 华为客户服务中心-西二旗店**  
+- **地址**：北京市海淀区西二旗大街39号1层  
+- **电话**：010-62990003  
+- **距离**：18.15公里  
+- **服务品牌**：华为、HUAWEI、MateBook  
+- **营业时间**：09:30-18:30  
+- **服务内容**：检测、保养、换件、数据迁移咨询等  
+
+---
+
+**3. 小米授权服务中心-昌平龙域店**  
+- **地址**：北京市昌平区回龙观西大街龙域北街5号院2号楼1层  
+- **电话**：010-81770002  
+- **距离**：19.01公里  
+- **服务品牌**：小米、Redmi  
+- **营业时间**：10:00-19:00  
+- **服务内容**：换屏、换电池、进水检测、软件升级等  
+
+---
+
+如需前往其他服务站，可告知具体名称，我将为您生成对应导航链接。
+
+后端错误详情：
+- unknown: 无法可靠解析用户当前位置，已回退到默认坐标。
+2026-05-09 11:36:23,808 | INFO     | MultiAgent_App:127 | [Route] service station result=根据您的需求，为您找到距离最近的3家电脑维修服务站（按距离由近到远排列）：
+
+---
+
+**1. 联想ThinkPad官方服务站-海淀中关村店**  
+- **地址**：北京市海淀区中关村大街27号中关村大厦1层  
+- **电话**：010-62560001  
+- **距离**：11.82公里  
+- **服务品牌**：联想、ThinkPad  
+- **营业时间**：09:00-18:00  
+- **服务内容**：检测、清灰、更换电池、系统重装等  
+
+[点击导航至该服务站](https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station)
+
+---
+
+**2. 华为客户服务中心-西二旗店**  
+- **地址**：北京市海淀区西二旗大街39号1层  
+- **电话**：010-62990003  
+- **距离**：18.15公里  
+- **服务品牌**：华为、HUAWEI、MateBook  
+- **营业时间**：09:30-18:30  
+- **服务内容**：检测、保养、换件、数据迁移咨询等  
+
+---
+
+**3. 小米授权服务中心-昌平龙域店**  
+- **地址**：北京市昌平区回龙观西大街龙域北街5号院2号楼1层  
+- **电话**：010-81770002  
+- **距离**：19.01公里  
+- **服务品牌**：小米、Redmi  
+- **营业时间**：10:00-19:00  
+- **服务内容**：换屏、换电池、进水检测、软件升级等  
+
+--
+2026-05-09 11:36:44,240 | INFO     | MultiAgent_App:158 | [Approval] resumed run token=b15fb14d-c73d-4c1b-aa83-10fd23f8e935 final_output=根据您的需求，为您找到距离最近的3家电脑维修服务站（按距离由近到远排列）：
+
+---
+
+**1. 联想ThinkPad官方服务站-海淀中关村店**  
+- **地址**：北京市海淀区中关村大街27号中关村大厦1层  
+- **电话**：010-62560001  
+- **距离**：11.82公里  
+- **服务品牌**：联想、ThinkPad  
+- **营业时间**：09:00-18:00  
+- **服务内容**：检测、清灰、更换电池、系统重装等  
+
+[点击导航至该服务站](https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station)
+
+---
+
+**2. 华为客户服务中心-西二旗店**  
+- **地址**：北京市海淀区西二旗大街39号1层  
+- **电话**：010-62990003  
+- **距离**：18.15公里  
+- **服务品牌**：华为、HUAWEI、MateBook  
+- **营业时间**：09:30-18:30  
+- **服务内容**：检测、保养、换件、数据迁移咨询等  
+
+---
+
+**3. 小米授权服务中心-昌平龙域店**  
+- **地址**：北京市昌平区回龙观西大街龙域北街5号院2号楼1层  
+- **电话**：010-81770002  
+- **距离**：19.01公里  
+- **服务品牌**：小米、Redmi  
+- **营业时间**：10:00-19:00  
+- **服务内容**：换屏、换电池、进水检测、软件升级等  
+
+-- structured_intent=general
+2026-05-09 11:36:44,284 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 11:37:04,987 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 11:37:08,261 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 11:37:12,264 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 11:37:12,990 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 11:37:13,698 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 14:09:43,815 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 14:09:44,506 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 15:17:28,796 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 15:17:28,802 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 15:17:28,806 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 15:17:28,922 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 15:17:28,923 | ERROR    | MultiAgent_App:15 | 百度地图 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 15:17:28,925 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 15:17:28,926 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: MCP client unavailable: No module named 'mcp'
+2026-05-09 15:17:28,928 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 15:53:40,894 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 15:53:40,906 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 15:53:40,908 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 15:53:41,058 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 15:53:41,510 | INFO     | MultiAgent_App:13 | 百度地图 MCP 连接成功
+2026-05-09 15:53:41,740 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: Failed to connect to MCP server '通用联网搜索': HTTP error 500 (Internal Server Error)
+2026-05-09 15:53:43,973 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: Failed to connect to MCP server '知识库问答': HTTP error 502 (Bad Gateway)
+2026-05-09 15:53:43,975 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 15:58:40,348 | INFO     | MultiAgent_App:17 | 知识库 MCP 服务已就绪
+2026-05-09 15:58:40,349 | INFO     | MultiAgent_App:23 | 知识库 MCP 连接成功
+2026-05-09 15:58:40,349 | INFO     | MultiAgent_App:29 | 百度地图 MCP 连接成功
+2026-05-09 15:58:40,350 | INFO     | MultiAgent_App:35 | 搜索 MCP 连接成功
+2026-05-09 15:59:22,117 | INFO     | MultiAgent_App:17 | 知识库 MCP 服务已就绪
+2026-05-09 15:59:22,118 | INFO     | MultiAgent_App:23 | 知识库 MCP 连接成功
+2026-05-09 15:59:22,118 | INFO     | MultiAgent_App:29 | 百度地图 MCP 连接成功
+2026-05-09 15:59:22,118 | INFO     | MultiAgent_App:35 | 搜索 MCP 连接成功
+2026-05-09 15:59:36,852 | INFO     | MultiAgent_App:64 | 已触发本地知识库 MCP 服务启动
+2026-05-09 16:01:56,889 | INFO     | MultiAgent_App:51 | 已触发本地知识库 MCP 服务启动
+2026-05-09 16:02:00,288 | INFO     | MultiAgent_App:17 | 知识库 MCP 服务已就绪
+2026-05-09 16:02:00,289 | INFO     | MultiAgent_App:23 | 知识库 MCP 连接成功
+2026-05-09 16:02:00,289 | INFO     | MultiAgent_App:29 | 百度地图 MCP 连接成功
+2026-05-09 16:02:00,290 | INFO     | MultiAgent_App:35 | 搜索 MCP 连接成功
+2026-05-09 16:02:24,409 | INFO     | MultiAgent_App:51 | 已触发本地知识库 MCP 服务启动
+2026-05-09 16:03:44,986 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 16:03:44,992 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 16:03:57,922 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: comprehensive_service_agent
+2026-05-09 16:03:57,927 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: technical_agent
+2026-05-09 16:03:57,930 | DEBUG    | MultiAgent_App:31 | 成功加载提示词: orchestrator_v1
+2026-05-09 16:03:58,021 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 16:03:59,059 | INFO     | MultiAgent_App:51 | 已触发本地知识库 MCP 服务启动
+2026-05-09 16:04:09,237 | INFO     | MultiAgent_App:17 | 知识库 MCP 服务已就绪
+2026-05-09 16:04:09,424 | INFO     | MultiAgent_App:23 | 知识库 MCP 连接成功
+2026-05-09 16:04:09,923 | INFO     | MultiAgent_App:29 | 百度地图 MCP 连接成功
+2026-05-09 16:04:10,116 | ERROR    | MultiAgent_App:37 | 搜索 MCP 连接失败: Failed to connect to MCP server '通用联网搜索': HTTP error 500 (Internal Server Error)
+2026-05-09 16:04:10,119 | INFO     | MultiAgent_App:26 | MCP连接建立完成

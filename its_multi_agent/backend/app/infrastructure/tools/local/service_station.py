@@ -1,6 +1,7 @@
 import json
 import math
 from typing import Any
+from urllib.parse import urlencode
 
 import stun
 from agents import function_tool
@@ -74,6 +75,67 @@ def _parse_json_response(tool_name: str, raw_text: str) -> dict:
             _safe_preview(raw_text, 1000),
         )
         raise
+
+
+def build_baidu_map_direction_uri(
+    origin_lat: float,
+    origin_lng: float,
+    destination_lat: float,
+    destination_lng: float,
+    origin_name: str = "用户位置",
+    destination_name: str = "目的地",
+    mode: str = "driving",
+) -> str:
+    query = urlencode(
+        {
+            "origin": f"latlng:{origin_lat},{origin_lng}|name:{origin_name}",
+            "destination": f"latlng:{destination_lat},{destination_lng}|name:{destination_name}",
+            "mode": mode,
+            "region": "全国",
+            "output": "html",
+            "src": "multi_agent_repair_station",
+        }
+    )
+    return f"https://api.map.baidu.com/direction?{query}"
+
+
+@function_tool
+def map_uri(
+    origin_lat: float,
+    origin_lng: float,
+    destination_lat: float,
+    destination_lng: float,
+    origin_name: str = "用户位置",
+    destination_name: str = "目的地",
+    mode: str = "driving",
+) -> str:
+    uri = build_baidu_map_direction_uri(
+        origin_lat=origin_lat,
+        origin_lng=origin_lng,
+        destination_lat=destination_lat,
+        destination_lng=destination_lng,
+        origin_name=origin_name,
+        destination_name=destination_name,
+        mode=mode,
+    )
+    return json.dumps(
+        {
+            "ok": True,
+            "uri": uri,
+            "origin": {
+                "lat": origin_lat,
+                "lng": origin_lng,
+                "name": origin_name,
+            },
+            "destination": {
+                "lat": destination_lat,
+                "lng": destination_lng,
+                "name": destination_name,
+            },
+            "mode": mode,
+        },
+        ensure_ascii=False,
+    )
 
 
 @function_tool
