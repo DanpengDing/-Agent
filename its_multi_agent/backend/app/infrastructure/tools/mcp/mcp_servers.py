@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import json
 from typing import Any, Dict
 
@@ -28,21 +28,6 @@ except ImportError:
                 raise RuntimeError(f"MCP client unavailable: {self._import_error}")
 
 from config.settings import settings
-
-
-search_mcp_client = MCPServerSse(
-    name="通用联网搜索",
-    params={
-        "url": f"{settings.DASHSCOPE_BASE_URL}",
-        "headers": {
-            "Authorization": f"Bearer {settings.AL_BAILIAN_API_KEY}",
-        },
-        "timeout": 60,
-        "sse_read_timeout": 60 * 30,
-    },
-    client_session_timeout_seconds=60 * 10,
-    cache_tools_list=True,
-)
 
 
 baidu_mcp_client = MCPServerSse(
