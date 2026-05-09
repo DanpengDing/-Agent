@@ -1,16 +1,17 @@
+from typing import AsyncGenerator
+
 from agents.run import Runner
 from fastapi.routing import APIRouter
-from starlette.responses import StreamingResponse
-from typing import AsyncGenerator
 from opentelemetry.trace import SpanKind
+from starlette.responses import StreamingResponse
 
 from infrastructure.logging.logger import logger
 from infrastructure.tracing import get_tracer
 from multi_agent.orchestrator_agent import orchestrator_agent
 from schemas.request import ChatMessageRequest, HumanApprovalRequest, UserSessionsRequest
 from schemas.response import ContentKind
-from services.approval_details_service import build_service_station_approval_details
 from services.agent_service import MultiAgentService
+from services.approval_details_service import build_service_station_approval_details
 from services.guardrail_service import guardrail_service
 from services.hitl_service import hitl_service
 from services.session_service import session_service
@@ -21,14 +22,13 @@ from utils.response_util import ResponseFactory
 router = APIRouter()
 
 
-@router.post("/api/query", summary="流式执行智能体")
+@router.post("/api/query", summary="query multi agent")
 async def query(request_context: ChatMessageRequest) -> StreamingResponse:
     tracer = get_tracer("multi-agent-api")
     user_id = request_context.context.user_id
     user_query = request_context.query
     session_id = request_context.context.session_id or ""
 
-    # 创建查询追踪 span
     with tracer.start_as_current_span(
         "agent.query",
         kind=SpanKind.INTERNAL,
@@ -37,21 +37,19 @@ async def query(request_context: ChatMessageRequest) -> StreamingResponse:
             "session.id": session_id,
             "query.length": len(user_query),
             "query_preview": user_query[:100] if user_query else "",
-        }
+        },
     ) as span:
-        # ========== Guardrail 输入过滤 ==========
         check_result = guardrail_service.check_input(user_query)
         if check_result.blocked:
             span.set_attribute("guardrail.blocked", True)
             span.set_attribute("guardrail.matched_words", str(check_result.matched_common))
-            # 命中通用敏感词，直接拒绝
             return StreamingResponse(
                 content=_blocked_stream(check_result),
                 status_code=200,
                 media_type="text/event-stream",
             )
+
         if check_result.replaced:
-            # 命中业务敏感词，使用替换后的文本
             user_query = check_result.filtered_text
             span.set_attribute("guardrail.replaced", True)
             span.set_attribute("guardrail.business_words", str(check_result.matched_business))
@@ -61,7 +59,6 @@ async def query(request_context: ChatMessageRequest) -> StreamingResponse:
                 check_result.matched_business,
                 user_query,
             )
-        # ========== Guardrail 过滤结束 ==========
 
         logger.info("user=%s query=%s", user_id, user_query)
         async_generator_result = MultiAgentService.process_task(request_context, flag=True)
@@ -73,19 +70,17 @@ async def query(request_context: ChatMessageRequest) -> StreamingResponse:
 
 
 async def _blocked_stream(check_result) -> AsyncGenerator[str, None]:
-    """返回敏感词拦截响应。"""
+    blocked_words = ", ".join(check_result.matched_common)
+    text = f"检测到不允许的内容：{blocked_words}。请换一种说法再试。"
     yield "data: " + ResponseFactory.build_text(
-        f"抱歉，您的输入包含敏感词（{', '.join(check_result.matched_common)}），已被系统拦截。",
+        text,
         ContentKind.PROCESS,
     ).model_dump_json() + "\n\n"
     yield "data: " + ResponseFactory.build_finish().model_dump_json() + "\n\n"
 
 
-@router.post("/api/human_approval", summary="处理审批结果并恢复同一条 run")
+@router.post("/api/human_approval", summary="resume a paused run after human approval")
 async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
-    # 这里不是重新构造一轮新的用户提问，
-    # 而是拿回之前保存在 hitl_service 中的 pending approval，
-    # 从同一条 run 的暂停点继续恢复。
     approval = hitl_service.resolve_pending_approval(
         token=request.approval_token,
         user_id=request.context.user_id,
@@ -95,22 +90,24 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
 
     async def approval_stream():
         if approval.decision == "rejected":
-            # 拒绝时不再继续恢复 run，直接结束本轮流程。
+            rejected_text = "已取消这次操作。如需继续，我可以换一种方式帮你。"
+            session_service.append_and_save_message(
+                user_id=request.context.user_id,
+                session_id=request.context.session_id or "",
+                role="assistant",
+                content=rejected_text,
+            )
             hitl_service.consume_approval(approval.token)
             yield "data: " + ResponseFactory.build_text(
-                "你已拒绝此次敏感操作，本轮流程已停止。",
+                rejected_text,
                 ContentKind.PROCESS,
             ).model_dump_json() + "\n\n"
             yield "data: " + ResponseFactory.build_finish().model_dump_json() + "\n\n"
             return
 
         try:
-            # 这是官方文档里的恢复方式：
-            # 1. 从之前保存的 state 中逐个 approve interruption
-            # 2. 再把 state 重新交给 Runner.run(...)
-            # 这样恢复的是“同一条 run”，不是重新向 Agent 发起新提问。
             if approval.state is None:
-                raise ValueError("审批状态丢失，无法恢复运行")
+                raise ValueError("pending approval state is missing")
 
             for interruption in approval.interruptions:
                 approval.state.approve(interruption)
@@ -126,8 +123,8 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
                     query=approval.query,
                     state=next_state,
                     interruptions=interruptions,
-                    title="需要人工确认",
-                    question="是否允许智能体继续执行下一步敏感操作？",
+                    title="需要你的确认",
+                    question="继续执行这次操作吗？",
                     details=build_service_station_approval_details(approval.query),
                     approve_label="继续",
                     reject_label="取消",
@@ -137,6 +134,17 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
                     next_pending.token,
                     len(interruptions),
                 )
+                approval_message = MultiAgentService._format_approval_message(
+                    next_pending.question,
+                    next_pending.details,
+                )
+                if approval_message:
+                    session_service.append_and_save_message(
+                        user_id=request.context.user_id,
+                        session_id=request.context.session_id or "",
+                        role="assistant",
+                        content=approval_message,
+                    )
                 yield "data: " + ResponseFactory.build_human_approval(
                     token=next_pending.token,
                     title=next_pending.title,
@@ -161,6 +169,13 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
                 final_output[:1000],
                 structured_output.intent,
             )
+            if structured_output.answer:
+                session_service.append_and_save_message(
+                    user_id=request.context.user_id,
+                    session_id=request.context.session_id or "",
+                    role="assistant",
+                    content=structured_output.answer,
+                )
             yield "data: " + ResponseFactory.build_text(
                 structured_output.answer,
                 ContentKind.ANSWER,

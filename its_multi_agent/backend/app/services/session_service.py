@@ -92,6 +92,13 @@ class SessionService:
         new_state.messages.append({"role": role, "content": content})
         return new_state
 
+    def append_and_save_message(self, user_id: str, session_id: str, role: str, content: str) -> SessionMemoryState:
+        target_session_id = session_id or self.DEFAULT_SESSION_ID
+        state = self.load_session_state(user_id, target_session_id)
+        state = self.append_message_to_state(state, role, content)
+        self.save_session_state(user_id, target_session_id, state)
+        return state
+
     def build_runtime_history(
         self,
         state: SessionMemoryState,

@@ -785,3 +785,1069 @@ RuntimeError: MCP client unavailable: No module named 'mcp'
 2026-05-09 16:04:09,923 | INFO     | MultiAgent_App:29 | 百度地图 MCP 连接成功
 2026-05-09 16:04:10,116 | ERROR    | MultiAgent_App:37 | 搜索 MCP 连接失败: Failed to connect to MCP server '通用联网搜索': HTTP error 500 (Internal Server Error)
 2026-05-09 16:04:10,119 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 16:11:16,541 | INFO     | MultiAgent_App:17 | 知识库 MCP 服务已就绪
+2026-05-09 16:11:16,542 | INFO     | MultiAgent_App:23 | 知识库 MCP 连接成功
+2026-05-09 16:11:16,542 | INFO     | MultiAgent_App:29 | 百度地图 MCP 连接成功
+2026-05-09 16:11:16,543 | INFO     | MultiAgent_App:35 | 搜索 MCP 连接成功
+2026-05-09 16:11:55,237 | INFO     | MultiAgent_App:68 | 知识库 MCP 服务已就绪
+2026-05-09 16:11:55,238 | INFO     | MultiAgent_App:74 | 知识库 MCP 连接成功
+2026-05-09 16:11:55,238 | INFO     | MultiAgent_App:80 | 百度地图 MCP 连接成功
+2026-05-09 16:11:55,239 | INFO     | MultiAgent_App:86 | 搜索 MCP 连接成功
+2026-05-09 16:11:55,244 | INFO     | MultiAgent_App:68 | 知识库 MCP 服务已就绪
+2026-05-09 16:11:55,244 | INFO     | MultiAgent_App:74 | 知识库 MCP 连接成功
+2026-05-09 16:11:55,245 | INFO     | MultiAgent_App:80 | 百度地图 MCP 连接成功
+2026-05-09 16:11:55,245 | ERROR    | MultiAgent_App:88 | 搜索 MCP 连接失败: search-connect-failed
+2026-05-09 16:12:17,003 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 16:12:17,049 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 16:12:24,056 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 16:12:25,086 | INFO     | MultiAgent_App:51 | 已触发本地知识库 MCP 服务启动
+2026-05-09 16:12:35,258 | INFO     | MultiAgent_App:68 | 知识库 MCP 服务已就绪
+2026-05-09 16:12:35,317 | INFO     | MultiAgent_App:74 | 知识库 MCP 连接成功
+2026-05-09 16:12:35,807 | INFO     | MultiAgent_App:80 | 百度地图 MCP 连接成功
+2026-05-09 16:12:36,048 | ERROR    | MultiAgent_App:88 | 搜索 MCP 连接失败: Failed to connect to MCP server '通用联网搜索': HTTP error 500 (Internal Server Error)
+2026-05-09 16:12:36,048 | ERROR    | MultiAgent_App:29 | 搜索 MCP 诊断: url=https://dashscope.aliyuncs.com/api/v1/mcps/WebSearch/sse, api_key=sk-7***f733, error_type=UserError, error=Failed to connect to MCP server '通用联网搜索': HTTP error 500 (Internal Server Error)
+2026-05-09 16:12:36,265 | ERROR    | MultiAgent_App:50 | 搜索 MCP 探测响应: status=500, content_type=, body_preview=MCP_NOT_EXIST
+2026-05-09 16:12:36,272 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 16:28:51,496 | INFO     | MultiAgent_App:16 | 知识库 MCP 服务已就绪
+2026-05-09 16:28:51,496 | INFO     | MultiAgent_App:22 | 知识库 MCP 连接成功
+2026-05-09 16:28:51,497 | INFO     | MultiAgent_App:28 | 百度地图 MCP 连接成功
+2026-05-09 16:29:24,220 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 16:29:24,253 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 16:29:29,988 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 16:29:31,023 | INFO     | MultiAgent_App:51 | 已触发本地知识库 MCP 服务启动
+2026-05-09 16:29:41,653 | INFO     | MultiAgent_App:16 | 知识库 MCP 服务已就绪
+2026-05-09 16:29:41,707 | INFO     | MultiAgent_App:22 | 知识库 MCP 连接成功
+2026-05-09 16:29:42,124 | INFO     | MultiAgent_App:28 | 百度地图 MCP 连接成功
+2026-05-09 16:29:42,124 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 16:30:49,943 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 16:30:51,207 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 16:30:57,453 | INFO     | MultiAgent_App:66 | user=root1 query=我要修电脑
+2026-05-09 16:30:57,454 | INFO     | MultiAgent_App:57 | [AgentService] start user=root1 session=session_1778294394271_gs8sh88st retry=True skip_user_message=False query=我要修电脑
+2026-05-09 16:30:57,456 | INFO     | MultiAgent_App:87 | [AgentService] query rewritten user=root1 session=session_1778294394271_gs8sh88st original=我要修电脑 rewritten=我要修电脑
+2026-05-09 16:30:57,465 | INFO     | MultiAgent_App:136 | [AgentService] orchestrator started user=root1 session=session_1778294394271_gs8sh88st
+2026-05-09 16:30:57,468 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 16:30:59,874 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=query_service_station_and_navigate args={"query": "修电脑的服务站"}
+2026-05-09 16:30:59,879 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 16:30:59,879 | INFO     | MultiAgent_App:161 | [AgentService] approval interruption user=root1 session=session_1778294394271_gs8sh88st count=1
+2026-05-09 16:30:59,893 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 16:31:02,382 | INFO     | MultiAgent_App:125 | [Route] service station query=修电脑的服务站
+2026-05-09 16:31:04,213 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=resolve_user_location_from_text args={"user_input": "修电脑的服务站"}
+2026-05-09 16:31:04,213 | INFO     | MultiAgent_App:143 | [Location] resolve start raw_input=修电脑的服务站
+2026-05-09 16:31:04,213 | INFO     | MultiAgent_App:164 | [Location] geocode start address=修电脑的服务站
+2026-05-09 16:31:04,311 | INFO     | MultiAgent_App:60 | [BaiduMCP] tool=map_geocode raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:31:04,311 | ERROR    | MultiAgent_App:71 | [BaiduMCP] tool=map_geocode json parse failed error=Expecting value: line 1 column 1 (char 0) raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:31:04,311 | WARNING  | MultiAgent_App:191 | [Location] geocode failed address=修电脑的服务站 error=Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 170, in resolve_user_location_from_text
+    data = _parse_json_response("map_geocode", raw_text)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 69, in _parse_json_response
+    return json.loads(raw_text)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-05-09 16:31:38,231 | INFO     | MultiAgent_App:194 | [Location] detected external_ip=112.47.228.186
+2026-05-09 16:31:38,231 | INFO     | MultiAgent_App:198 | [Location] ip location start ip=112.47.228.186
+2026-05-09 16:31:38,468 | INFO     | MultiAgent_App:60 | [BaiduMCP] tool=map_ip_location raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:31:38,469 | ERROR    | MultiAgent_App:71 | [BaiduMCP] tool=map_ip_location json parse failed error=Expecting value: line 1 column 1 (char 0) raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:31:38,469 | WARNING  | MultiAgent_App:225 | [Location] ip location failed ip=112.47.228.186 error=Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 201, in resolve_user_location_from_text
+    data = _parse_json_response("map_ip_location", raw_text)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 69, in _parse_json_response
+    return json.loads(raw_text)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-05-09 16:31:38,471 | INFO     | MultiAgent_App:238 | [Location] fallback result={"ok": false, "error": "无法可靠解析用户当前位置，已回退到默认坐标。", "lat": 39.9042, "lng": 116.4074, "source": "fallback", "original_input": "修电脑的服务站"}
+2026-05-09 16:31:38,473 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": false, "error": "无法可靠解析用户当前位置，已回退到默认坐标。", "lat": 39.9042, "lng": 116.4074, "source": "fallback", "original_input": "修电脑的服务站"}
+2026-05-09 16:31:40,984 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=query_nearest_repair_shops_by_coords args={"lat": 39.9042, "lng": 116.4074, "limit": 3}
+2026-05-09 16:31:40,986 | INFO     | MultiAgent_App:247 | [NearestShops] query start lat=39.9042 lng=116.4074 limit=3
+2026-05-09 16:31:41,104 | INFO     | MultiAgent_App:294 | [NearestShops] found count=3 lat=39.9042 lng=116.4074
+2026-05-09 16:31:41,105 | INFO     | MultiAgent_App:312 | [NearestShops] query result={"ok": true, "count": 3, "data": [{"id": 1, "service_station_name": "联想ThinkPad官方服务站-海淀中关村店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区中关村大街27号中关村大厦1层", "phone": "010-62560001", "manager": "张伟", "manager_phone": "13800000001", "opening_hours": "09:00-18:00", "repair_types": "电脑维修,硬件更换", "repair_specialties": "ThinkPad,笔记本,主板", "repair_services": "检测,清灰,更换电池,系统重装", "supported_brands": "联想,ThinkPad", "rating": "4.80", "established_year": 2018, "employee_count": 12, "service_station_description": "联想官方授权服务站，支持 ThinkPad 笔记本常见维修。", "latitude": "39.9836200", "longitude": "116.3152400", "distance_km": 11.820125657722507}, {"id": 3, "service_station_name": "华为客户服务中心-西二旗店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区西二旗大街39号1层", "phone": "010-62990003", "manager": "王强", "manager_phone": "13800000003", "opening_hours": "09:30-18:30", "repair_types": "手机维修,平板维修,电脑维修", "repair_specialties": "华为手机,MateBook", "repair_services": "检测,保养,换件,数据迁移咨询", "supported_brands": "华为,HUAWEI,MateBook", "rating": "4.70", "established_year": 2019, "employee_count": 10, "service_station_description": "华为官方客户服务中心，可处理电脑和移动设备售后。", "latitude": "40.0481500", "l
+2026-05-09 16:31:41,110 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": true, "count": 3, "data": [{"id": 1, "service_station_name": "联想ThinkPad官方服务站-海淀中关村店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区中关村大街27号中关村大厦1层", "phone": "010-62560001", "manager": "张伟", "manager_phone": "13800000001", "opening_hours": "09:00-18:00", "repair_types": "电脑维修,硬件更换", "repair_specialties": "ThinkPad,笔记本,主板", "repair_services": "检测,清灰,更换电池,系统重装", "supported_brands": "联想,ThinkPad", "rating": "4.80", "established_year": 2018, "employee_count": 12, "service_station_description": "联想官方授权服务站，支持 ThinkPad 笔记本常见维修。", "latitude": "39.9836200", "longitude": "116.3152400", "distance_km": 11.820125657722507}, {"id": 3, "service_station_name": "华为客户服务中心-西二旗店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区西二旗大街39号1层", "phone": "010-62990003", "manager": "王强", "manager_phone": "13800000003", "opening_hours": "09:30-18:30", "repair_types": "手机维修,平板维修,电脑维修", "repair_specialties": "华为手机,MateBook", "repair_services": "检测,保养,换件,数据迁移咨询", "supported_brands": "华为,HUAWEI,MateBook", "rating": "4.70", "established_year": 2019, "employee_count": 10, "service_station_description": "华为官方客户服务中心，可处理电脑和移动设备售后。", "latitude": "40.0481500", "longitude": "116.3068800", "distance_km": 18.154137089406674}, {"id": 2, "service_station_name": "小米授权服务中心-昌平龙域店", "province": "北京市", "city": "北京市", "district": "昌平区", "address": "北京市昌平区回龙观西大街龙域北街5号院2号楼1层", "phone": "010-81770002", "manager": "李娜", "manager_phone": "13800000002", "opening_hours": "10
+2026-05-09 16:31:45,433 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=map_uri args={"origin_lat": "39.9042", "origin_lng": "116.4074", "destination_lat": "39.98362", "destination_lng": "116.31524", "origin_name": "用户位置", "destination_name": "联想ThinkPad官方服务站-海淀中关村店", "mode": "driving"}
+2026-05-09 16:31:45,438 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": true, "uri": "https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station", "origin": {"lat": 39.9042, "lng": 116.4074, "name": "用户位置"}, "destination": {"lat": 39.98362, "lng": 116.31524, "name": "联想ThinkPad官方服务站-海淀中关村店"}, "mode": "driving"}
+2026-05-09 16:32:05,451 | INFO     | MultiAgent_App:114 | [ServiceAgent] final_output query=修电脑的服务站 output=根据您的需求，为您找到距离最近的3家电脑维修服务站，按距离由近到远排列如下：
+
+**1. 联想ThinkPad官方服务站-海淀中关村店**
+- **地址**：北京市海淀区中关村大街27号中关村大厦1层
+- **联系电话**：010-62560001
+- **距离**：11.82公里
+- **服务品牌**：联想、ThinkPad
+- **营业时间**：09:00-18:00
+- **服务内容**：电脑维修、硬件更换、检测、清灰、更换电池、系统重装
+
+**2. 华为客户服务中心-西二旗店**
+- **地址**：北京市海淀区西二旗大街39号1层
+- **联系电话**：010-62990003
+- **距离**：18.15公里
+- **服务品牌**：华为、HUAWEI、MateBook
+- **营业时间**：09:30-18:30
+- **服务内容**：手机维修、平板维修、电脑维修、检测、保养、换件、数据迁移咨询
+
+**3. 小米授权服务中心-昌平龙域店**
+- **地址**：北京市昌平区回龙观西大街龙域北街5号院2号楼1层
+- **联系电话**：010-81770002
+- **距离**：19.01公里
+- **服务品牌**：小米、Redmi
+- **营业时间**：10:00-19:00
+- **服务内容**：手机维修、电脑维修、换屏、换电池、进水检测、软件升级
+
+**导航链接（前往最近的服务站）**：
+[点击此处导航至联想ThinkPad官方服务站](https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station)
+
+后端错误详情：
+- unknown: 无法可靠解析用户当前位置，已回退到默认坐标。
+2026-05-09 16:32:05,453 | INFO     | MultiAgent_App:127 | [Route] service station result=根据您的需求，为您找到距离最近的3家电脑维修服务站，按距离由近到远排列如下：
+
+**1. 联想ThinkPad官方服务站-海淀中关村店**
+- **地址**：北京市海淀区中关村大街27号中关村大厦1层
+- **联系电话**：010-62560001
+- **距离**：11.82公里
+- **服务品牌**：联想、ThinkPad
+- **营业时间**：09:00-18:00
+- **服务内容**：电脑维修、硬件更换、检测、清灰、更换电池、系统重装
+
+**2. 华为客户服务中心-西二旗店**
+- **地址**：北京市海淀区西二旗大街39号1层
+- **联系电话**：010-62990003
+- **距离**：18.15公里
+- **服务品牌**：华为、HUAWEI、MateBook
+- **营业时间**：09:30-18:30
+- **服务内容**：手机维修、平板维修、电脑维修、检测、保养、换件、数据迁移咨询
+
+**3. 小米授权服务中心-昌平龙域店**
+- **地址**：北京市昌平区回龙观西大街龙域北街5号院2号楼1层
+- **联系电话**：010-81770002
+- **距离**：19.01公里
+- **服务品牌**：小米、Redmi
+- **营业时间**：10:00-19:00
+- **服务内容**：手机维修、电脑维修、换屏、换电池、进水检测、软件升级
+
+**导航链接（前往最近的服务站）**：
+[点击此处导航至联想ThinkPad官方服务站](https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repa
+2026-05-09 16:32:26,133 | INFO     | MultiAgent_App:158 | [Approval] resumed run token=d57c9c30-393a-4e2e-9e8f-513d0e20940b final_output=根据您的需求，为您找到距离最近的3家电脑维修服务站，按距离由近到远排列如下：
+
+**1. 联想ThinkPad官方服务站-海淀中关村店**
+- **地址**：北京市海淀区中关村大街27号中关村大厦1层
+- **联系电话**：010-62560001
+- **距离**：11.82公里
+- **服务品牌**：联想、ThinkPad
+- **营业时间**：09:00-18:00
+- **服务内容**：电脑维修、硬件更换、检测、清灰、更换电池、系统重装
+
+**2. 华为客户服务中心-西二旗店**
+- **地址**：北京市海淀区西二旗大街39号1层
+- **联系电话**：010-62990003
+- **距离**：18.15公里
+- **服务品牌**：华为、HUAWEI、MateBook
+- **营业时间**：09:30-18:30
+- **服务内容**：手机维修、平板维修、电脑维修、检测、保养、换件、数据迁移咨询
+
+**3. 小米授权服务中心-昌平龙域店**
+- **地址**：北京市昌平区回龙观西大街龙域北街5号院2号楼1层
+- **联系电话**：010-81770002
+- **距离**：19.01公里
+- **服务品牌**：小米、Redmi
+- **营业时间**：10:00-19:00
+- **服务内容**：手机维修、电脑维修、换屏、换电池、进水检测、软件升级
+
+**导航链接（前往最近的服务站）**：
+[点击此处导航至联想ThinkPad官方服务站](https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repa structured_intent=general
+2026-05-09 16:32:26,158 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 16:39:29,549 | INFO     | MultiAgent_App:16 | 知识库 MCP 服务已就绪
+2026-05-09 16:39:29,550 | INFO     | MultiAgent_App:22 | 知识库 MCP 连接成功
+2026-05-09 16:39:29,551 | INFO     | MultiAgent_App:28 | 百度地图 MCP 连接成功
+2026-05-09 16:39:54,882 | INFO     | MultiAgent_App:16 | 知识库 MCP 服务已就绪
+2026-05-09 16:39:54,882 | INFO     | MultiAgent_App:22 | 知识库 MCP 连接成功
+2026-05-09 16:39:54,883 | INFO     | MultiAgent_App:28 | 百度地图 MCP 连接成功
+2026-05-09 16:39:55,059 | INFO     | MultiAgent_App:90 | [Location] missing location result={"ok": false, "error": "无法可靠解析用户当前位置，请先提供你的城市、区县、商圈或具体地址。", "source": "missing_location", "original_input": "我要修电脑", "needs_user_location": true, "ask_user": "请告诉我你现在在哪个城市、区县、商圈，或者直接发一个具体地址，我再帮你查最近的电脑维修服务站。"}
+2026-05-09 16:40:50,641 | INFO     | MultiAgent_App:66 | user=root1 query=我要修电脑
+2026-05-09 16:40:50,642 | INFO     | MultiAgent_App:57 | [AgentService] start user=root1 session=session_1778294394271_gs8sh88st retry=True skip_user_message=False query=我要修电脑
+2026-05-09 16:40:50,642 | INFO     | MultiAgent_App:87 | [AgentService] query rewritten user=root1 session=session_1778294394271_gs8sh88st original=我要修电脑 rewritten=我要修电脑
+2026-05-09 16:40:50,650 | INFO     | MultiAgent_App:136 | [AgentService] orchestrator started user=root1 session=session_1778294394271_gs8sh88st
+2026-05-09 16:40:50,651 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 16:40:51,979 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=query_service_station_and_navigate args={"query": "修电脑的服务站"}
+2026-05-09 16:40:51,983 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 16:40:51,984 | INFO     | MultiAgent_App:161 | [AgentService] approval interruption user=root1 session=session_1778294394271_gs8sh88st count=1
+2026-05-09 16:40:52,002 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 16:40:55,080 | INFO     | MultiAgent_App:125 | [Route] service station query=修电脑的服务站
+2026-05-09 16:40:56,557 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=resolve_user_location_from_text args={"user_input": "修电脑的服务站"}
+2026-05-09 16:40:56,559 | INFO     | MultiAgent_App:143 | [Location] resolve start raw_input=修电脑的服务站
+2026-05-09 16:40:56,559 | INFO     | MultiAgent_App:164 | [Location] geocode start address=修电脑的服务站
+2026-05-09 16:40:56,787 | INFO     | MultiAgent_App:60 | [BaiduMCP] tool=map_geocode raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:40:56,788 | ERROR    | MultiAgent_App:71 | [BaiduMCP] tool=map_geocode json parse failed error=Expecting value: line 1 column 1 (char 0) raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:40:56,804 | WARNING  | MultiAgent_App:191 | [Location] geocode failed address=修电脑的服务站 error=Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 170, in resolve_user_location_from_text
+    logger.info("[Location] geocode start address=%s", normalized_input)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 69, in _parse_json_response
+    logger.error(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-05-09 16:41:30,638 | INFO     | MultiAgent_App:194 | [Location] detected external_ip=112.47.228.186
+2026-05-09 16:41:30,639 | INFO     | MultiAgent_App:198 | [Location] ip location start ip=112.47.228.186
+2026-05-09 16:41:30,835 | INFO     | MultiAgent_App:60 | [BaiduMCP] tool=map_ip_location raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:41:30,835 | ERROR    | MultiAgent_App:71 | [BaiduMCP] tool=map_ip_location json parse failed error=Expecting value: line 1 column 1 (char 0) raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:41:30,836 | WARNING  | MultiAgent_App:225 | [Location] ip location failed ip=112.47.228.186 error=Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 201, in resolve_user_location_from_text
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 69, in _parse_json_response
+    logger.error(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-05-09 16:41:30,838 | INFO     | MultiAgent_App:238 | [Location] fallback result={"ok": false, "error": "无法可靠解析用户当前位置，已回退到默认坐标。", "lat": 39.9042, "lng": 116.4074, "source": "fallback", "original_input": "修电脑的服务站"}
+2026-05-09 16:41:30,839 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": false, "error": "无法可靠解析用户当前位置，已回退到默认坐标。", "lat": 39.9042, "lng": 116.4074, "source": "fallback", "original_input": "修电脑的服务站"}
+2026-05-09 16:41:33,214 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=query_nearest_repair_shops_by_coords args={"lat": 39.9042, "lng": 116.4074, "limit": 3}
+2026-05-09 16:41:33,217 | INFO     | MultiAgent_App:247 | [NearestShops] query start lat=39.9042 lng=116.4074 limit=3
+2026-05-09 16:41:33,219 | INFO     | MultiAgent_App:294 | [NearestShops] found count=3 lat=39.9042 lng=116.4074
+2026-05-09 16:41:33,220 | INFO     | MultiAgent_App:312 | [NearestShops] query result={"ok": true, "count": 3, "data": [{"id": 1, "service_station_name": "联想ThinkPad官方服务站-海淀中关村店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区中关村大街27号中关村大厦1层", "phone": "010-62560001", "manager": "张伟", "manager_phone": "13800000001", "opening_hours": "09:00-18:00", "repair_types": "电脑维修,硬件更换", "repair_specialties": "ThinkPad,笔记本,主板", "repair_services": "检测,清灰,更换电池,系统重装", "supported_brands": "联想,ThinkPad", "rating": "4.80", "established_year": 2018, "employee_count": 12, "service_station_description": "联想官方授权服务站，支持 ThinkPad 笔记本常见维修。", "latitude": "39.9836200", "longitude": "116.3152400", "distance_km": 11.820125657722507}, {"id": 3, "service_station_name": "华为客户服务中心-西二旗店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区西二旗大街39号1层", "phone": "010-62990003", "manager": "王强", "manager_phone": "13800000003", "opening_hours": "09:30-18:30", "repair_types": "手机维修,平板维修,电脑维修", "repair_specialties": "华为手机,MateBook", "repair_services": "检测,保养,换件,数据迁移咨询", "supported_brands": "华为,HUAWEI,MateBook", "rating": "4.70", "established_year": 2019, "employee_count": 10, "service_station_description": "华为官方客户服务中心，可处理电脑和移动设备售后。", "latitude": "40.0481500", "l
+2026-05-09 16:41:33,221 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": true, "count": 3, "data": [{"id": 1, "service_station_name": "联想ThinkPad官方服务站-海淀中关村店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区中关村大街27号中关村大厦1层", "phone": "010-62560001", "manager": "张伟", "manager_phone": "13800000001", "opening_hours": "09:00-18:00", "repair_types": "电脑维修,硬件更换", "repair_specialties": "ThinkPad,笔记本,主板", "repair_services": "检测,清灰,更换电池,系统重装", "supported_brands": "联想,ThinkPad", "rating": "4.80", "established_year": 2018, "employee_count": 12, "service_station_description": "联想官方授权服务站，支持 ThinkPad 笔记本常见维修。", "latitude": "39.9836200", "longitude": "116.3152400", "distance_km": 11.820125657722507}, {"id": 3, "service_station_name": "华为客户服务中心-西二旗店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区西二旗大街39号1层", "phone": "010-62990003", "manager": "王强", "manager_phone": "13800000003", "opening_hours": "09:30-18:30", "repair_types": "手机维修,平板维修,电脑维修", "repair_specialties": "华为手机,MateBook", "repair_services": "检测,保养,换件,数据迁移咨询", "supported_brands": "华为,HUAWEI,MateBook", "rating": "4.70", "established_year": 2019, "employee_count": 10, "service_station_description": "华为官方客户服务中心，可处理电脑和移动设备售后。", "latitude": "40.0481500", "longitude": "116.3068800", "distance_km": 18.154137089406674}, {"id": 2, "service_station_name": "小米授权服务中心-昌平龙域店", "province": "北京市", "city": "北京市", "district": "昌平区", "address": "北京市昌平区回龙观西大街龙域北街5号院2号楼1层", "phone": "010-81770002", "manager": "李娜", "manager_phone": "13800000002", "opening_hours": "10
+2026-05-09 16:41:37,623 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=map_uri args={"origin_lat": "39.9042", "origin_lng": "116.4074", "destination_lat": "39.98362", "destination_lng": "116.31524", "origin_name": "用户位置", "destination_name": "联想ThinkPad官方服务站-海淀中关村店", "mode": "driving"}
+2026-05-09 16:41:37,626 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": true, "uri": "https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station", "origin": {"lat": 39.9042, "lng": 116.4074, "name": "用户位置"}, "destination": {"lat": 39.98362, "lng": 116.31524, "name": "联想ThinkPad官方服务站-海淀中关村店"}, "mode": "driving"}
+2026-05-09 16:41:56,760 | INFO     | MultiAgent_App:114 | [ServiceAgent] final_output query=修电脑的服务站 output=根据您的需求，为您找到距离最近的3家电脑维修服务站（按距离由近到远排列）：
+
+**1. 联想ThinkPad官方服务站-海淀中关村店**
+- **地址**：北京市海淀区中关村大街27号中关村大厦1层
+- **联系电话**：010-62560001
+- **距离**：11.82公里
+- **服务品牌**：联想、ThinkPad
+- **营业时间**：09:00-18:00
+- **服务内容**：检测、清灰、更换电池、系统重装
+
+**2. 华为客户服务中心-西二旗店**
+- **地址**：北京市海淀区西二旗大街39号1层
+- **联系电话**：010-62990003
+- **距离**：18.15公里
+- **服务品牌**：华为、HUAWEI、MateBook
+- **营业时间**：09:30-18:30
+- **服务内容**：检测、保养、换件、数据迁移咨询
+
+**3. 小米授权服务中心-昌平龙域店**
+- **地址**：北京市昌平区回龙观西大街龙域北街5号院2号楼1层
+- **联系电话**：010-81770002
+- **距离**：19.01公里
+- **服务品牌**：小米、Redmi
+- **营业时间**：10:00-19:00
+- **服务内容**：换屏、换电池、进水检测、软件升级
+
+**导航链接（前往最近的服务站）**：
+[点击此处导航至联想ThinkPad官方服务站](https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station)
+
+后端错误详情：
+- unknown: 无法可靠解析用户当前位置，已回退到默认坐标。
+2026-05-09 16:41:56,762 | INFO     | MultiAgent_App:127 | [Route] service station result=根据您的需求，为您找到距离最近的3家电脑维修服务站（按距离由近到远排列）：
+
+**1. 联想ThinkPad官方服务站-海淀中关村店**
+- **地址**：北京市海淀区中关村大街27号中关村大厦1层
+- **联系电话**：010-62560001
+- **距离**：11.82公里
+- **服务品牌**：联想、ThinkPad
+- **营业时间**：09:00-18:00
+- **服务内容**：检测、清灰、更换电池、系统重装
+
+**2. 华为客户服务中心-西二旗店**
+- **地址**：北京市海淀区西二旗大街39号1层
+- **联系电话**：010-62990003
+- **距离**：18.15公里
+- **服务品牌**：华为、HUAWEI、MateBook
+- **营业时间**：09:30-18:30
+- **服务内容**：检测、保养、换件、数据迁移咨询
+
+**3. 小米授权服务中心-昌平龙域店**
+- **地址**：北京市昌平区回龙观西大街龙域北街5号院2号楼1层
+- **联系电话**：010-81770002
+- **距离**：19.01公里
+- **服务品牌**：小米、Redmi
+- **营业时间**：10:00-19:00
+- **服务内容**：换屏、换电池、进水检测、软件升级
+
+**导航链接（前往最近的服务站）**：
+[点击此处导航至联想ThinkPad官方服务站](https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station)
+
+后端错误详情：
+- unknown: 无法可靠
+2026-05-09 16:42:15,874 | INFO     | MultiAgent_App:158 | [Approval] resumed run token=bc7ab851-96cb-483a-a430-7b9b793be276 final_output=根据您的需求，为您找到距离最近的3家电脑维修服务站（按距离由近到远排列）：
+
+**1. 联想ThinkPad官方服务站-海淀中关村店**
+- **地址**：北京市海淀区中关村大街27号中关村大厦1层
+- **联系电话**：010-62560001
+- **距离**：11.82公里
+- **服务品牌**：联想、ThinkPad
+- **营业时间**：09:00-18:00
+- **服务内容**：检测、清灰、更换电池、系统重装
+
+**2. 华为客户服务中心-西二旗店**
+- **地址**：北京市海淀区西二旗大街39号1层
+- **联系电话**：010-62990003
+- **距离**：18.15公里
+- **服务品牌**：华为、HUAWEI、MateBook
+- **营业时间**：09:30-18:30
+- **服务内容**：检测、保养、换件、数据迁移咨询
+
+**3. 小米授权服务中心-昌平龙域店**
+- **地址**：北京市昌平区回龙观西大街龙域北街5号院2号楼1层
+- **联系电话**：010-81770002
+- **距离**：19.01公里
+- **服务品牌**：小米、Redmi
+- **营业时间**：10:00-19:00
+- **服务内容**：换屏、换电池、进水检测、软件升级
+
+**导航链接（前往最近的服务站）**：
+[点击此处导航至联想ThinkPad官方服务站](https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station) structured_intent=general
+2026-05-09 16:42:15,883 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 16:42:25,851 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 16:42:37,030 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 16:42:39,579 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 16:43:36,776 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 16:43:58,630 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 16:47:31,070 | INFO     | MultiAgent_App:66 | user=root1 query=?????
+2026-05-09 16:47:31,077 | INFO     | MultiAgent_App:57 | [AgentService] start user=root1 session=debug_history_session retry=True skip_user_message=False query=?????
+2026-05-09 16:47:31,079 | INFO     | MultiAgent_App:87 | [AgentService] query rewritten user=root1 session=debug_history_session original=????? rewritten=?????
+2026-05-09 16:47:31,084 | INFO     | MultiAgent_App:136 | [AgentService] orchestrator started user=root1 session=debug_history_session
+2026-05-09 16:47:31,085 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 16:48:51,748 | INFO     | MultiAgent_App:57 | [AgentService] start user=u1 session=s1 retry=True skip_user_message=False query=我要修电脑
+2026-05-09 16:48:51,811 | INFO     | MultiAgent_App:87 | [AgentService] query rewritten user=u1 session=s1 original=我要修电脑 rewritten=我要修电脑
+2026-05-09 16:48:51,811 | INFO     | MultiAgent_App:136 | [AgentService] orchestrator started user=u1 session=s1
+2026-05-09 16:48:51,813 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 16:48:51,813 | INFO     | MultiAgent_App:161 | [AgentService] approval interruption user=u1 session=s1 count=1
+2026-05-09 16:48:53,567 | INFO     | MultiAgent_App:158 | [Approval] resumed run token=token-1 final_output={"answer": "\u8bf7\u544a\u8bc9\u6211\u4f60\u6240\u5728\u7684\u57ce\u5e02\u6216\u5177\u4f53\u5730\u5740"} structured_intent=general
+2026-05-09 16:51:59,481 | INFO     | MultiAgent_App:65 | [AgentService] start user=u1 session=s1 retry=True skip_user_message=False query=我要修电脑
+2026-05-09 16:51:59,546 | INFO     | MultiAgent_App:95 | [AgentService] query rewritten user=u1 session=s1 original=我要修电脑 rewritten=我要修电脑
+2026-05-09 16:51:59,546 | INFO     | MultiAgent_App:144 | [AgentService] orchestrator started user=u1 session=s1
+2026-05-09 16:51:59,547 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 16:51:59,547 | INFO     | MultiAgent_App:169 | [AgentService] approval interruption user=u1 session=s1 count=1
+2026-05-09 16:51:59,555 | INFO     | MultiAgent_App:166 | [Approval] resumed run token=token-1 final_output={"answer": "\u8bf7\u544a\u8bc9\u6211\u4f60\u6240\u5728\u7684\u57ce\u5e02\u6216\u5177\u4f53\u5730\u5740"} structured_intent=general
+2026-05-09 16:52:14,966 | INFO     | MultiAgent_App:65 | [AgentService] start user=u1 session=s1 retry=True skip_user_message=False query=我要修电脑
+2026-05-09 16:52:15,034 | INFO     | MultiAgent_App:95 | [AgentService] query rewritten user=u1 session=s1 original=我要修电脑 rewritten=我要修电脑
+2026-05-09 16:52:15,035 | INFO     | MultiAgent_App:144 | [AgentService] orchestrator started user=u1 session=s1
+2026-05-09 16:52:15,035 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 16:52:15,035 | INFO     | MultiAgent_App:169 | [AgentService] approval interruption user=u1 session=s1 count=1
+2026-05-09 16:52:15,044 | INFO     | MultiAgent_App:166 | [Approval] resumed run token=token-1 final_output={"answer": "\u8bf7\u544a\u8bc9\u6211\u4f60\u6240\u5728\u7684\u57ce\u5e02\u6216\u5177\u4f53\u5730\u5740"} structured_intent=general
+2026-05-09 16:52:15,055 | INFO     | MultiAgent_App:90 | [Location] missing location result={"ok": false, "error": "无法可靠解析用户当前位置，请先提供你的城市、区县、商圈或具体地址。", "source": "missing_location", "original_input": "我要修电脑", "needs_user_location": true, "ask_user": "请告诉我你现在在哪个城市、区县、商圈，或者直接发一个具体地址，我再帮你查最近的电脑维修服务站。"}
+2026-05-09 16:52:59,002 | INFO     | MultiAgent_App:66 | user=root1 query=我要修电脑
+2026-05-09 16:52:59,004 | INFO     | MultiAgent_App:57 | [AgentService] start user=root1 session=session_1778294394271_gs8sh88st retry=True skip_user_message=False query=我要修电脑
+2026-05-09 16:52:59,006 | INFO     | MultiAgent_App:87 | [AgentService] query rewritten user=root1 session=session_1778294394271_gs8sh88st original=我要修电脑 rewritten=我要修电脑
+2026-05-09 16:52:59,014 | INFO     | MultiAgent_App:136 | [AgentService] orchestrator started user=root1 session=session_1778294394271_gs8sh88st
+2026-05-09 16:52:59,015 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 16:53:20,323 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=query_service_station_and_navigate args={"query": "修电脑的服务站"}
+2026-05-09 16:53:20,326 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 16:53:20,327 | INFO     | MultiAgent_App:161 | [AgentService] approval interruption user=root1 session=session_1778294394271_gs8sh88st count=1
+2026-05-09 16:53:20,338 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 16:53:53,269 | INFO     | MultiAgent_App:125 | [Route] service station query=修电脑的服务站
+2026-05-09 16:53:55,050 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=resolve_user_location_from_text args={"user_input": "修电脑的服务站"}
+2026-05-09 16:53:55,052 | INFO     | MultiAgent_App:143 | [Location] resolve start raw_input=修电脑的服务站
+2026-05-09 16:53:55,052 | INFO     | MultiAgent_App:164 | [Location] geocode start address=修电脑的服务站
+2026-05-09 16:53:55,369 | INFO     | MultiAgent_App:60 | [BaiduMCP] tool=map_geocode raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:53:55,370 | ERROR    | MultiAgent_App:71 | [BaiduMCP] tool=map_geocode json parse failed error=Expecting value: line 1 column 1 (char 0) raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:53:55,371 | WARNING  | MultiAgent_App:191 | [Location] geocode failed address=修电脑的服务站 error=Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 170, in resolve_user_location_from_text
+    logger.info("[Location] geocode start address=%s", normalized_input)
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 69, in _parse_json_response
+    logger.error(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-05-09 16:54:29,336 | INFO     | MultiAgent_App:194 | [Location] detected external_ip=112.47.228.186
+2026-05-09 16:54:29,337 | INFO     | MultiAgent_App:198 | [Location] ip location start ip=112.47.228.186
+2026-05-09 16:54:29,554 | INFO     | MultiAgent_App:60 | [BaiduMCP] tool=map_ip_location raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:54:29,554 | ERROR    | MultiAgent_App:71 | [BaiduMCP] tool=map_ip_location json parse failed error=Expecting value: line 1 column 1 (char 0) raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:54:29,554 | WARNING  | MultiAgent_App:225 | [Location] ip location failed ip=112.47.228.186 error=Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 201, in resolve_user_location_from_text
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\infrastructure\tools\local\service_station.py", line 69, in _parse_json_response
+    logger.error(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-05-09 16:54:29,558 | INFO     | MultiAgent_App:238 | [Location] fallback result={"ok": false, "error": "无法可靠解析用户当前位置，已回退到默认坐标。", "lat": 39.9042, "lng": 116.4074, "source": "fallback", "original_input": "修电脑的服务站"}
+2026-05-09 16:54:29,560 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": false, "error": "无法可靠解析用户当前位置，已回退到默认坐标。", "lat": 39.9042, "lng": 116.4074, "source": "fallback", "original_input": "修电脑的服务站"}
+2026-05-09 16:54:31,923 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=query_nearest_repair_shops_by_coords args={"lat": 39.9042, "lng": 116.4074, "limit": 3}
+2026-05-09 16:54:31,926 | INFO     | MultiAgent_App:247 | [NearestShops] query start lat=39.9042 lng=116.4074 limit=3
+2026-05-09 16:54:31,928 | INFO     | MultiAgent_App:294 | [NearestShops] found count=3 lat=39.9042 lng=116.4074
+2026-05-09 16:54:31,928 | INFO     | MultiAgent_App:312 | [NearestShops] query result={"ok": true, "count": 3, "data": [{"id": 1, "service_station_name": "联想ThinkPad官方服务站-海淀中关村店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区中关村大街27号中关村大厦1层", "phone": "010-62560001", "manager": "张伟", "manager_phone": "13800000001", "opening_hours": "09:00-18:00", "repair_types": "电脑维修,硬件更换", "repair_specialties": "ThinkPad,笔记本,主板", "repair_services": "检测,清灰,更换电池,系统重装", "supported_brands": "联想,ThinkPad", "rating": "4.80", "established_year": 2018, "employee_count": 12, "service_station_description": "联想官方授权服务站，支持 ThinkPad 笔记本常见维修。", "latitude": "39.9836200", "longitude": "116.3152400", "distance_km": 11.820125657722507}, {"id": 3, "service_station_name": "华为客户服务中心-西二旗店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区西二旗大街39号1层", "phone": "010-62990003", "manager": "王强", "manager_phone": "13800000003", "opening_hours": "09:30-18:30", "repair_types": "手机维修,平板维修,电脑维修", "repair_specialties": "华为手机,MateBook", "repair_services": "检测,保养,换件,数据迁移咨询", "supported_brands": "华为,HUAWEI,MateBook", "rating": "4.70", "established_year": 2019, "employee_count": 10, "service_station_description": "华为官方客户服务中心，可处理电脑和移动设备售后。", "latitude": "40.0481500", "l
+2026-05-09 16:54:31,930 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": true, "count": 3, "data": [{"id": 1, "service_station_name": "联想ThinkPad官方服务站-海淀中关村店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区中关村大街27号中关村大厦1层", "phone": "010-62560001", "manager": "张伟", "manager_phone": "13800000001", "opening_hours": "09:00-18:00", "repair_types": "电脑维修,硬件更换", "repair_specialties": "ThinkPad,笔记本,主板", "repair_services": "检测,清灰,更换电池,系统重装", "supported_brands": "联想,ThinkPad", "rating": "4.80", "established_year": 2018, "employee_count": 12, "service_station_description": "联想官方授权服务站，支持 ThinkPad 笔记本常见维修。", "latitude": "39.9836200", "longitude": "116.3152400", "distance_km": 11.820125657722507}, {"id": 3, "service_station_name": "华为客户服务中心-西二旗店", "province": "北京市", "city": "北京市", "district": "海淀区", "address": "北京市海淀区西二旗大街39号1层", "phone": "010-62990003", "manager": "王强", "manager_phone": "13800000003", "opening_hours": "09:30-18:30", "repair_types": "手机维修,平板维修,电脑维修", "repair_specialties": "华为手机,MateBook", "repair_services": "检测,保养,换件,数据迁移咨询", "supported_brands": "华为,HUAWEI,MateBook", "rating": "4.70", "established_year": 2019, "employee_count": 10, "service_station_description": "华为官方客户服务中心，可处理电脑和移动设备售后。", "latitude": "40.0481500", "longitude": "116.3068800", "distance_km": 18.154137089406674}, {"id": 2, "service_station_name": "小米授权服务中心-昌平龙域店", "province": "北京市", "city": "北京市", "district": "昌平区", "address": "北京市昌平区回龙观西大街龙域北街5号院2号楼1层", "phone": "010-81770002", "manager": "李娜", "manager_phone": "13800000002", "opening_hours": "10
+2026-05-09 16:54:36,627 | INFO     | MultiAgent_App:88 | [ServiceAgent] tool_called query=修电脑的服务站 tool=map_uri args={"origin_lat": "39.9042", "origin_lng": "116.4074", "destination_lat": "39.98362", "destination_lng": "116.31524", "origin_name": "用户位置", "destination_name": "联想ThinkPad官方服务站-海淀中关村店", "mode": "driving"}
+2026-05-09 16:54:36,630 | INFO     | MultiAgent_App:102 | [ServiceAgent] tool_output query=修电脑的服务站 tool=unknown output={"ok": true, "uri": "https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station", "origin": {"lat": 39.9042, "lng": 116.4074, "name": "用户位置"}, "destination": {"lat": 39.98362, "lng": 116.31524, "name": "联想ThinkPad官方服务站-海淀中关村店"}, "mode": "driving"}
+2026-05-09 16:54:56,131 | INFO     | MultiAgent_App:114 | [ServiceAgent] final_output query=修电脑的服务站 output=根据您的需求，为您找到距离最近的3家电脑维修服务站，按距离由近到远排列如下：
+
+---
+
+**1. 联想ThinkPad官方服务站-海淀中关村店**  
+- **地址**：北京市海淀区中关村大街27号中关村大厦1层  
+- **电话**：010-62560001  
+- **距离**：11.82公里  
+- **服务品牌**：联想、ThinkPad  
+- **营业时间**：09:00-18:00  
+- **服务内容**：检测、清灰、更换电池、系统重装  
+
+[点击导航至该服务站](https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station)
+
+---
+
+**2. 华为客户服务中心-西二旗店**  
+- **地址**：北京市海淀区西二旗大街39号1层  
+- **电话**：010-62990003  
+- **距离**：18.15公里  
+- **服务品牌**：华为、HUAWEI、MateBook  
+- **营业时间**：09:30-18:30  
+- **服务内容**：检测、保养、换件、数据迁移咨询  
+
+---
+
+**3. 小米授权服务中心-昌平龙域店**  
+- **地址**：北京市昌平区回龙观西大街龙域北街5号院2号楼1层  
+- **电话**：010-81770002  
+- **距离**：19.01公里  
+- **服务品牌**：小米、Redmi  
+- **营业时间**：10:00-19:00  
+- **服务内容**：换屏、换电池、进水检测、软件升级  
+
+---
+
+后端错误详情：
+- unknown: 无法可靠解析用户当前位置，已回退到默认坐标。
+2026-05-09 16:54:56,133 | INFO     | MultiAgent_App:127 | [Route] service station result=根据您的需求，为您找到距离最近的3家电脑维修服务站，按距离由近到远排列如下：
+
+---
+
+**1. 联想ThinkPad官方服务站-海淀中关村店**  
+- **地址**：北京市海淀区中关村大街27号中关村大厦1层  
+- **电话**：010-62560001  
+- **距离**：11.82公里  
+- **服务品牌**：联想、ThinkPad  
+- **营业时间**：09:00-18:00  
+- **服务内容**：检测、清灰、更换电池、系统重装  
+
+[点击导航至该服务站](https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station)
+
+---
+
+**2. 华为客户服务中心-西二旗店**  
+- **地址**：北京市海淀区西二旗大街39号1层  
+- **电话**：010-62990003  
+- **距离**：18.15公里  
+- **服务品牌**：华为、HUAWEI、MateBook  
+- **营业时间**：09:30-18:30  
+- **服务内容**：检测、保养、换件、数据迁移咨询  
+
+---
+
+**3. 小米授权服务中心-昌平龙域店**  
+- **地址**：北京市昌平区回龙观西大街龙域北街5号院2号楼1层  
+- **电话**：010-81770002  
+- **距离**：19.01公里  
+- **服务品牌**：小米、Redmi  
+- **营业时间**：10:00-19:00  
+- **服务内容**：换屏、换电池、进水检测、软件升级  
+
+---
+
+2026-05-09 16:55:16,304 | INFO     | MultiAgent_App:158 | [Approval] resumed run token=84fdba4d-23da-42e2-b14a-76100af16c7b final_output=根据您的需求，为您找到距离最近的3家电脑维修服务站，按距离由近到远排列如下：
+
+---
+
+**1. 联想ThinkPad官方服务站-海淀中关村店**  
+- **地址**：北京市海淀区中关村大街27号中关村大厦1层  
+- **电话**：010-62560001  
+- **距离**：11.82公里  
+- **服务品牌**：联想、ThinkPad  
+- **营业时间**：09:00-18:00  
+- **服务内容**：检测、清灰、更换电池、系统重装  
+
+[点击导航至该服务站](https://api.map.baidu.com/direction?origin=latlng%3A39.9042%2C116.4074%7Cname%3A%E7%94%A8%E6%88%B7%E4%BD%8D%E7%BD%AE&destination=latlng%3A39.98362%2C116.31524%7Cname%3A%E8%81%94%E6%83%B3ThinkPad%E5%AE%98%E6%96%B9%E6%9C%8D%E5%8A%A1%E7%AB%99-%E6%B5%B7%E6%B7%80%E4%B8%AD%E5%85%B3%E6%9D%91%E5%BA%97&mode=driving&region=%E5%85%A8%E5%9B%BD&output=html&src=multi_agent_repair_station)
+
+---
+
+**2. 华为客户服务中心-西二旗店**  
+- **地址**：北京市海淀区西二旗大街39号1层  
+- **电话**：010-62990003  
+- **距离**：18.15公里  
+- **服务品牌**：华为、HUAWEI、MateBook  
+- **营业时间**：09:30-18:30  
+- **服务内容**：检测、保养、换件、数据迁移咨询  
+
+---
+
+**3. 小米授权服务中心-昌平龙域店**  
+- **地址**：北京市昌平区回龙观西大街龙域北街5号院2号楼1层  
+- **电话**：010-81770002  
+- **距离**：19.01公里  
+- **服务品牌**：小米、Redmi  
+- **营业时间**：10:00-19:00  
+- **服务内容**：换屏、换电池、进水检测、软件升级  
+
+---
+ structured_intent=general
+2026-05-09 16:55:16,339 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 17:06:16,779 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 17:06:48,976 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 17:06:58,916 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 17:07:41,306 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 17:07:47,316 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 17:07:54,875 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 17:08:18,195 | INFO     | MultiAgent_App:183 | fetch sessions for user=root1
+2026-05-09 17:10:15,443 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 17:10:15,474 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 17:10:21,526 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 17:10:22,555 | INFO     | MultiAgent_App:51 | 已触发本地知识库 MCP 服务启动
+2026-05-09 17:10:34,540 | INFO     | MultiAgent_App:16 | 知识库 MCP 服务已就绪
+2026-05-09 17:10:34,613 | INFO     | MultiAgent_App:22 | 知识库 MCP 连接成功
+2026-05-09 17:10:35,154 | INFO     | MultiAgent_App:28 | 百度地图 MCP 连接成功
+2026-05-09 17:10:35,155 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 17:19:35,661 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1
+2026-05-09 17:19:42,053 | INFO     | MultiAgent_App:63 | user=root1 query=你好
+2026-05-09 17:19:42,054 | INFO     | MultiAgent_App:65 | [AgentService] start user=root1 session=debug_history_session retry=True skip_user_message=False query=你好
+2026-05-09 17:19:42,056 | INFO     | MultiAgent_App:95 | [AgentService] query rewritten user=root1 session=debug_history_session original=你好 rewritten=你好
+2026-05-09 17:19:42,062 | INFO     | MultiAgent_App:144 | [AgentService] orchestrator started user=root1 session=debug_history_session
+2026-05-09 17:19:42,063 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 17:19:43,854 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 17:19:43,854 | INFO     | MultiAgent_App:212 | [AgentService] orchestrator finished user=root1 session=debug_history_session final_output=你好！请问有什么我可以帮您的吗？ structured_intent=general
+2026-05-09 17:19:43,863 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1
+2026-05-09 17:19:51,383 | INFO     | MultiAgent_App:63 | user=root1 query=我电脑坏了
+2026-05-09 17:19:51,385 | INFO     | MultiAgent_App:65 | [AgentService] start user=root1 session=debug_history_session retry=True skip_user_message=False query=我电脑坏了
+2026-05-09 17:19:51,388 | INFO     | MultiAgent_App:95 | [AgentService] query rewritten user=root1 session=debug_history_session original=我电脑坏了 rewritten=我电脑坏了
+2026-05-09 17:19:51,394 | INFO     | MultiAgent_App:144 | [AgentService] orchestrator started user=root1 session=debug_history_session
+2026-05-09 17:19:51,395 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 17:19:52,526 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=consult_technical_expert args={"query": "电脑坏了"}
+2026-05-09 17:19:52,529 | INFO     | MultiAgent_App:58 | [Route] technical expert query=电脑坏了
+2026-05-09 17:19:52,936 | ERROR    | MultiAgent_App:67 | [Route] technical expert failed query=电脑坏了 error=Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Non-streaming mode does not support Web Search in thinking mode.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-8461a062-284d-95a4-b949-5d2ceb496445', 'request_id': '8461a062-284d-95a4-b949-5d2ceb496445'}
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 59, in consult_technical_expert
+    result = await Runner.run(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run.py", line 223, in run
+    return await runner.run(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run.py", line 1067, in run
+    turn_result = await model_task
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1549, in run_single_turn
+    new_response = await get_new_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1649, in get_new_response
+    new_response = await get_response_with_retry(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\model_retry.py", line 544, in get_response_with_retry
+    response = await get_response()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\models\openai_chatcompletions.py", line 121, in get_response
+    response = await self._fetch_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\models\openai_chatcompletions.py", line 391, in _fetch_response
+    ret = await self._get_client().chat.completions.create(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\resources\chat\completions\completions.py", line 2714, in create
+    return await self._post(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\_base_client.py", line 1913, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\_base_client.py", line 1698, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Non-streaming mode does not support Web Search in thinking mode.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-8461a062-284d-95a4-b949-5d2ceb496445', 'request_id': '8461a062-284d-95a4-b949-5d2ceb496445'}
+2026-05-09 17:19:52,951 | INFO     | MultiAgent_App:80 | [Stream] tool_output=咨询技术专家失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Non-streaming mode does not support Web Search in thinking mode.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-8461a062-284d-95a4-b949-5d2ceb496445', 'request_id': '8461a062-284d-95a4-b949-5d2ceb496445'}
+2026-05-09 17:19:55,721 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 17:19:55,722 | INFO     | MultiAgent_App:212 | [AgentService] orchestrator finished user=root1 session=debug_history_session final_output=很抱歉，技术专家咨询暂时无法提供服务。不过您可以先描述一下电脑具体出现了什么问题（比如无法开机、蓝屏、运行缓慢等），我会尽力为您提供一些建议。如果需要维修服务，也可以帮您查询附近的维修站点。 structured_intent=general
+2026-05-09 17:19:55,730 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1
+2026-05-09 17:20:27,913 | INFO     | MultiAgent_App:63 | user=root1 query=我电脑蓝屏了
+2026-05-09 17:20:27,915 | INFO     | MultiAgent_App:65 | [AgentService] start user=root1 session=debug_history_session retry=True skip_user_message=False query=我电脑蓝屏了
+2026-05-09 17:20:27,918 | INFO     | MultiAgent_App:95 | [AgentService] query rewritten user=root1 session=debug_history_session original=我电脑蓝屏了 rewritten=我电脑蓝屏了
+2026-05-09 17:20:27,924 | INFO     | MultiAgent_App:144 | [AgentService] orchestrator started user=root1 session=debug_history_session
+2026-05-09 17:20:27,925 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 17:20:29,437 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=consult_technical_expert args={"query": "电脑蓝屏了怎么办"}
+2026-05-09 17:20:29,440 | INFO     | MultiAgent_App:58 | [Route] technical expert query=电脑蓝屏了怎么办
+2026-05-09 17:20:30,165 | ERROR    | MultiAgent_App:67 | [Route] technical expert failed query=电脑蓝屏了怎么办 error=Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Non-streaming mode does not support Web Search in thinking mode.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-f4a5d561-aaa5-902b-b791-0d6e716b8b3f', 'request_id': 'f4a5d561-aaa5-902b-b791-0d6e716b8b3f'}
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 59, in consult_technical_expert
+    result = await Runner.run(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run.py", line 223, in run
+    return await runner.run(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run.py", line 1067, in run
+    turn_result = await model_task
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1549, in run_single_turn
+    new_response = await get_new_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1649, in get_new_response
+    new_response = await get_response_with_retry(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\model_retry.py", line 544, in get_response_with_retry
+    response = await get_response()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\models\openai_chatcompletions.py", line 121, in get_response
+    response = await self._fetch_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\models\openai_chatcompletions.py", line 391, in _fetch_response
+    ret = await self._get_client().chat.completions.create(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\resources\chat\completions\completions.py", line 2714, in create
+    return await self._post(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\_base_client.py", line 1913, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\_base_client.py", line 1698, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Non-streaming mode does not support Web Search in thinking mode.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-f4a5d561-aaa5-902b-b791-0d6e716b8b3f', 'request_id': 'f4a5d561-aaa5-902b-b791-0d6e716b8b3f'}
+2026-05-09 17:20:30,173 | INFO     | MultiAgent_App:80 | [Stream] tool_output=咨询技术专家失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Non-streaming mode does not support Web Search in thinking mode.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-f4a5d561-aaa5-902b-b791-0d6e716b8b3f', 'request_id': 'f4a5d561-aaa5-902b-b791-0d6e716b8b3f'}
+2026-05-09 17:20:37,307 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 17:20:37,308 | INFO     | MultiAgent_App:212 | [AgentService] orchestrator finished user=root1 session=debug_history_session final_output=很抱歉，技术专家咨询暂时无法提供服务。不过针对电脑蓝屏问题，您可以尝试以下基础排查步骤：
+
+1. **记录蓝屏代码**：蓝屏时屏幕通常会显示错误代码（如0x0000007E等），记下这个代码有助于诊断问题。
+
+2. **最近变更检查**：
+   - 是否安装了新硬件/软件？
+   - 是否更新了系统或驱动程序？
+
+3. **安全模式启动**：
+   - 重启电脑，在启动时反复按F8（Windows 7）或通过高级启动选项（Windows 10/11）进入安全模式
+   - 如果能进入安全模式，可能是驱动或软件冲突
+
+4. **内存检测**：
+   - Windows自带内存诊断工具（搜索"Windows内存诊断"）
+   - 或使用MemTest86等第三方工具
+
+5. **硬盘健康检查**：
+   - 使用CrystalDiskInfo等工具检查硬盘状态
+
+如果以上方法无法解决，建议备份重要数据后联系专业维修人员。需要我帮您查询附近的电脑维修站点吗？ structured_intent=general
+2026-05-09 17:20:37,318 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1
+2026-05-09 17:25:48,356 | INFO     | MultiAgent_App:62 | [Route] technical expert query=电脑蓝屏了怎么办
+2026-05-09 17:25:48,358 | INFO     | MultiAgent_App:73 | [Route] technical expert result=蓝屏排查建议
+2026-05-09 17:35:00,260 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 17:35:00,308 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 17:35:08,324 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 17:35:09,370 | INFO     | MultiAgent_App:51 | 已触发本地知识库 MCP 服务启动
+2026-05-09 17:35:23,336 | INFO     | MultiAgent_App:16 | 知识库 MCP 服务已就绪
+2026-05-09 17:35:23,390 | INFO     | MultiAgent_App:22 | 知识库 MCP 连接成功
+2026-05-09 17:35:23,903 | INFO     | MultiAgent_App:28 | 百度地图 MCP 连接成功
+2026-05-09 17:35:23,904 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 17:35:44,883 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1
+2026-05-09 17:35:49,074 | INFO     | MultiAgent_App:63 | user=root1 query=我电脑蓝屏了
+2026-05-09 17:35:49,074 | INFO     | MultiAgent_App:65 | [AgentService] start user=root1 session=debug_history_session retry=True skip_user_message=False query=我电脑蓝屏了
+2026-05-09 17:35:49,077 | INFO     | MultiAgent_App:95 | [AgentService] query rewritten user=root1 session=debug_history_session original=我电脑蓝屏了 rewritten=我电脑蓝屏了
+2026-05-09 17:35:49,084 | INFO     | MultiAgent_App:144 | [AgentService] orchestrator started user=root1 session=debug_history_session
+2026-05-09 17:35:49,085 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 17:35:51,924 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=consult_technical_expert args={"query": "电脑蓝屏了怎么办"}
+2026-05-09 17:35:51,929 | INFO     | MultiAgent_App:62 | [Route] technical expert query=电脑蓝屏了怎么办
+2026-05-09 17:35:52,262 | ERROR    | MultiAgent_App:76 | [Route] technical expert failed query=电脑蓝屏了怎么办 error=Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Agent mode does not support tools. You need to either avoid using enable_code_interpreter or avoid using the agent mode with enable_search.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-58cbf0f4-6ea7-9bce-99b8-c7705eeb0493', 'request_id': '58cbf0f4-6ea7-9bce-99b8-c7705eeb0493'}
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 69, in _run_technical_agent_with_logging
+    async for _event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 900, in start_streaming
+    turn_result = await run_single_turn_streamed(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1303, in run_single_turn_streamed
+    async for event in retry_stream:
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\model_retry.py", line 652, in stream_response_with_retry
+    event = await stream.__anext__()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\models\openai_chatcompletions.py", line 237, in stream_response
+    response, stream = await self._fetch_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\models\openai_chatcompletions.py", line 391, in _fetch_response
+    ret = await self._get_client().chat.completions.create(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\resources\chat\completions\completions.py", line 2714, in create
+    return await self._post(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\_base_client.py", line 1913, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\_base_client.py", line 1698, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Agent mode does not support tools. You need to either avoid using enable_code_interpreter or avoid using the agent mode with enable_search.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-58cbf0f4-6ea7-9bce-99b8-c7705eeb0493', 'request_id': '58cbf0f4-6ea7-9bce-99b8-c7705eeb0493'}
+2026-05-09 17:35:52,280 | INFO     | MultiAgent_App:80 | [Stream] tool_output=咨询技术专家失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Agent mode does not support tools. You need to either avoid using enable_code_interpreter or avoid using the agent mode with enable_search.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-58cbf0f4-6ea7-9bce-99b8-c7705eeb0493', 'request_id': '58cbf0f4-6ea7-9bce-99b8-c7705eeb0493'}
+2026-05-09 17:36:01,874 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 17:36:01,874 | INFO     | MultiAgent_App:212 | [AgentService] orchestrator finished user=root1 session=debug_history_session final_output=很抱歉，技术专家咨询功能暂时不可用。针对电脑蓝屏问题，您可以尝试以下基础解决方案：
+
+1. **记录关键信息**  
+   - 蓝屏错误代码（如`0x0000007E`、`IRQL_NOT_LESS_OR_EQUAL`等）
+   - 蓝屏前的操作（如安装软件/驱动、插拔硬件等）
+
+2. **强制重启并进入安全模式**  
+   - Windows 10/11：连续强制关机3次触发自动修复 → 疑难解答 → 高级选项 → 启动设置 → 重启后按F5进入带网络的安全模式
+
+3. **卸载可疑更新/驱动**  
+   - 安全模式下打开「控制面板」→「程序和功能」→「查看已安装的更新」
+   - 卸载最近安装的系统更新或显卡/声卡等驱动
+
+4. **执行系统文件检查**  
+   - 以管理员身份运行CMD，输入：  
+     `sfc /scannow`  
+     `DISM /Online /Cleanup-Image /RestoreHealth`
+
+5. **检查硬件问题**  
+   - 内存：使用Windows内存诊断工具（搜索即可打开）
+   - 硬盘：通过Crystal structured_intent=general
+2026-05-09 17:36:01,889 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1
+2026-05-09 17:38:08,781 | INFO     | MultiAgent_App:62 | [Route] technical expert query=电脑蓝屏了怎么办
+2026-05-09 17:38:08,782 | INFO     | MultiAgent_App:73 | [Route] technical expert result=蓝屏排查建议
+2026-05-09 17:45:08,000 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 17:45:08,054 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 17:45:20,234 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 17:45:21,259 | INFO     | MultiAgent_App:51 | 已触发本地知识库 MCP 服务启动
+2026-05-09 17:45:32,691 | INFO     | MultiAgent_App:16 | 知识库 MCP 服务已就绪
+2026-05-09 17:45:32,746 | INFO     | MultiAgent_App:22 | 知识库 MCP 连接成功
+2026-05-09 17:45:33,179 | INFO     | MultiAgent_App:28 | 百度地图 MCP 连接成功
+2026-05-09 17:45:33,180 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 17:45:37,989 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1
+2026-05-09 17:45:46,193 | INFO     | MultiAgent_App:63 | user=root1 query=我电脑蓝屏了
+2026-05-09 17:45:46,194 | INFO     | MultiAgent_App:65 | [AgentService] start user=root1 session=debug_history_session retry=True skip_user_message=False query=我电脑蓝屏了
+2026-05-09 17:45:46,196 | INFO     | MultiAgent_App:95 | [AgentService] query rewritten user=root1 session=debug_history_session original=我电脑蓝屏了 rewritten=我电脑蓝屏了
+2026-05-09 17:45:46,203 | INFO     | MultiAgent_App:144 | [AgentService] orchestrator started user=root1 session=debug_history_session
+2026-05-09 17:45:46,205 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 17:45:48,534 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=consult_technical_expert args={"query": "电脑蓝屏了怎么办"}
+2026-05-09 17:45:48,539 | INFO     | MultiAgent_App:62 | [Route] technical expert query=电脑蓝屏了怎么办
+2026-05-09 17:45:53,514 | ERROR    | MultiAgent_App:36 | 发送请求获取知识库服务下的知识库数据失败:All connection attempts failed
+2026-05-09 17:45:54,957 | ERROR    | MultiAgent_App:76 | [Route] technical expert failed query=电脑蓝屏了怎么办 error=Tool bailian_web_search not found in agent 技术专家咨询智能体
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 69, in _run_technical_agent_with_logging
+    async for _event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 900, in start_streaming
+    turn_result = await run_single_turn_streamed(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1440, in run_single_turn_streamed
+    single_step_result = await get_single_step_result_from_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_resolution.py", line 1700, in get_single_step_result_from_response
+    processed_response = process_model_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_resolution.py", line 1654, in process_model_response
+    raise ModelBehaviorError(error)
+agents.exceptions.ModelBehaviorError: Tool bailian_web_search not found in agent 技术专家咨询智能体
+2026-05-09 17:45:54,974 | INFO     | MultiAgent_App:80 | [Stream] tool_output=咨询技术专家失败：Tool bailian_web_search not found in agent 技术专家咨询智能体
+2026-05-09 17:46:04,799 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 17:46:04,800 | INFO     | MultiAgent_App:212 | [AgentService] orchestrator finished user=root1 session=debug_history_session final_output=很抱歉，技术专家咨询功能暂时不可用。针对电脑蓝屏问题，您可以尝试以下基础解决方案：
+
+1. **记录关键信息**  
+   - 蓝屏错误代码（如`0x0000007E`、`IRQL_NOT_LESS_OR_EQUAL`等）
+   - 蓝屏前的操作（如安装软件/驱动、插拔硬件等）
+
+2. **强制重启并进入安全模式**  
+   - Windows 10/11：连续强制关机3次触发自动修复 → 疑难解答 → 高级选项 → 启动设置 → 重启后按F5进入带网络的安全模式
+
+3. **卸载可疑更新/驱动**  
+   - 安全模式下打开「控制面板」→「程序和功能」→「查看已安装的更新」
+   - 卸载最近安装的系统更新或显卡/声卡等驱动
+
+4. **执行系统文件检查**  
+   - 以管理员身份运行CMD，输入：  
+     `sfc /scannow`  
+     `DISM /Online /Cleanup-Image /RestoreHealth`
+
+5. **检查硬件问题**  
+   - 内存：使用Windows内存诊断工具（搜索即可打开）
+   - 硬盘：通过Crystal structured_intent=general
+2026-05-09 17:46:04,813 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1
+2026-05-09 17:46:17,080 | INFO     | MultiAgent_App:63 | user=root1 query=我电脑蓝屏了
+2026-05-09 17:46:17,082 | INFO     | MultiAgent_App:65 | [AgentService] start user=root1 session=debug_history_session retry=True skip_user_message=False query=我电脑蓝屏了
+2026-05-09 17:46:17,084 | INFO     | MultiAgent_App:101 | [ContextCompression] triggered: message_count=11 threshold=10
+2026-05-09 17:46:20,421 | INFO     | MultiAgent_App:152 | [ContextCompression] compressed: version=2 summary_text=用户反复报告电脑蓝屏问题，但未提供具体细节或接受进一步帮助。 entities=1 ongoing_issues=1
+2026-05-09 17:46:20,421 | INFO     | MultiAgent_App:30 | [SessionService] compression triggered user=root1 session=debug_history_session should_persist=True
+2026-05-09 17:46:20,437 | INFO     | MultiAgent_App:95 | [AgentService] query rewritten user=root1 session=debug_history_session original=我电脑蓝屏了 rewritten=我电脑蓝屏了
+2026-05-09 17:46:20,442 | INFO     | MultiAgent_App:144 | [AgentService] orchestrator started user=root1 session=debug_history_session
+2026-05-09 17:46:20,443 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 17:46:21,652 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=consult_technical_expert args={"query": "电脑蓝屏了"}
+2026-05-09 17:46:21,657 | INFO     | MultiAgent_App:62 | [Route] technical expert query=电脑蓝屏了
+2026-05-09 17:46:46,203 | ERROR    | MultiAgent_App:36 | 发送请求获取知识库服务下的知识库数据失败:All connection attempts failed
+2026-05-09 17:46:47,744 | ERROR    | MultiAgent_App:76 | [Route] technical expert failed query=电脑蓝屏了 error=Tool bailian_web_search not found in agent 技术专家咨询智能体
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 69, in _run_technical_agent_with_logging
+    async for _event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 900, in start_streaming
+    turn_result = await run_single_turn_streamed(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1440, in run_single_turn_streamed
+    single_step_result = await get_single_step_result_from_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_resolution.py", line 1700, in get_single_step_result_from_response
+    processed_response = process_model_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_resolution.py", line 1654, in process_model_response
+    raise ModelBehaviorError(error)
+agents.exceptions.ModelBehaviorError: Tool bailian_web_search not found in agent 技术专家咨询智能体
+2026-05-09 17:46:47,748 | INFO     | MultiAgent_App:80 | [Stream] tool_output=咨询技术专家失败：Tool bailian_web_search not found in agent 技术专家咨询智能体
+2026-05-09 17:46:55,064 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 17:46:55,065 | INFO     | MultiAgent_App:212 | [AgentService] orchestrator finished user=root1 session=debug_history_session final_output=电脑蓝屏可能由多种原因引起，例如驱动程序冲突、硬件故障、系统文件损坏或内存问题。建议您尝试以下步骤进行排查：
+
+1. **记录蓝屏错误代码**：蓝屏界面通常会显示一个错误代码（如0x0000007E）或文件名（如ntoskrnl.exe），这对诊断问题非常重要。
+2. **重启电脑**：有时临时性问题可以通过重启解决。
+3. **进入安全模式**：重启时多次按F8（或通过高级启动选项），尝试进入安全模式，检查是否仍会蓝屏。
+4. **更新或回滚驱动程序**：最近是否安装了新硬件或驱动？尝试在安全模式下卸载或更新相关驱动。
+5. **检查硬件**：特别是内存条和硬盘，可以使用Windows内置的内存诊断工具或第三方工具检测。
+6. **系统还原**：如果问题最近才出现，可尝试使用系统还原点恢复到之前的状态。
+
+如果以上方法无法解决，建议联系专业维修人员进一步检测。 structured_intent=general
+2026-05-09 17:46:55,079 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1
+2026-05-09 17:49:10,390 | INFO     | MultiAgent_App:62 | [Route] technical expert query=电脑蓝屏了怎么办
+2026-05-09 17:49:10,392 | INFO     | MultiAgent_App:73 | [Route] technical expert result=蓝屏排查建议
+2026-05-09 18:14:20,547 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 18:14:20,600 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 18:14:32,997 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 18:14:34,038 | INFO     | MultiAgent_App:51 | 已触发本地知识库 MCP 服务启动
+2026-05-09 18:14:47,243 | INFO     | MultiAgent_App:16 | 知识库 MCP 服务已就绪
+2026-05-09 18:14:47,313 | INFO     | MultiAgent_App:22 | 知识库 MCP 连接成功
+2026-05-09 18:14:47,721 | INFO     | MultiAgent_App:28 | 百度地图 MCP 连接成功
+2026-05-09 18:14:47,722 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 18:15:17,086 | INFO     | MultiAgent_App:63 | user=root1 query=我电脑蓝屏了
+2026-05-09 18:15:17,087 | INFO     | MultiAgent_App:65 | [AgentService] start user=root1 session=debug_history_session retry=True skip_user_message=False query=我电脑蓝屏了
+2026-05-09 18:15:17,089 | INFO     | MultiAgent_App:95 | [AgentService] query rewritten user=root1 session=debug_history_session original=我电脑蓝屏了 rewritten=我电脑蓝屏了
+2026-05-09 18:15:17,095 | INFO     | MultiAgent_App:144 | [AgentService] orchestrator started user=root1 session=debug_history_session
+2026-05-09 18:15:17,096 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 18:15:19,786 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=consult_technical_expert args={"query": "电脑蓝屏了怎么办"}
+2026-05-09 18:15:19,790 | INFO     | MultiAgent_App:62 | [Route] technical expert query=电脑蓝屏了怎么办
+2026-05-09 18:15:23,216 | ERROR    | MultiAgent_App:36 | 发送请求获取知识库服务下的知识库数据失败:All connection attempts failed
+2026-05-09 18:15:24,459 | INFO     | MultiAgent_App:53 | [WebSearch] query=电脑蓝屏了怎么办
+2026-05-09 18:15:49,775 | INFO     | MultiAgent_App:55 | [WebSearch] result=电脑蓝屏（即“蓝屏死机”，BSOD）是 Windows 系统在遇到严重错误时的保护机制。以下是**系统性、可操作的解决步骤**，按优先级排序：
+
+---
+
+### ✅ 1. **记录蓝屏错误代码**
+- 蓝屏画面通常会显示类似 `0x0000003B` 或 `SYSTEM_SERVICE_EXCEPTION` 的错误代码。
+- 用手机拍照或记下代码，这对精准排查至关重要。
+
+---
+
+### ✅ 2. **尝试重启进入安全模式**
+- **重启电脑**，在开机时反复按 **F8**（部分机型需按 **Shift + F8** 或 **F11**）。
+- 进入 **高级启动选项 → 安全模式**（或带网络的安全模式）。
+- 在安全模式下可进行后续排查，避免系统完全崩溃。
+
+---
+
+### ✅ 3. **常见原因与对应解决方法**
+
+#### 🔧 A. **驱动问题（最常见）**
+- 卸载最近安装的驱动（尤其是显卡、网卡）：
+  - 控制面板 → 程序和功能 → 卸载可疑驱动。
+- 或使用工具（如“驱动人生”）扫描并修复异常驱动。
+- **建议**：去电脑品牌官网（如华硕、联想）下载最新
+2026-05-09 18:16:14,595 | INFO     | MultiAgent_App:73 | [Route] technical expert result=以下信息来自网络搜索，仅供参考，不构成官方建议。
+
+电脑蓝屏（即“蓝屏死机”，BSOD）是 Windows 系统在遇到严重错误时的保护机制。以下是**系统性、可操作的解决步骤**，按优先级排序：
+
+---
+
+### ✅ 1. **记录蓝屏错误代码**
+- 蓝屏画面通常会显示类似 `0x0000003B` 或 `SYSTEM_SERVICE_EXCEPTION` 的错误代码。
+- 用手机拍照或记下代码，这对精准排查至关重要。
+
+---
+
+### ✅ 2. **尝试重启进入安全模式**
+- **重启电脑**，在开机时反复按 **F8**（部分机型需按 **Shift + F8** 或 **F11**）。
+- 进入 **高级启动选项 → 安全模式**（或带网络的安全模式）。
+- 在安全模式下可进行后续排查，避免系统完全崩溃。
+
+---
+
+### ✅ 3. **常见原因与对应解决方法**
+
+#### 🔧 A. **驱动问题（最常见）**
+- 卸载最近安装的驱动（尤其是显卡、网卡）：
+  - 控制面板 → 程序和功能 → 卸载可疑驱动。
+- 或使用工具（如“驱动人生”）扫描并修复异常驱动。
+- 
+2026-05-09 18:16:14,598 | INFO     | MultiAgent_App:80 | [Stream] tool_output=以下信息来自网络搜索，仅供参考，不构成官方建议。
+
+电脑蓝屏（即“蓝屏死机”，BSOD）是 Windows 系统在遇到严重错误时的保护机制。以下是**系统性、可操作的解决步骤**，按优先级排序：
+
+---
+
+### ✅ 1. **记录蓝屏错误代码**
+- 蓝屏画面通常会显示类似 `0x0000003B` 或 `SYSTEM_SERVICE_EXCEPTION` 的错误代码。
+- 用手机拍照或记下代码，这对精准排查至关重要。
+
+---
+
+### ✅ 2. **尝试重启进入安全模式**
+- **重启电脑**，在开机时反复按 **F8**（部分机型需按 **Shift + F8** 或 **F11**）。
+- 进入 **高级启动选项 → 安全模式**（或带网络的安全模式）。
+- 在安全模式下可进行后续排查，避免系统完全崩溃。
+
+---
+
+### ✅ 3. **常见原因与对应解决方法**
+
+#### 🔧 A. **驱动问题（最常见）**
+- 卸载最近安装的驱动（尤其是显卡、网卡）：
+  - 控制面板 → 程序和功能 → 卸载可疑驱动。
+- 或使用工具（如“驱动人生”）扫描并修复异常驱动。
+- **建议**：去电脑品牌官网（如华硕、联想）下载最新官方驱动，**不要用第三方驱动工具强制更新**。
+
+#### 🛠️ B. **硬件故障**
+- **内存问题**：按 `Win + R`，输入 `mdsched.exe`，运行 **Windows 内存诊断**。
+- **硬盘问题**：使用厂商工具（如 CrystalDiskInfo）检查坏道。
+- **清理灰尘/重插内存条**：关机断电后，用橡皮擦擦拭内存金手指，重新安装。
+
+#### 💾 C. **系统文件损坏**
+- 以管理员身份运行命令提示符，执行：
+  ```cmd
+  sfc /scannow
+  ```
+- 若无效，再运行：
+  ```cmd
+  DISM /Online /Cleanup-Image /RestoreHealth
+  ```
+
+#### 🦠 D. **病毒或软件冲突**
+- 使用 Windows Defender 或可靠杀毒软件全盘扫描。
+- 卸载最近安装的软件（特别是优化类、破解类工具）。
+
+#### 🔄 E. **系统还原或重置**
+- 如果蓝屏近期才出现，可尝试：
+  - **系统还原**：控制面
+2026-05-09 18:16:39,111 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 18:16:39,111 | INFO     | MultiAgent_App:212 | [AgentService] orchestrator finished user=root1 session=debug_history_session final_output=以下信息来自网络搜索，仅供参考，不构成官方建议。
+
+电脑蓝屏（即“蓝屏死机”，BSOD）是 Windows 系统在遇到严重错误时的保护机制。以下是**系统性、可操作的解决步骤**，按优先级排序：
+
+---
+
+### ✅ 1. **记录蓝屏错误代码**
+- 蓝屏画面通常会显示类似 `0x0000003B` 或 `SYSTEM_SERVICE_EXCEPTION` 的错误代码。
+- 用手机拍照或记下代码，这对精准排查至关重要。
+
+---
+
+### ✅ 2. **尝试重启进入安全模式**
+- **重启电脑**，在开机时反复按 **F8**（部分机型需按 **Shift + F8** 或 **F11**）。
+- 进入 **高级启动选项 → 安全模式**（或带网络的安全模式）。
+- 在安全模式下可进行后续排查，避免系统完全崩溃。
+
+---
+
+### ✅ 3. **常见原因与对应解决方法**
+
+#### 🔧 A. **驱动问题（最常见）**
+- 卸载最近安装的驱动（尤其是显卡、网卡）：
+  - 控制面板 → 程序和功能 → 卸载可疑驱动。
+- 或使用工具（如“驱动人生”）扫描并修复异常驱动。
+-  structured_intent=general
+2026-05-09 18:16:39,133 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1
+2026-05-09 18:18:58,710 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 18:18:58,764 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 18:19:15,786 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 18:19:16,816 | INFO     | MultiAgent_App:51 | 已触发本地知识库 MCP 服务启动
+2026-05-09 18:19:26,984 | INFO     | MultiAgent_App:16 | 知识库 MCP 服务已就绪
+2026-05-09 18:19:27,045 | INFO     | MultiAgent_App:22 | 知识库 MCP 连接成功
+2026-05-09 18:19:27,442 | INFO     | MultiAgent_App:28 | 百度地图 MCP 连接成功
+2026-05-09 18:19:27,443 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 18:20:00,320 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 18:20:00,361 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 18:22:27,401 | INFO     | MultiAgent_App:50 | 知识库 HTTP 服务已尝试后台启动: 127.0.0.1:8001
+2026-05-09 18:22:27,680 | INFO     | MultiAgent_App:19 | 知识库 HTTP 服务已就绪
+2026-05-09 18:22:27,680 | INFO     | MultiAgent_App:26 | 知识库 MCP 服务已就绪
+2026-05-09 18:22:27,681 | INFO     | MultiAgent_App:32 | 知识库 MCP 连接成功
+2026-05-09 18:22:27,681 | INFO     | MultiAgent_App:38 | 百度地图 MCP 连接成功
+2026-05-09 18:24:01,145 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 18:24:02,186 | INFO     | MultiAgent_App:50 | 知识库 HTTP 服务已尝试后台启动: 127.0.0.1:8001
+2026-05-09 18:24:04,471 | ERROR    | MultiAgent_App:21 | 知识库 HTTP 服务启动失败: 知识库 HTTP 服务启动失败，进程已退出
+2026-05-09 18:24:05,503 | INFO     | MultiAgent_App:51 | 已触发本地知识库 MCP 服务启动
+2026-05-09 18:24:17,441 | INFO     | MultiAgent_App:26 | 知识库 MCP 服务已就绪
+2026-05-09 18:24:17,498 | INFO     | MultiAgent_App:32 | 知识库 MCP 连接成功
+2026-05-09 18:24:17,990 | INFO     | MultiAgent_App:38 | 百度地图 MCP 连接成功
+2026-05-09 18:24:17,991 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 18:25:30,255 | INFO     | MultiAgent_App:68 | 知识库 HTTP 服务已尝试后台启动: 127.0.0.1:8001
+2026-05-09 18:25:30,520 | INFO     | MultiAgent_App:19 | 知识库 HTTP 服务已就绪
+2026-05-09 18:25:30,521 | INFO     | MultiAgent_App:26 | 知识库 MCP 服务已就绪
+2026-05-09 18:25:30,521 | INFO     | MultiAgent_App:32 | 知识库 MCP 连接成功
+2026-05-09 18:25:30,521 | INFO     | MultiAgent_App:38 | 百度地图 MCP 连接成功
+2026-05-09 18:26:49,474 | INFO     | MultiAgent_App:68 | 知识库 HTTP 服务已尝试后台启动: 127.0.0.1:8001
+2026-05-09 18:26:49,744 | INFO     | MultiAgent_App:19 | 知识库 HTTP 服务已就绪
+2026-05-09 18:26:49,744 | INFO     | MultiAgent_App:26 | 知识库 MCP 服务已就绪
+2026-05-09 18:26:49,745 | INFO     | MultiAgent_App:32 | 知识库 MCP 连接成功
+2026-05-09 18:26:49,745 | INFO     | MultiAgent_App:38 | 百度地图 MCP 连接成功
+2026-05-09 18:29:20,797 | INFO     | MultiAgent_App:33 | 应用关闭，清理MCP连接...
+2026-05-09 18:29:20,838 | INFO     | MultiAgent_App:36 | MCP连接清理完成
+2026-05-09 18:29:32,990 | INFO     | MultiAgent_App:23 | 应用启动，建立MCP连接...
+2026-05-09 18:29:34,031 | INFO     | MultiAgent_App:68 | 知识库 HTTP 服务已尝试后台启动: 127.0.0.1:8001
+2026-05-09 18:29:44,667 | INFO     | MultiAgent_App:19 | 知识库 HTTP 服务已就绪
+2026-05-09 18:29:45,703 | INFO     | MultiAgent_App:51 | 已触发本地知识库 MCP 服务启动
+2026-05-09 18:29:58,393 | INFO     | MultiAgent_App:26 | 知识库 MCP 服务已就绪
+2026-05-09 18:29:58,452 | INFO     | MultiAgent_App:32 | 知识库 MCP 连接成功
+2026-05-09 18:29:58,900 | INFO     | MultiAgent_App:38 | 百度地图 MCP 连接成功
+2026-05-09 18:29:58,900 | INFO     | MultiAgent_App:26 | MCP连接建立完成
+2026-05-09 18:30:15,202 | INFO     | MultiAgent_App:63 | user=root1 query=我电脑蓝屏了
+2026-05-09 18:30:15,204 | INFO     | MultiAgent_App:65 | [AgentService] start user=root1 session=debug_history_session retry=True skip_user_message=False query=我电脑蓝屏了
+2026-05-09 18:30:15,206 | INFO     | MultiAgent_App:95 | [AgentService] query rewritten user=root1 session=debug_history_session original=我电脑蓝屏了 rewritten=我电脑蓝屏了
+2026-05-09 18:30:15,215 | INFO     | MultiAgent_App:144 | [AgentService] orchestrator started user=root1 session=debug_history_session
+2026-05-09 18:30:15,217 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 18:30:17,555 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=consult_technical_expert args={"query": "我电脑蓝屏了"}
+2026-05-09 18:30:17,559 | INFO     | MultiAgent_App:62 | [Route] technical expert query=我电脑蓝屏了
+2026-05-09 18:30:34,396 | INFO     | MultiAgent_App:73 | [Route] technical expert result=电脑蓝屏属于操作系统故障中的“蓝屏死机”问题，可能由软硬件冲突、病毒等原因造成。可尝试以下解决步骤：
+
+1. 先关机并切断电源，拔掉外接设备（如：U盘、打印机等），键盘、鼠标、显示器除外；  
+2. 建议请操作经验丰富的亲友，在断电情况下去掉自行加装的部件（如：内存、显卡等）；  
+3. 将电脑设置为“干净启动模式”并仅加载基本驱动程序和启动程序来启动 Windows。使用干净启动过程启动计算机时，Microsoft Windows 在启动时仅加载基本设备和服务。
+2026-05-09 18:30:34,398 | INFO     | MultiAgent_App:80 | [Stream] tool_output=电脑蓝屏属于操作系统故障中的“蓝屏死机”问题，可能由软硬件冲突、病毒等原因造成。可尝试以下解决步骤：
+
+1. 先关机并切断电源，拔掉外接设备（如：U盘、打印机等），键盘、鼠标、显示器除外；  
+2. 建议请操作经验丰富的亲友，在断电情况下去掉自行加装的部件（如：内存、显卡等）；  
+3. 将电脑设置为“干净启动模式”并仅加载基本驱动程序和启动程序来启动 Windows。使用干净启动过程启动计算机时，Microsoft Windows 在启动时仅加载基本设备和服务。
+2026-05-09 18:30:38,930 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 18:30:38,938 | INFO     | MultiAgent_App:212 | [AgentService] orchestrator finished user=root1 session=debug_history_session final_output=电脑蓝屏属于操作系统故障中的“蓝屏死机”问题，可能由软硬件冲突、病毒等原因造成。可尝试以下解决步骤：
+
+1. 先关机并切断电源，拔掉外接设备（如：U盘、打印机等），键盘、鼠标、显示器除外；  
+2. 建议请操作经验丰富的亲友，在断电情况下去掉自行加装的部件（如：内存、显卡等）；  
+3. 将电脑设置为“干净启动模式”并仅加载基本驱动程序和启动程序来启动 Windows。使用干净启动过程启动计算机时，Microsoft Windows 在启动时仅加载基本设备和服务。 structured_intent=general
+2026-05-09 18:30:38,967 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1
+2026-05-09 18:31:19,543 | INFO     | MultiAgent_App:63 | user=root1 query=我电脑蓝屏了怎么解决
+2026-05-09 18:31:19,544 | INFO     | MultiAgent_App:65 | [AgentService] start user=root1 session=session_1778322670275_pojjjcbn6 retry=True skip_user_message=False query=我电脑蓝屏了怎么解决
+2026-05-09 18:31:19,547 | INFO     | MultiAgent_App:95 | [AgentService] query rewritten user=root1 session=session_1778322670275_pojjjcbn6 original=我电脑蓝屏了怎么解决 rewritten=我电脑蓝屏了怎么解决
+2026-05-09 18:31:19,553 | INFO     | MultiAgent_App:144 | [AgentService] orchestrator started user=root1 session=session_1778322670275_pojjjcbn6
+2026-05-09 18:31:19,554 | INFO     | MultiAgent_App:89 | [Stream] agent_updated new_agent=主调度智能体
+2026-05-09 18:31:21,347 | INFO     | MultiAgent_App:71 | [Stream] tool_called name=consult_technical_expert args={"query": "电脑蓝屏了怎么解决"}
+2026-05-09 18:31:21,350 | INFO     | MultiAgent_App:62 | [Route] technical expert query=电脑蓝屏了怎么解决
+2026-05-09 18:31:52,742 | INFO     | MultiAgent_App:73 | [Route] technical expert result=电脑蓝屏的解决方法需根据具体原因判断。若蓝屏报错代码为 **0x0000007B**，通常是由硬盘存储控制器驱动加载错误导致，可按以下步骤处理：
+
+1. **检查是否因BIOS设置变化引起**：  
+   - 开机后快速、反复按 F1 键或 Delete 键（具体按键因机型而异）进入 BIOS 设置界面。  
+   - 找到硬盘控制器相关选项（常见描述包括：Configure SATA as、SATA Configuration、SATA Mode、Onchip SATA Type、SATA Run Mode Configuration 等）。  
+   - 将其设置为与安装操作系统时一致的模式（通常为 AHCI 或 IDE 模式）：  
+     - Windows 7/8/10/11 一般使用 **AHCI**（增强模式）；  
+     - Windows XP 可能需使用 **IDE**（兼容模式）。  
+   - 修改后按 F10 保存并退出。
+
+2. **若近期手动更新过硬盘控制器驱动**：  
+   - 开机时快速按 F8，进入 Windows 高级启动菜单，选择“最后一
+2026-05-09 18:31:52,746 | INFO     | MultiAgent_App:80 | [Stream] tool_output=电脑蓝屏的解决方法需根据具体原因判断。若蓝屏报错代码为 **0x0000007B**，通常是由硬盘存储控制器驱动加载错误导致，可按以下步骤处理：
+
+1. **检查是否因BIOS设置变化引起**：  
+   - 开机后快速、反复按 F1 键或 Delete 键（具体按键因机型而异）进入 BIOS 设置界面。  
+   - 找到硬盘控制器相关选项（常见描述包括：Configure SATA as、SATA Configuration、SATA Mode、Onchip SATA Type、SATA Run Mode Configuration 等）。  
+   - 将其设置为与安装操作系统时一致的模式（通常为 AHCI 或 IDE 模式）：  
+     - Windows 7/8/10/11 一般使用 **AHCI**（增强模式）；  
+     - Windows XP 可能需使用 **IDE**（兼容模式）。  
+   - 修改后按 F10 保存并退出。
+
+2. **若近期手动更新过硬盘控制器驱动**：  
+   - 开机时快速按 F8，进入 Windows 高级启动菜单，选择“最后一次正确配置（Last Known Good Configuration）”尝试恢复系统。
+
+3. **若使用非正版或修改过的操作系统安装盘重装系统时出现此错误**：  
+   - 建议改用正版操作系统安装介质重新安装。
+
+如蓝屏无明确代码或不属于上述情况，可尝试通用排查方法：  
+- 关机并切断电源，拔除外接设备（如 U 盘、打印机等，保留键盘、鼠标、显示器）；  
+- 如有自行加装的硬件（如内存、显卡），建议由有经验者在断电后移除测试；  
+- 尝试以“干净启动模式”启动 Windows，仅加载基本服务和驱动，以排除软件冲突。
+2026-05-09 18:32:05,324 | INFO     | MultiAgent_App:96 | [Stream] finished
+2026-05-09 18:32:05,325 | INFO     | MultiAgent_App:212 | [AgentService] orchestrator finished user=root1 session=session_1778322670275_pojjjcbn6 final_output=电脑蓝屏的解决方法需根据具体原因判断。若蓝屏报错代码为 **0x0000007B**，通常是由硬盘存储控制器驱动加载错误导致，可按以下步骤处理：
+
+1. **检查是否因BIOS设置变化引起**：  
+   - 开机后快速、反复按 F1 键或 Delete 键（具体按键因机型而异）进入 BIOS 设置界面。  
+   - 找到硬盘控制器相关选项（常见描述包括：Configure SATA as、SATA Configuration、SATA Mode、Onchip SATA Type、SATA Run Mode Configuration 等）。  
+   - 将其设置为与安装操作系统时一致的模式（通常为 AHCI 或 IDE 模式）：  
+     - Windows 7/8/10/11 一般使用 **AHCI**（增强模式）；  
+     - Windows XP 可能需使用 **IDE**（兼容模式）。  
+   - 修改后按 F10 保存并退出。
+
+2. **若近期手动更新过硬盘控制器驱动**：  
+   - 开机时快速按 F8，进入 Windows 高级启动菜单，选择“最后一 structured_intent=general
+2026-05-09 18:32:05,337 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1
+2026-05-09 20:05:40,630 | INFO     | MultiAgent_App:198 | fetch sessions for user=root1

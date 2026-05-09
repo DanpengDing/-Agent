@@ -378,3 +378,120 @@ agents.exceptions.ModelBehaviorError: Tool map_uri not found in agent 全能业�
 2026-05-09 15:53:41,740 | ERROR    | MultiAgent_App:21 | 搜索 MCP 连接失败: Failed to connect to MCP server '通用联网搜索': HTTP error 500 (Internal Server Error)
 2026-05-09 15:53:43,973 | ERROR    | MultiAgent_App:27 | 知识库 MCP 连接失败: Failed to connect to MCP server '知识库问答': HTTP error 502 (Bad Gateway)
 2026-05-09 16:04:10,116 | ERROR    | MultiAgent_App:37 | 搜索 MCP 连接失败: Failed to connect to MCP server '通用联网搜索': HTTP error 500 (Internal Server Error)
+2026-05-09 16:11:55,245 | ERROR    | MultiAgent_App:88 | 搜索 MCP 连接失败: search-connect-failed
+2026-05-09 16:12:36,048 | ERROR    | MultiAgent_App:88 | 搜索 MCP 连接失败: Failed to connect to MCP server '通用联网搜索': HTTP error 500 (Internal Server Error)
+2026-05-09 16:12:36,048 | ERROR    | MultiAgent_App:29 | 搜索 MCP 诊断: url=https://dashscope.aliyuncs.com/api/v1/mcps/WebSearch/sse, api_key=sk-7***f733, error_type=UserError, error=Failed to connect to MCP server '通用联网搜索': HTTP error 500 (Internal Server Error)
+2026-05-09 16:12:36,265 | ERROR    | MultiAgent_App:50 | 搜索 MCP 探测响应: status=500, content_type=, body_preview=MCP_NOT_EXIST
+2026-05-09 16:31:04,311 | ERROR    | MultiAgent_App:71 | [BaiduMCP] tool=map_geocode json parse failed error=Expecting value: line 1 column 1 (char 0) raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:31:38,469 | ERROR    | MultiAgent_App:71 | [BaiduMCP] tool=map_ip_location json parse failed error=Expecting value: line 1 column 1 (char 0) raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:40:56,788 | ERROR    | MultiAgent_App:71 | [BaiduMCP] tool=map_geocode json parse failed error=Expecting value: line 1 column 1 (char 0) raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:41:30,835 | ERROR    | MultiAgent_App:71 | [BaiduMCP] tool=map_ip_location json parse failed error=Expecting value: line 1 column 1 (char 0) raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:53:55,370 | ERROR    | MultiAgent_App:71 | [BaiduMCP] tool=map_geocode json parse failed error=Expecting value: line 1 column 1 (char 0) raw_text=Authentication failed: APP IP校验失败
+2026-05-09 16:54:29,554 | ERROR    | MultiAgent_App:71 | [BaiduMCP] tool=map_ip_location json parse failed error=Expecting value: line 1 column 1 (char 0) raw_text=Authentication failed: APP IP校验失败
+2026-05-09 17:19:52,936 | ERROR    | MultiAgent_App:67 | [Route] technical expert failed query=电脑坏了 error=Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Non-streaming mode does not support Web Search in thinking mode.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-8461a062-284d-95a4-b949-5d2ceb496445', 'request_id': '8461a062-284d-95a4-b949-5d2ceb496445'}
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 59, in consult_technical_expert
+    result = await Runner.run(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run.py", line 223, in run
+    return await runner.run(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run.py", line 1067, in run
+    turn_result = await model_task
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1549, in run_single_turn
+    new_response = await get_new_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1649, in get_new_response
+    new_response = await get_response_with_retry(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\model_retry.py", line 544, in get_response_with_retry
+    response = await get_response()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\models\openai_chatcompletions.py", line 121, in get_response
+    response = await self._fetch_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\models\openai_chatcompletions.py", line 391, in _fetch_response
+    ret = await self._get_client().chat.completions.create(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\resources\chat\completions\completions.py", line 2714, in create
+    return await self._post(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\_base_client.py", line 1913, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\_base_client.py", line 1698, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Non-streaming mode does not support Web Search in thinking mode.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-8461a062-284d-95a4-b949-5d2ceb496445', 'request_id': '8461a062-284d-95a4-b949-5d2ceb496445'}
+2026-05-09 17:20:30,165 | ERROR    | MultiAgent_App:67 | [Route] technical expert failed query=电脑蓝屏了怎么办 error=Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Non-streaming mode does not support Web Search in thinking mode.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-f4a5d561-aaa5-902b-b791-0d6e716b8b3f', 'request_id': 'f4a5d561-aaa5-902b-b791-0d6e716b8b3f'}
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 59, in consult_technical_expert
+    result = await Runner.run(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run.py", line 223, in run
+    return await runner.run(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run.py", line 1067, in run
+    turn_result = await model_task
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1549, in run_single_turn
+    new_response = await get_new_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1649, in get_new_response
+    new_response = await get_response_with_retry(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\model_retry.py", line 544, in get_response_with_retry
+    response = await get_response()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\models\openai_chatcompletions.py", line 121, in get_response
+    response = await self._fetch_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\models\openai_chatcompletions.py", line 391, in _fetch_response
+    ret = await self._get_client().chat.completions.create(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\resources\chat\completions\completions.py", line 2714, in create
+    return await self._post(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\_base_client.py", line 1913, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\_base_client.py", line 1698, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Non-streaming mode does not support Web Search in thinking mode.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-f4a5d561-aaa5-902b-b791-0d6e716b8b3f', 'request_id': 'f4a5d561-aaa5-902b-b791-0d6e716b8b3f'}
+2026-05-09 17:35:52,262 | ERROR    | MultiAgent_App:76 | [Route] technical expert failed query=电脑蓝屏了怎么办 error=Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Agent mode does not support tools. You need to either avoid using enable_code_interpreter or avoid using the agent mode with enable_search.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-58cbf0f4-6ea7-9bce-99b8-c7705eeb0493', 'request_id': '58cbf0f4-6ea7-9bce-99b8-c7705eeb0493'}
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 69, in _run_technical_agent_with_logging
+    async for _event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 900, in start_streaming
+    turn_result = await run_single_turn_streamed(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1303, in run_single_turn_streamed
+    async for event in retry_stream:
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\model_retry.py", line 652, in stream_response_with_retry
+    event = await stream.__anext__()
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\models\openai_chatcompletions.py", line 237, in stream_response
+    response, stream = await self._fetch_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\models\openai_chatcompletions.py", line 391, in _fetch_response
+    ret = await self._get_client().chat.completions.create(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\resources\chat\completions\completions.py", line 2714, in create
+    return await self._post(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\_base_client.py", line 1913, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\openai\_base_client.py", line 1698, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: Agent mode does not support tools. You need to either avoid using enable_code_interpreter or avoid using the agent mode with enable_search.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}, 'id': 'chatcmpl-58cbf0f4-6ea7-9bce-99b8-c7705eeb0493', 'request_id': '58cbf0f4-6ea7-9bce-99b8-c7705eeb0493'}
+2026-05-09 17:45:53,514 | ERROR    | MultiAgent_App:36 | 发送请求获取知识库服务下的知识库数据失败:All connection attempts failed
+2026-05-09 17:45:54,957 | ERROR    | MultiAgent_App:76 | [Route] technical expert failed query=电脑蓝屏了怎么办 error=Tool bailian_web_search not found in agent 技术专家咨询智能体
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 69, in _run_technical_agent_with_logging
+    async for _event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 900, in start_streaming
+    turn_result = await run_single_turn_streamed(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1440, in run_single_turn_streamed
+    single_step_result = await get_single_step_result_from_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_resolution.py", line 1700, in get_single_step_result_from_response
+    processed_response = process_model_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_resolution.py", line 1654, in process_model_response
+    raise ModelBehaviorError(error)
+agents.exceptions.ModelBehaviorError: Tool bailian_web_search not found in agent 技术专家咨询智能体
+2026-05-09 17:46:46,203 | ERROR    | MultiAgent_App:36 | 发送请求获取知识库服务下的知识库数据失败:All connection attempts failed
+2026-05-09 17:46:47,744 | ERROR    | MultiAgent_App:76 | [Route] technical expert failed query=电脑蓝屏了 error=Tool bailian_web_search not found in agent 技术专家咨询智能体
+Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\bj250716\its_multi_agent\backend\app\multi_agent\agent_factory.py", line 69, in _run_technical_agent_with_logging
+    async for _event in streaming_result.stream_events():
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\result.py", line 645, in stream_events
+    raise self._stored_exception
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 900, in start_streaming
+    turn_result = await run_single_turn_streamed(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\run_loop.py", line 1440, in run_single_turn_streamed
+    single_step_result = await get_single_step_result_from_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_resolution.py", line 1700, in get_single_step_result_from_response
+    processed_response = process_model_response(
+  File "C:\Users\ding'dan'peng\AppData\Local\Programs\Python\Python310\lib\site-packages\agents\run_internal\turn_resolution.py", line 1654, in process_model_response
+    raise ModelBehaviorError(error)
+agents.exceptions.ModelBehaviorError: Tool bailian_web_search not found in agent 技术专家咨询智能体
+2026-05-09 18:15:23,216 | ERROR    | MultiAgent_App:36 | 发送请求获取知识库服务下的知识库数据失败:All connection attempts failed
+2026-05-09 18:24:04,471 | ERROR    | MultiAgent_App:21 | 知识库 HTTP 服务启动失败: 知识库 HTTP 服务启动失败，进程已退出

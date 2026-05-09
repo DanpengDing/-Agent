@@ -40,8 +40,6 @@ def _safe_preview(value: Any, limit: int = 500) -> str:
 
 
 def _extract_mcp_text(tool_name: str, result: Any) -> str:
-    # 百度 MCP 的结果对象结构比较深，这里统一做一层提取和日志记录，
-    # 方便我们在失败时看到“到底返回了什么”，而不是只看到 json 解析异常。
     content_list = getattr(result, "content", None)
     if not content_list:
         logger.warning("[BaiduMCP] tool=%s returned empty content result=%s", tool_name, _safe_preview(result))
@@ -63,7 +61,7 @@ def _extract_mcp_text(tool_name: str, result: Any) -> str:
 
 def _parse_json_response(tool_name: str, raw_text: str) -> dict:
     if not raw_text:
-        raise ValueError(f"{tool_name} 返回空文本，无法解析 JSON")
+        raise ValueError(f"{tool_name} returned empty JSON")
 
     try:
         return json.loads(raw_text)
@@ -75,6 +73,22 @@ def _parse_json_response(tool_name: str, raw_text: str) -> dict:
             _safe_preview(raw_text, 1000),
         )
         raise
+
+
+def _build_missing_location_payload(original_input: str) -> str:
+    payload = json.dumps(
+        {
+            "ok": False,
+            "error": "无法可靠解析用户当前位置，请先提供你的城市、区县、商圈或具体地址。",
+            "source": "missing_location",
+            "original_input": original_input,
+            "needs_user_location": True,
+            "ask_user": "请告诉我你现在在哪个城市、区县、商圈，或者直接发一个具体地址，我再帮你查最近的电脑维修服务站。",
+        },
+        ensure_ascii=False,
+    )
+    logger.info("[Location] missing location result=%s", payload)
+    return payload
 
 
 def build_baidu_map_direction_uri(
@@ -91,7 +105,7 @@ def build_baidu_map_direction_uri(
             "origin": f"latlng:{origin_lat},{origin_lng}|name:{origin_name}",
             "destination": f"latlng:{destination_lat},{destination_lng}|name:{destination_name}",
             "mode": mode,
-            "region": "全国",
+            "region": "中国",
             "output": "html",
             "src": "multi_agent_repair_station",
         }
@@ -122,16 +136,8 @@ def map_uri(
         {
             "ok": True,
             "uri": uri,
-            "origin": {
-                "lat": origin_lat,
-                "lng": origin_lng,
-                "name": origin_name,
-            },
-            "destination": {
-                "lat": destination_lat,
-                "lng": destination_lng,
-                "name": destination_name,
-            },
+            "origin": {"lat": origin_lat, "lng": origin_lng, "name": origin_name},
+            "destination": {"lat": destination_lat, "lng": destination_lng, "name": destination_name},
             "mode": mode,
         },
         ensure_ascii=False,
@@ -143,13 +149,13 @@ async def resolve_user_location_from_text(user_input: str) -> str:
     logger.info("[Location] resolve start raw_input=%s", user_input)
 
     relative_locations = {
-        "附近",
-        "这里",
-        "当前",
         "当前位置",
+        "当前",
+        "这里",
         "我这里",
-        "离我最近",
         "我附近",
+        "离我最近",
+        "附近",
         "nearby",
         "here",
     }
@@ -224,19 +230,7 @@ async def resolve_user_location_from_text(user_input: str) -> str:
         except Exception as exc:
             logger.warning("[Location] ip location failed ip=%s error=%s", user_ip, exc, exc_info=True)
 
-    payload = json.dumps(
-        {
-            "ok": False,
-            "error": "无法可靠解析用户当前位置，已回退到默认坐标。",
-            "lat": 39.9042,
-            "lng": 116.4074,
-            "source": "fallback",
-            "original_input": normalized_input,
-        },
-        ensure_ascii=False,
-    )
-    logger.info("[Location] fallback result=%s", payload)
-    return payload
+    return _build_missing_location_payload(normalized_input)
 
 
 @function_tool
@@ -300,11 +294,7 @@ def query_nearest_repair_shops_by_coords(lat: float, lng: float, limit: int = 3)
                 "ok": True,
                 "count": len(rows),
                 "data": rows,
-                "query": {
-                    "lat": lat,
-                    "lng": lng,
-                    "limit": limit,
-                },
+                "query": {"lat": lat, "lng": lng, "limit": limit},
             },
             ensure_ascii=False,
             default=str,

@@ -22,6 +22,14 @@ from utils.response_util import ResponseFactory
 
 class MultiAgentService:
     @staticmethod
+    def _format_approval_message(question: str, details: str | None = None) -> str:
+        message = (question or "").strip()
+        extra = (details or "").strip()
+        if not extra:
+            return message
+        return f"{message}\n\n{extra}"
+
+    @staticmethod
     def _normalize_final_output(raw_output: str):
         # 中文注释：主 Agent 目前仍以自然语言输出为主，
         # 所以这里统一做一次结构化归一，保证后端后续处理拿到稳定字段。
@@ -177,6 +185,15 @@ class MultiAgentService:
                         approve_label="允许查询",
                         reject_label="取消操作",
                     )
+
+                    approval_message = cls._format_approval_message(pending.question, pending.details)
+                    if approval_message:
+                        session_service.append_and_save_message(
+                            user_id=user_id,
+                            session_id=session_id,
+                            role="assistant",
+                            content=approval_message,
+                        )
 
                     yield "data: " + ResponseFactory.build_human_approval(
                         token=pending.token,

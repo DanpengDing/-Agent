@@ -1,4 +1,8 @@
 from infrastructure.logging.logger import logger
+from infrastructure.tools.mcp.knowledge_http_bootstrap import (
+    cleanup_knowledge_http_server,
+    ensure_knowledge_http_server_started,
+)
 from infrastructure.tools.mcp.knowledge_mcp_bootstrap import (
     cleanup_knowledge_mcp_server,
     ensure_knowledge_mcp_server_started,
@@ -10,6 +14,12 @@ from infrastructure.tools.mcp.mcp_servers import (
 
 
 async def mcp_connect():
+    try:
+        await ensure_knowledge_http_server_started()
+        logger.info("知识库 HTTP 服务已就绪")
+    except Exception as e:
+        logger.error("知识库 HTTP 服务启动失败: %s", str(e))
+
     # 应用启动时只初始化仍在使用的 MCP。
     try:
         await ensure_knowledge_mcp_server_started()
@@ -45,3 +55,8 @@ async def mcp_cleanup():
         await cleanup_knowledge_mcp_server()
     except Exception as e:
         logger.warning("知识库 MCP 服务清理失败: %s", e)
+
+    try:
+        await cleanup_knowledge_http_server()
+    except Exception as e:
+        logger.warning("知识库 HTTP 服务清理失败: %s", e)
