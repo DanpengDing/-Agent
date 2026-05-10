@@ -73,4 +73,11 @@ Thumbs.db
 .github/workflows/*.local.yml
 
 # Environment files (keep .env.docker as example)
+.env
 !.env.docker
+
+# User session memory
+user_memories/
+
+# Python packages cache
+.python-packages*/
