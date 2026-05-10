@@ -2,6 +2,7 @@ import json
 import math
 from typing import Any
 from urllib.parse import urlencode
+import re
 
 import stun
 from agents import function_tool
@@ -10,6 +11,25 @@ from pymysql.cursors import DictCursor
 from infrastructure.database.database_pool import pool
 from infrastructure.logging.logger import logger
 from infrastructure.tools.mcp.mcp_servers import baidu_mcp_client
+
+
+class BaiduMcpAuthError(RuntimeError):
+    """百度地图 MCP 鉴权失败。"""
+
+
+LOCATION_QUERY_NOISE_PATTERNS = [
+    r"最近的?",
+    r"离我最近",
+    r"附近",
+    r"我要去",
+    r"我想去",
+    r"帮我找",
+    r"导航去",
+    r"电脑维修站",
+    r"维修站",
+    r"电脑维修",
+    r"修电脑",
+]
 
 
 def bd09mc_to_bd09(lng: float, lat: float) -> tuple[float, float]:
@@ -63,6 +83,10 @@ def _parse_json_response(tool_name: str, raw_text: str) -> dict:
     if not raw_text:
         raise ValueError(f"{tool_name} returned empty JSON")
 
+    if "Authentication failed" in raw_text and "IP校验失败" in raw_text:
+        logger.error("[BaiduMCP] tool=%s auth failed raw_text=%s", tool_name, _safe_preview(raw_text, 1000))
+        raise BaiduMcpAuthError("百度地图服务鉴权失败（APP IP校验失败），当前服务器 IP 不在百度地图 AK 白名单中。")
+
     try:
         return json.loads(raw_text)
     except Exception as exc:
@@ -89,6 +113,33 @@ def _build_missing_location_payload(original_input: str) -> str:
     )
     logger.info("[Location] missing location result=%s", payload)
     return payload
+
+
+def _build_baidu_auth_failed_payload(original_input: str) -> str:
+    payload = json.dumps(
+        {
+            "ok": False,
+            "error": "百度地图服务鉴权失败（APP IP校验失败），当前服务器 IP 不在百度地图 AK 白名单中，暂时无法查询或导航附近维修站。",
+            "source": "baidu_auth_failed",
+            "original_input": original_input,
+        },
+        ensure_ascii=False,
+    )
+    logger.info("[Location] baidu auth failed result=%s", payload)
+    return payload
+
+
+def _normalize_location_query(user_input: str) -> str:
+    text = (user_input or "").strip()
+    if not text:
+        return ""
+
+    normalized = text
+    for pattern in LOCATION_QUERY_NOISE_PATTERNS:
+        normalized = re.sub(pattern, " ", normalized, flags=re.IGNORECASE)
+
+    normalized = re.sub(r"\s+", " ", normalized).strip(" ，,。；;、")
+    return normalized or text.strip()
 
 
 def build_baidu_map_direction_uri(
@@ -160,7 +211,8 @@ async def resolve_user_location_from_text(user_input: str) -> str:
         "here",
     }
 
-    normalized_input = user_input.strip() if user_input else ""
+    original_input = user_input.strip() if user_input else ""
+    normalized_input = _normalize_location_query(original_input)
     if normalized_input in relative_locations:
         logger.info("[Location] relative term detected input=%s", normalized_input)
         normalized_input = ""
@@ -193,6 +245,8 @@ async def resolve_user_location_from_text(user_input: str) -> str:
                 return payload
 
             logger.warning("[Location] geocode invalid result=%s", _safe_preview(data, 1000))
+        except BaiduMcpAuthError:
+            return _build_baidu_auth_failed_payload(original_input)
         except Exception as exc:
             logger.warning("[Location] geocode failed address=%s error=%s", normalized_input, exc, exc_info=True)
 
@@ -227,10 +281,12 @@ async def resolve_user_location_from_text(user_input: str) -> str:
             )
             logger.info("[Location] ip location success result=%s", payload)
             return payload
+        except BaiduMcpAuthError:
+            return _build_baidu_auth_failed_payload(original_input)
         except Exception as exc:
             logger.warning("[Location] ip location failed ip=%s error=%s", user_ip, exc, exc_info=True)
 
-    return _build_missing_location_payload(normalized_input)
+    return _build_missing_location_payload(original_input)
 
 
 @function_tool

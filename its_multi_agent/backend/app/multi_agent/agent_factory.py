@@ -6,6 +6,7 @@ from agents.items import ToolCallItem, ToolCallOutputItem
 from agents.run import RunConfig
 
 from infrastructure.logging.logger import logger
+from infrastructure.tools.mcp.mcp_servers import baidu_mcp_client
 from multi_agent.service_agent import comprehensive_service_agent
 from multi_agent.technical_agent import technical_agent
 
@@ -78,6 +79,7 @@ async def _run_technical_agent_with_logging(query: str) -> str:
 
 
 async def _run_service_agent_with_logging(query: str) -> str:
+    await _refresh_service_agent_mcp_connection()
     streaming_result = Runner.run_streamed(
         starting_agent=comprehensive_service_agent,
         input=query,
@@ -121,6 +123,16 @@ async def _run_service_agent_with_logging(query: str) -> str:
     final_output = format_service_agent_diagnostics(final_output, diagnostics)
     logger.info("[ServiceAgent] final_output query=%s output=%s", query[:100], str(final_output)[:1500])
     return final_output
+
+
+async def _refresh_service_agent_mcp_connection() -> None:
+    try:
+        await baidu_mcp_client.cleanup()
+    except Exception as exc:
+        logger.info("[ServiceAgent] cleanup stale baidu mcp ignored: %s", exc)
+
+    await baidu_mcp_client.connect()
+    logger.info("[ServiceAgent] baidu mcp reconnected before query")
 
 
 @function_tool(needs_approval=True)
