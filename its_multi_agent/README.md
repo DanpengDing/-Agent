@@ -92,10 +92,9 @@ AL_BAILIAN_BASE_URL=https://dashscope.aliyuncs.com
 
 ```bash
 cd backend/app
-python api/main.py
-# 或
 uvicorn api.main:create_fast_api --factory --host 127.0.0.1 --port 8000
 ```
+
 
 ### 前端安装
 
