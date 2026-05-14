@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "skills": {
+    "ask-docs": {
+      "source": "crewaiinc/skills",
+      "sourceType": "github",
+      "skillPath": "skills/ask-docs/SKILL.md",
+      "computedHash": "8a027e621b612006535e49e3bb273ee6bb642daa77442396a41852a840803cdf"
+    },
+    "design-agent": {
+      "source": "crewaiinc/skills",
+      "sourceType": "github",
+      "skillPath": "skills/design-agent/SKILL.md",
+      "computedHash": "38880ffb571280530d14e5dd8905432fe878a61c131853c042af20ad0f8234b7"
+    },
+    "design-task": {
+      "source": "crewaiinc/skills",
+      "sourceType": "github",
+      "skillPath": "skills/design-task/SKILL.md",
+      "computedHash": "08ab2896ec75bab810f2726ec3ed6d85f52603f83f06b3b490e6f54b9c540f0c"
+    },
+    "getting-started": {
+      "source": "crewaiinc/skills",
+      "sourceType": "github",
+      "skillPath": "skills/getting-started/SKILL.md",
+      "computedHash": "9a10e2f3c38b66b2c963815d1d0ee80e49b794da63a144a4d0c9609bc8275ce6"
+    }
+  }
+}
