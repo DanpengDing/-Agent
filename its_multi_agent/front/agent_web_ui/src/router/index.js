@@ -16,6 +16,11 @@ const routes = [
         path: 'knowledge',
         name: 'knowledge',
         component: () => import('../views/KnowledgePage.vue')
+      },
+      {
+        path: 'memory',
+        name: 'memory',
+        component: () => import('../views/MemoryPage.vue')
       }
     ]
   }

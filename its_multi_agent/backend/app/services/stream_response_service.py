@@ -37,7 +37,8 @@ def extract_backend_error_details_from_result(result) -> list:
     return details
 
 
-async def process_stream_response(streaming_result: RunResultStreaming) -> AsyncGenerator:
+async def process_stream_response(streaming_result: RunResultStreaming, callbacks: dict | None = None) -> AsyncGenerator:
+    callbacks = callbacks or {}
     async for event in streaming_result.stream_events():
         logger.debug("[Stream] event type=%s", event.type)
 
@@ -69,6 +70,9 @@ async def process_stream_response(streaming_result: RunResultStreaming) -> Async
                     tool_name = event.item.raw_item.name
                     tool_args = getattr(event.item.raw_item, "arguments", "")
                     logger.info("[Stream] tool_called name=%s args=%s", tool_name, str(tool_args)[:500])
+                    callback = callbacks.get("on_tool_called")
+                    if callable(callback):
+                        callback(tool_name, str(tool_args))
 
                     text = format_tool_call_html(tool_name)
                     yield "data: " + ResponseFactory.build_text(
@@ -78,6 +82,9 @@ async def process_stream_response(streaming_result: RunResultStreaming) -> Async
             elif hasattr(event, "name") and event.name == "tool_output":
                 output = getattr(event.item, "output", "")
                 logger.info("[Stream] tool_output=%s", str(output)[:1000])
+                callback = callbacks.get("on_tool_output")
+                if callable(callback):
+                    callback(str(output))
                 details = extract_backend_error_details(str(output))
                 if details:
                     yield "data: " + ResponseFactory.build_text(

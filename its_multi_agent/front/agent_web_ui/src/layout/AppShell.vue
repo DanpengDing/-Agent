@@ -12,6 +12,9 @@
         <RouterLink to="/knowledge" class="shell-link" :class="{ active: route.path === '/knowledge' }">
           知识库上传
         </RouterLink>
+        <RouterLink to="/memory" class="shell-link" :class="{ active: route.path === '/memory' }">
+          记忆管理
+        </RouterLink>
       </nav>
     </header>
 

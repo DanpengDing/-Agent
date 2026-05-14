@@ -36,6 +36,14 @@ class SessionService:
 
         if should_persist:
             self.save_session_state(user_id, target_session_id, runtime_state)
+            if runtime_state.summary is not None:
+                from services.memory_service import memory_service
+
+                memory_service.capture_summary_memory(
+                    user_id=user_id,
+                    session_id=target_session_id,
+                    summary=runtime_state.summary,
+                )
 
         return runtime_state
 

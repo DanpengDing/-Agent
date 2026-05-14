@@ -39,3 +39,10 @@ class HumanApprovalRequest(BaseModel):
     approval_token: str = Field(description="待审批记录 token")
     decision: Literal["approved", "rejected"] = Field(description="审批结果")
     context: UserContext
+
+
+class UserPreferenceUpsertRequest(BaseModel):
+    user_id: str = Field(description="用户 ID")
+    preference_key: str = Field(description="偏好键")
+    preference_value: str = Field(description="偏好值")
+    session_id: Optional[str] = Field(default="", description="来源会话 ID")

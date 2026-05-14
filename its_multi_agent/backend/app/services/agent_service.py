@@ -13,8 +13,10 @@ from schemas.request import ChatMessageRequest
 from schemas.response import ContentKind
 from services.approval_details_service import build_service_station_approval_details
 from services.hitl_service import hitl_service
+from services.memory_service import memory_service
 from services.query_rewrite_service import query_rewrite_service
 from services.session_service import session_service
+from services.task_memory_service import task_memory_service
 from services.structured_output_service import structured_output_service
 from services.stream_response_service import process_stream_response
 from utils.response_util import ResponseFactory
@@ -60,6 +62,8 @@ class MultiAgentService:
         session_id = request.context.session_id or ""
         original_query = request.query
         user_query = original_query
+        active_task = None
+        recovered_task = None
 
         try:
             logger.info(
@@ -102,11 +106,39 @@ class MultiAgentService:
 
             # 第 2 步：把最终 rewrite 后的 query 放入会话历史。
             # 这样主调度智能体拿到的是"本轮真正要处理的问题"。
+            memory_service.capture_user_memory(
+                user_id=user_id,
+                session_id=session_id,
+                text=original_query,
+            )
+            memory_messages = memory_service.build_memory_system_messages(user_id)
+            recovered_task = task_memory_service.get_active_task_for_query(user_id, session_id, user_query)
+            active_task = recovered_task or task_memory_service.ensure_task(user_id, session_id, user_query)
             chat_history = session_service.build_runtime_history(
                 runtime_state,
                 user_input=user_query,
                 append_user_message=not request.skip_user_message,
             )
+            if memory_messages:
+                first_non_system_index = next(
+                    (index for index, item in enumerate(chat_history) if item.get("role") != "system"),
+                    len(chat_history),
+                )
+                chat_history = (
+                    chat_history[:first_non_system_index]
+                    + memory_messages
+                    + chat_history[first_non_system_index:]
+                )
+            if recovered_task:
+                first_non_system_index = next(
+                    (index for index, item in enumerate(chat_history) if item.get("role") != "system"),
+                    len(chat_history),
+                )
+                chat_history = (
+                    chat_history[:first_non_system_index]
+                    + task_memory_service.build_resume_system_messages(recovered_task)
+                    + chat_history[first_non_system_index:]
+                )
             logger.debug(
                 "[AgentService] prepared history user=%s session=%s messages=%d",
                 user_id,
@@ -147,7 +179,22 @@ class MultiAgentService:
                     session_id,
                 )
 
-                async for chunk in process_stream_response(streaming_result):
+                callbacks = {}
+                if active_task:
+                    callbacks = {
+                        "on_tool_called": lambda tool_name, tool_args: task_memory_service.record_tool_called(
+                            user_id=user_id,
+                            task_id=active_task["task_id"],
+                            tool_name=tool_name,
+                        ),
+                        "on_tool_output": lambda output: task_memory_service.record_tool_output(
+                            user_id=user_id,
+                            task_id=active_task["task_id"],
+                            tool_name=(task_memory_service.get_task(user_id, active_task["task_id"]) or {}).get("last_tool_name", "unknown"),
+                            output_text=output,
+                        ),
+                    }
+                async for chunk in process_stream_response(streaming_result, callbacks=callbacks):
                     yield chunk
 
             # 第 4 步：流跑完后，检查官方 SDK 是否返回了审批中断。
@@ -185,6 +232,13 @@ class MultiAgentService:
                         approve_label="允许查询",
                         reject_label="取消操作",
                     )
+                    if active_task:
+                        task_memory_service.mark_waiting_approval(
+                            user_id=user_id,
+                            task_id=active_task["task_id"],
+                            approval_token=pending.token,
+                            details=pending.details or "",
+                        )
 
                     approval_message = cls._format_approval_message(pending.question, pending.details)
                     if approval_message:
@@ -222,6 +276,12 @@ class MultiAgentService:
             formatted_result = re.sub(r"\n+", "\n", structured_result.answer)
             runtime_state = session_service.append_message_to_state(runtime_state, "assistant", formatted_result)
             session_service.save_session_state(user_id, session_id, runtime_state)
+            if active_task:
+                task_memory_service.mark_completed(
+                    user_id=user_id,
+                    task_id=active_task["task_id"],
+                    summary=formatted_result,
+                )
             yield "data: " + ResponseFactory.build_finish().model_dump_json() + "\n\n"
 
         except Exception as exc:
@@ -245,6 +305,12 @@ class MultiAgentService:
             yield "data: " + ResponseFactory.build_text(text, ContentKind.PROCESS).model_dump_json() + "\n\n"
 
             if flag:
+                if active_task:
+                    task_memory_service.mark_retrying(
+                        user_id=user_id,
+                        task_id=active_task["task_id"],
+                        error=str(exc),
+                    )
                 # 第一次失败时会进入这里。
                 # 做法不是"只重试失败的那个工具"，而是重新调用整个 process_task，
                 # 让本轮请求从头再走一遍：
@@ -270,6 +336,12 @@ class MultiAgentService:
                 async for item in MultiAgentService.process_task(request, flag=False):
                     yield item
             else:
+                if active_task:
+                    task_memory_service.mark_blocked(
+                        user_id=user_id,
+                        task_id=active_task["task_id"],
+                        error=str(exc),
+                    )
                 # 走到这里，说明当前已经是"补跑后的第二轮"了，或者外部本来就不允许重试。
                 # 这时不再继续递归，而是直接给前端发送 finish，结束本次请求。
                 yield "data: " + ResponseFactory.build_finish().model_dump_json() + "\n\n"

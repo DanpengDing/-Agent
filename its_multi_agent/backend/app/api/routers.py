@@ -1,6 +1,7 @@
 from typing import AsyncGenerator
 
 from agents.run import Runner
+from fastapi import Query
 from fastapi.routing import APIRouter
 from opentelemetry.trace import SpanKind
 from starlette.responses import StreamingResponse
@@ -8,13 +9,15 @@ from starlette.responses import StreamingResponse
 from infrastructure.logging.logger import logger
 from infrastructure.tracing import get_tracer
 from multi_agent.orchestrator_agent import orchestrator_agent
-from schemas.request import ChatMessageRequest, HumanApprovalRequest, UserSessionsRequest
+from schemas.request import ChatMessageRequest, HumanApprovalRequest, UserPreferenceUpsertRequest, UserSessionsRequest
 from schemas.response import ContentKind
 from services.agent_service import MultiAgentService
 from services.approval_details_service import build_service_station_approval_details
 from services.guardrail_service import guardrail_service
 from services.hitl_service import hitl_service
+from services.memory_service import memory_service
 from services.session_service import session_service
+from services.task_memory_service import task_memory_service
 from services.stream_response_service import extract_backend_error_details_from_result
 from services.structured_output_service import structured_output_service
 from utils.response_util import ResponseFactory
@@ -90,6 +93,17 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
 
     async def approval_stream():
         if approval.decision == "rejected":
+            task = task_memory_service.find_task_by_approval_token(
+                user_id=request.context.user_id,
+                session_id=request.context.session_id or "",
+                token=approval.token,
+            )
+            if task:
+                task_memory_service.mark_cancelled(
+                    user_id=request.context.user_id,
+                    task_id=task["task_id"],
+                    reason="用户拒绝审批",
+                )
             rejected_text = "已取消这次操作。如需继续，我可以换一种方式帮你。"
             session_service.append_and_save_message(
                 user_id=request.context.user_id,
@@ -108,6 +122,17 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
         try:
             if approval.state is None:
                 raise ValueError("pending approval state is missing")
+
+            task = task_memory_service.find_task_by_approval_token(
+                user_id=request.context.user_id,
+                session_id=request.context.session_id or "",
+                token=approval.token,
+            )
+            if task:
+                task_memory_service.mark_resumed_after_approval(
+                    user_id=request.context.user_id,
+                    task_id=task["task_id"],
+                )
 
             for interruption in approval.interruptions:
                 approval.state.approve(interruption)
@@ -134,6 +159,13 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
                     next_pending.token,
                     len(interruptions),
                 )
+                if task:
+                    task_memory_service.mark_waiting_approval(
+                        user_id=request.context.user_id,
+                        task_id=task["task_id"],
+                        approval_token=next_pending.token,
+                        details=next_pending.details or "",
+                    )
                 approval_message = MultiAgentService._format_approval_message(
                     next_pending.question,
                     next_pending.details,
@@ -176,6 +208,12 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
                     role="assistant",
                     content=structured_output.answer,
                 )
+                if task:
+                    task_memory_service.mark_completed(
+                        user_id=request.context.user_id,
+                        task_id=task["task_id"],
+                        summary=structured_output.answer,
+                    )
             yield "data: " + ResponseFactory.build_text(
                 structured_output.answer,
                 ContentKind.ANSWER,
@@ -211,3 +249,124 @@ def get_user_sessions(request: UserSessionsRequest):
             "user_id": user_id,
             "error": str(exc),
         }
+
+
+@router.get("/api/memories/long-term")
+def get_long_term_memories(user_id: str = Query(...), limit: int = Query(20, ge=1, le=100)):
+    try:
+        items = memory_service.list_long_term_memories(user_id, limit=limit)
+        return {
+            "success": True,
+            "user_id": user_id,
+            "total": len(items),
+            "items": items,
+        }
+    except Exception as exc:
+        logger.error("fetch long-term memories failed user=%s error=%s", user_id, exc)
+        return {"success": False, "user_id": user_id, "error": str(exc)}
+
+
+@router.get("/api/memories/preferences")
+def get_user_preferences(user_id: str = Query(...), limit: int = Query(20, ge=1, le=100)):
+    try:
+        items = memory_service.list_user_preferences(user_id, limit=limit)
+        return {
+            "success": True,
+            "user_id": user_id,
+            "total": len(items),
+            "items": items,
+        }
+    except Exception as exc:
+        logger.error("fetch preferences failed user=%s error=%s", user_id, exc)
+        return {"success": False, "user_id": user_id, "error": str(exc)}
+
+
+@router.put("/api/memories/preferences")
+def upsert_user_preference(request: UserPreferenceUpsertRequest):
+    try:
+        memory_service.set_user_preference(
+            user_id=request.user_id,
+            preference_key=request.preference_key,
+            preference_value=request.preference_value,
+            session_id=request.session_id or "",
+        )
+        return {
+            "success": True,
+            "user_id": request.user_id,
+            "preference_key": request.preference_key,
+            "preference_value": request.preference_value,
+        }
+    except Exception as exc:
+        logger.error("upsert preference failed user=%s key=%s error=%s", request.user_id, request.preference_key, exc)
+        return {
+            "success": False,
+            "user_id": request.user_id,
+            "preference_key": request.preference_key,
+            "error": str(exc),
+        }
+
+
+@router.delete("/api/memories/preferences/{preference_key}")
+def delete_user_preference(preference_key: str, user_id: str = Query(...)):
+    try:
+        deleted = memory_service.delete_user_preference(user_id=user_id, preference_key=preference_key)
+        return {
+            "success": True,
+            "user_id": user_id,
+            "preference_key": preference_key,
+            "deleted": deleted,
+        }
+    except Exception as exc:
+        logger.error("delete preference failed user=%s key=%s error=%s", user_id, preference_key, exc)
+        return {
+            "success": False,
+            "user_id": user_id,
+            "preference_key": preference_key,
+            "error": str(exc),
+        }
+
+
+@router.get("/api/memories/tasks/active")
+def get_active_task(user_id: str = Query(...), session_id: str = Query("")):
+    try:
+        item = task_memory_service.get_active_task(user_id=user_id, session_id=session_id or "")
+        return {
+            "success": True,
+            "user_id": user_id,
+            "session_id": session_id,
+            "item": item,
+        }
+    except Exception as exc:
+        logger.error("fetch active task failed user=%s session=%s error=%s", user_id, session_id, exc)
+        return {"success": False, "user_id": user_id, "session_id": session_id, "error": str(exc)}
+
+
+@router.get("/api/memories/tasks")
+def get_task_memories(user_id: str = Query(...), session_id: str = Query(""), limit: int = Query(20, ge=1, le=100)):
+    try:
+        items = task_memory_service.list_tasks(user_id=user_id, session_id=session_id or "", limit=limit)
+        return {
+            "success": True,
+            "user_id": user_id,
+            "session_id": session_id,
+            "total": len(items),
+            "items": items,
+        }
+    except Exception as exc:
+        logger.error("fetch task memories failed user=%s session=%s error=%s", user_id, session_id, exc)
+        return {"success": False, "user_id": user_id, "session_id": session_id, "error": str(exc)}
+
+
+@router.get("/api/memories/tasks/{task_id}")
+def get_task_memory_detail(task_id: str, user_id: str = Query(...)):
+    try:
+        item = task_memory_service.get_task(user_id=user_id, task_id=task_id)
+        return {
+            "success": True,
+            "user_id": user_id,
+            "task_id": task_id,
+            "item": item,
+        }
+    except Exception as exc:
+        logger.error("fetch task memory detail failed user=%s task_id=%s error=%s", user_id, task_id, exc)
+        return {"success": False, "user_id": user_id, "task_id": task_id, "error": str(exc)}
