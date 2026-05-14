@@ -342,8 +342,20 @@ def query_nearest_repair_shops_by_coords(lat: float, lng: float, limit: int = 3)
         cursor.execute(sql, (lat, lng, lat, limit))
         rows = cursor.fetchall()
         logger.info("[NearestShops] found count=%s lat=%s lng=%s", len(rows), lat, lng)
-        if rows:
-            logger.debug("[NearestShops] first_row=%s", rows[0])
+        if not rows:
+            payload = json.dumps(
+                {
+                    "ok": False,
+                    "source": "empty_result",
+                    "error": "未查询到附近维修站",
+                    "query": {"lat": lat, "lng": lng, "limit": limit},
+                },
+                ensure_ascii=False,
+            )
+            logger.info("[NearestShops] empty result=%s", payload)
+            return payload
+
+        logger.debug("[NearestShops] first_row=%s", rows[0])
 
         payload = json.dumps(
             {
@@ -363,6 +375,7 @@ def query_nearest_repair_shops_by_coords(lat: float, lng: float, limit: int = 3)
         payload = json.dumps(
             {
                 "ok": False,
+                "source": "database_error",
                 "error": f"查询附近服务站失败: {exc}",
                 "query": {"lat": lat, "lng": lng, "limit": limit},
             },

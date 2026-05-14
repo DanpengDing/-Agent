@@ -1,3 +1,4 @@
+import json
 from collections.abc import AsyncGenerator
 
 from agents.items import ToolCallItem
@@ -10,6 +11,7 @@ from openai.types.responses.response_stream_event import (
 
 from infrastructure.logging.logger import logger
 from schemas.response import ContentKind
+from services.tool_failure_service import tool_failure_service
 from utils.response_util import ResponseFactory
 from utils.text_util import format_agent_update_html, format_tool_call_html
 
@@ -37,8 +39,30 @@ def extract_backend_error_details_from_result(result) -> list:
     return details
 
 
+def try_parse_tool_output(output):
+    if isinstance(output, dict):
+        return output
+
+    text = str(output or "").strip()
+    if not text or not text.startswith("{"):
+        return None
+
+    try:
+        return json.loads(text)
+    except Exception:
+        return None
+
+
+def extract_tool_failure_from_output(tool_name: str, output):
+    payload = try_parse_tool_output(output)
+    if not isinstance(payload, dict):
+        return None
+    return tool_failure_service.classify_payload(tool_name, payload)
+
+
 async def process_stream_response(streaming_result: RunResultStreaming, callbacks: dict | None = None) -> AsyncGenerator:
     callbacks = callbacks or {}
+
     async for event in streaming_result.stream_events():
         logger.debug("[Stream] event type=%s", event.type)
 
@@ -49,14 +73,12 @@ async def process_stream_response(streaming_result: RunResultStreaming, callback
                 yield "data: " + ResponseFactory.build_text(
                     delta_text, ContentKind.ANSWER
                 ).model_dump_json() + "\n\n"
-
             elif ResponseReasoningTextDeltaEvent and isinstance(event.data, ResponseReasoningTextDeltaEvent):
                 if event.data.delta:
                     logger.debug("[Stream] reasoning delta=%s", event.data.delta[:200])
                     yield "data: " + ResponseFactory.build_text(
                         event.data.delta, ContentKind.THINKING
                     ).model_dump_json() + "\n\n"
-
             elif isinstance(event.data, ResponseReasoningSummaryTextDeltaEvent):
                 if event.data.delta:
                     logger.debug("[Stream] reasoning summary delta=%s", event.data.delta[:200])
@@ -82,9 +104,20 @@ async def process_stream_response(streaming_result: RunResultStreaming, callback
             elif hasattr(event, "name") and event.name == "tool_output":
                 output = getattr(event.item, "output", "")
                 logger.info("[Stream] tool_output=%s", str(output)[:1000])
-                callback = callbacks.get("on_tool_output")
-                if callable(callback):
-                    callback(str(output))
+
+                output_callback = callbacks.get("on_tool_output")
+                if callable(output_callback):
+                    output_callback(str(output))
+
+                tool_name_lookup = callbacks.get("tool_name_lookup", lambda: "unknown")
+                tool_name = tool_name_lookup() if callable(tool_name_lookup) else "unknown"
+                failure = extract_tool_failure_from_output(tool_name, output)
+                if failure is not None:
+                    failure_callback = callbacks.get("on_tool_failure")
+                    if callable(failure_callback):
+                        failure_callback(failure)
+                    continue
+
                 details = extract_backend_error_details(str(output))
                 if details:
                     yield "data: " + ResponseFactory.build_text(

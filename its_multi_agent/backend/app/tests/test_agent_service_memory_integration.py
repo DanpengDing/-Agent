@@ -54,9 +54,12 @@ def test_process_task_injects_memory_messages_and_captures_user_memory(monkeypat
     monkeypatch.setattr("services.agent_service.query_rewrite_service.build_process_message", lambda result: "")
     monkeypatch.setattr("services.agent_service.memory_service.capture_user_memory", fake_capture_user_memory)
     monkeypatch.setattr("services.agent_service.memory_service.build_memory_system_messages", fake_build_memory_system_messages)
-    monkeypatch.setattr("services.agent_service.process_stream_response", lambda result: _empty_stream())
+    monkeypatch.setattr("services.agent_service.process_stream_response", lambda result, callbacks=None: _empty_stream())
     monkeypatch.setattr("services.agent_service.Runner.run_streamed", fake_run_streamed)
-    monkeypatch.setattr("services.agent_service.structured_output_service.parse_final_output", lambda output: SimpleNamespace(answer=output, intent="general"))
+    monkeypatch.setattr(
+        "services.agent_service.structured_output_service.parse_final_output",
+        lambda output: SimpleNamespace(answer=output, intent="general"),
+    )
 
     request = ChatMessageRequest(
         query="我在晋江市陈埭镇，帮我找维修站",

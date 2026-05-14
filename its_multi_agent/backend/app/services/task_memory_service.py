@@ -175,6 +175,24 @@ class TaskMemoryService:
             last_active_at=self._now_string(),
         )
 
+    def record_tool_failure(self, user_id: str, task_id: str, failure) -> Optional[Dict[str, Any]]:
+        return self._repo.update_task(
+            user_id=user_id,
+            task_id=task_id,
+            task_stage="tool_failed",
+            last_tool_name=failure.tool_name,
+            last_error=failure.developer_message,
+            last_tool_result_json={
+                "tool_name": failure.tool_name,
+                "failure_category": failure.category.value,
+                "failure_action": failure.action.value,
+                "error_code": failure.error_code,
+                "user_message": failure.user_message,
+                "raw_preview": failure.raw_preview,
+            },
+            last_active_at=self._now_string(),
+        )
+
     def mark_waiting_approval(self, user_id: str, task_id: str, approval_token: str, details: str = "") -> Optional[Dict[str, Any]]:
         return self._repo.update_task(
             user_id=user_id,
