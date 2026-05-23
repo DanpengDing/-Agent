@@ -81,6 +81,11 @@ class HitlService:
         approval.decision = decision
         return approval
 
+    def get_pending_approval(self, token: Optional[str]) -> Optional[PendingApproval]:
+        if not token:
+            return None
+        return self._pending.get(token)
+
     def consume_approval(self, token: str) -> None:
         # 一旦审批已经处理完成，就立刻删除，避免同一个 token 被重复使用。
         self._pending.pop(token, None)

@@ -95,17 +95,53 @@ class SessionService:
         except Exception as exc:
             logger.error("save session failed: user=%s session=%s error=%s", user_id, session_id, exc)
 
-    def append_message_to_state(self, state: SessionMemoryState, role: str, content: str) -> SessionMemoryState:
+    @staticmethod
+    def _sanitize_runtime_message(message: Dict[str, Any]) -> Dict[str, str]:
+        return {
+            "role": str(message.get("role") or "user"),
+            "content": str(message.get("content") or ""),
+        }
+
+    def append_message_to_state(
+        self,
+        state: SessionMemoryState,
+        role: str,
+        content: str,
+        extra_fields: Optional[Dict[str, Any]] = None,
+    ) -> SessionMemoryState:
         new_state = state.model_copy(deep=True)
-        new_state.messages.append({"role": role, "content": content})
+        message = {"role": role, "content": content}
+        if extra_fields:
+            message.update(extra_fields)
+        new_state.messages.append(message)
         return new_state
 
-    def append_and_save_message(self, user_id: str, session_id: str, role: str, content: str) -> SessionMemoryState:
+    def append_and_save_message(
+        self,
+        user_id: str,
+        session_id: str,
+        role: str,
+        content: str,
+        extra_fields: Optional[Dict[str, Any]] = None,
+    ) -> SessionMemoryState:
         target_session_id = session_id or self.DEFAULT_SESSION_ID
         state = self.load_session_state(user_id, target_session_id)
-        state = self.append_message_to_state(state, role, content)
+        state = self.append_message_to_state(state, role, content, extra_fields=extra_fields)
         self.save_session_state(user_id, target_session_id, state)
         return state
+
+    def attach_extra_fields_to_last_message(
+        self,
+        state: SessionMemoryState,
+        extra_fields: Optional[Dict[str, Any]] = None,
+    ) -> SessionMemoryState:
+        if not extra_fields:
+            return state
+        new_state = state.model_copy(deep=True)
+        if not new_state.messages:
+            return new_state
+        new_state.messages[-1].update(extra_fields)
+        return new_state
 
     def build_runtime_history(
         self,
@@ -113,10 +149,10 @@ class SessionService:
         user_input: Optional[str] = None,
         append_user_message: bool = True,
     ) -> List[Dict[str, str]]:
-        runtime_history = list(state.system_messages)
+        runtime_history = [self._sanitize_runtime_message(message) for message in state.system_messages]
         if state.summary is not None:
             runtime_history.append(context_compression_service.format_summary_message(state.summary))
-        runtime_history.extend(state.messages)
+        runtime_history.extend(self._sanitize_runtime_message(message) for message in state.messages)
         if append_user_message and user_input:
             runtime_history.append({"role": "user", "content": user_input})
         return runtime_history
@@ -134,6 +170,9 @@ class SessionService:
             logger.error("save session failed: user=%s session=%s error=%s", user_id, session_id, exc)
 
     def get_all_sessions_memory(self, user_id: str) -> List[Dict[str, Any]]:
+        from services.hitl_service import hitl_service
+        from services.task_memory_service import task_memory_service
+
         raw_sessions = self._repo.get_all_sessions_metadata(user_id)
         formatted_sessions = []
 
@@ -149,10 +188,17 @@ class SessionService:
             else:
                 state = self._normalize_session_payload(data_or_error, session_id)
                 user_visible_memory = [msg for msg in state.messages if msg.get("role") != "system"]
+                pending_approval = self._build_pending_approval_payload(
+                    user_id=user_id,
+                    session_id=session_id,
+                    task_memory_service=task_memory_service,
+                    hitl_service=hitl_service,
+                )
                 session_item.update({
                     "memory": user_visible_memory,
                     "total_messages": len(user_visible_memory),
                     "summary": state.summary.model_dump() if state.summary else None,
+                    "pending_approval": pending_approval,
                 })
             formatted_sessions.append(session_item)
 
@@ -192,6 +238,39 @@ class SessionService:
         # 中文注释：如果文件里是未知格式，就回退成初始化状态，避免因为脏数据阻断对话链路。
         logger.warning("[SessionService] unknown session payload format session=%s payload=%s", session_id, type(payload))
         return SessionMemoryState(system_messages=self._init_system_msg_instruct(session_id))
+
+    def _build_pending_approval_payload(
+        self,
+        user_id: str,
+        session_id: str,
+        task_memory_service,
+        hitl_service,
+    ) -> Optional[Dict[str, Any]]:
+        active_task = task_memory_service.get_active_task(user_id=user_id, session_id=session_id or "")
+        if not active_task or active_task.get("task_status") != "waiting_approval":
+            return None
+
+        approval_token = active_task.get("waiting_approval_token")
+        pending = hitl_service.get_pending_approval(approval_token)
+        if pending is not None:
+            return {
+                "token": pending.token,
+                "title": pending.title,
+                "question": pending.question,
+                "details": pending.details,
+                "approveLabel": pending.approve_label,
+                "rejectLabel": pending.reject_label,
+            }
+
+        approval_details = ((active_task.get("last_tool_result_json") or {}).get("approval_details")) or ""
+        return {
+            "token": approval_token,
+            "title": "需要人工确认",
+            "question": "是否允许智能体继续执行当前操作？",
+            "details": approval_details,
+            "approveLabel": "确认",
+            "rejectLabel": "取消",
+        }
 
     def _init_system_msg_instruct(self, session_id: str) -> List[Dict[str, str]]:
         return [{

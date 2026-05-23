@@ -35,6 +35,19 @@ def _collect_saved_messages(saved_states):
     return [msg for state in saved_states for msg in state.messages]
 
 
+def _extract_sse_packets(chunks):
+    packets = []
+    for chunk in chunks:
+        if isinstance(chunk, bytes):
+            chunk = chunk.decode("utf-8")
+        if not chunk.startswith("data: "):
+            continue
+        payload = chunk[len("data: "):].strip()
+        if payload:
+            packets.append(json.loads(payload))
+    return packets
+
+
 def test_process_task_persists_approval_prompt_in_session(monkeypatch):
     saved_states = []
     base_state = SessionMemoryState()
@@ -51,21 +64,21 @@ def test_process_task_persists_approval_prompt_in_session(monkeypatch):
     monkeypatch.setattr("services.agent_service.query_rewrite_service.rewrite", fake_rewrite)
     monkeypatch.setattr("services.agent_service.query_rewrite_service.build_process_message", lambda rewrite_result: "")
     monkeypatch.setattr("services.agent_service.Runner.run_streamed", lambda **kwargs: _FakeStreamingResult(interruptions=[object()]))
-    monkeypatch.setattr("services.agent_service.build_service_station_approval_details", lambda query: "需要定位后再继续")
+    monkeypatch.setattr("services.agent_service.build_service_station_approval_details", lambda query: "Need location before continuing.")
     monkeypatch.setattr(
         "services.agent_service.hitl_service.create_pending_approval",
         lambda **kwargs: SimpleNamespace(
             token="token-1",
-            title="人工确认",
-            question="是否继续查询服务站？",
+            title="Human approval",
+            question="Continue the lookup?",
             details=kwargs.get("details"),
-            approve_label="继续",
-            reject_label="取消",
+            approve_label="Continue",
+            reject_label="Cancel",
         ),
     )
 
     request = ChatMessageRequest(
-        query="我要修电脑",
+        query="Find a repair station",
         context=UserContext(user_id="u1", session_id="s1"),
     )
 
@@ -78,29 +91,46 @@ def test_process_task_persists_approval_prompt_in_session(monkeypatch):
     saved_messages = _collect_saved_messages(saved_states)
     assistant_messages = [msg for msg in saved_messages if msg.get("role") == "assistant"]
 
-    assert assistant_messages, "approval prompt should be persisted as an assistant message"
-    assert "是否继续查询服务站？" in assistant_messages[-1]["content"]
+    assert assistant_messages
+    assert "Continue the lookup?" in assistant_messages[-1]["content"]
 
 
-def test_human_approval_persists_final_answer_in_session(monkeypatch):
+def test_human_approval_persists_reviewed_answer_and_metadata_in_session(monkeypatch):
     saved_states = []
     base_state = SessionMemoryState()
+    task = {
+        "task_id": "task-1",
+        "task_type": "technical_consult",
+        "last_tool_result_json": {
+            "tool_name": "query_knowledge",
+            "evidence_items": [
+                {
+                    "title": "KB Evidence",
+                    "snippet": "The available documentation only supports gathering more location details first.",
+                    "source": "knowledge_base",
+                }
+            ],
+        },
+    }
 
     approval = SimpleNamespace(
         token="token-1",
         decision="approved",
         state=SimpleNamespace(approve=lambda interruption: None),
         interruptions=[],
-        query="我要修电脑",
+        query="Find a repair station",
     )
 
     async def fake_run(agent, state):
-        return SimpleNamespace(final_output=json.dumps({"answer": "请告诉我你所在的城市或具体地址"}))
+        return SimpleNamespace(final_output=json.dumps({"answer": "Give me your location.", "references": ["knowledge_base"]}))
 
     monkeypatch.setattr("api.routers.Runner.run", fake_run)
     monkeypatch.setattr("api.routers.hitl_service.resolve_pending_approval", lambda **kwargs: approval)
     monkeypatch.setattr("api.routers.hitl_service.consume_approval", lambda token: None)
     monkeypatch.setattr("api.routers.extract_backend_error_details_from_result", lambda result: [])
+    monkeypatch.setattr("api.routers.task_memory_service.find_task_by_approval_token", lambda **kwargs: task)
+    monkeypatch.setattr("api.routers.task_memory_service.mark_resumed_after_approval", lambda **kwargs: None)
+    monkeypatch.setattr("api.routers.task_memory_service.mark_completed", lambda **kwargs: None)
     monkeypatch.setattr(session_service, "load_session_state", lambda user_id, session_id: base_state)
     monkeypatch.setattr(session_service, "save_session_state", lambda user_id, session_id, state: saved_states.append(state))
 
@@ -113,17 +143,26 @@ def test_human_approval_persists_final_answer_in_session(monkeypatch):
     response = asyncio.run(routers.human_approval(request))
     assert isinstance(response, StreamingResponse)
 
+    chunks = []
+
     async def consume():
-        async for _ in response.body_iterator:
-            pass
+        async for chunk in response.body_iterator:
+            chunks.append(chunk)
 
     asyncio.run(consume())
 
     saved_messages = _collect_saved_messages(saved_states)
     assistant_messages = [msg for msg in saved_messages if msg.get("role") == "assistant"]
+    packets = _extract_sse_packets(chunks)
+    answer_packets = [packet for packet in packets if packet.get("content", {}).get("kind") == "ANSWER"]
 
-    assert assistant_messages, "approved answer should be persisted as an assistant message"
-    assert "请告诉我你所在的城市或具体地址" in assistant_messages[-1]["content"]
+    assert assistant_messages
+    assert answer_packets
+    assert assistant_messages[-1]["content"] == "Give me your location."
+    assert assistant_messages[-1]["review_verdict"]["status"] == "supported"
+    assert assistant_messages[-1]["evidence_cards"][0]["title"] == "KB Evidence"
+    assert answer_packets[-1]["content"]["review_verdict"]["status"] == "supported"
+    assert answer_packets[-1]["content"]["evidence_cards"][0]["title"] == "KB Evidence"
 
 
 def test_process_task_persists_classified_failure_message_in_session(monkeypatch):
@@ -135,7 +174,7 @@ def test_process_task_persists_classified_failure_message_in_session(monkeypatch
         action=ToolFailureAction.BLOCK_TASK,
         error_code="unknown_error",
         developer_message="bug",
-        user_message="工具执行失败，暂时无法继续自动处理。",
+        user_message="The tool failed and the request cannot continue automatically.",
         retryable=False,
         raw_preview="bug",
     )
@@ -178,7 +217,7 @@ def test_process_task_persists_classified_failure_message_in_session(monkeypatch
     monkeypatch.setattr("services.agent_service.process_stream_response", fake_process_stream_response)
 
     request = ChatMessageRequest(
-        query="测试失败消息持久化",
+        query="Trigger a failure message",
         context=UserContext(user_id="u1", session_id="s1"),
     )
 
@@ -191,5 +230,30 @@ def test_process_task_persists_classified_failure_message_in_session(monkeypatch
     saved_messages = _collect_saved_messages(saved_states)
     assistant_messages = [msg for msg in saved_messages if msg.get("role") == "assistant"]
 
-    assert assistant_messages, "classified failure message should be persisted as an assistant message"
-    assert "工具执行失败，暂时无法继续自动处理。" in assistant_messages[-1]["content"]
+    assert assistant_messages
+    assert "cannot continue automatically" in assistant_messages[-1]["content"]
+
+
+def test_append_and_save_message_preserves_extra_fields(monkeypatch):
+    saved_states = []
+    base_state = SessionMemoryState()
+
+    monkeypatch.setattr(session_service, "load_session_state", lambda user_id, session_id: base_state)
+    monkeypatch.setattr(session_service, "save_session_state", lambda user_id, session_id, state: saved_states.append(state))
+
+    session_service.append_and_save_message(
+        user_id="u1",
+        session_id="s1",
+        role="assistant",
+        content="Need more verification.",
+        extra_fields={
+            "review_verdict": {"status": "review_unavailable"},
+            "evidence_cards": [{"title": "Evidence 1"}],
+        },
+    )
+
+    saved_messages = _collect_saved_messages(saved_states)
+
+    assert saved_messages[-1]["content"] == "Need more verification."
+    assert saved_messages[-1]["review_verdict"]["status"] == "review_unavailable"
+    assert saved_messages[-1]["evidence_cards"][0]["title"] == "Evidence 1"

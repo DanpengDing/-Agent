@@ -196,6 +196,62 @@
                 </div>
                 <div v-show="msg.type !== 'THINKING' || !msg.collapsed" class="message-content">
                   <div class="markdown-body" v-html="renderMarkdown(msg.content)"></div>
+                  <div v-if="msg.type === 'assistant' && hasAssistantDiagnostics(msg)" class="assistant-diagnostics">
+                    <div class="assistant-review-row">
+                      <span
+                        v-if="msg.reviewVerdict"
+                        class="assistant-review-pill"
+                        :class="`review-${msg.reviewVerdict.status || 'supported'}`"
+                      >
+                        {{ formatReviewStatus(msg.reviewVerdict.status) }}
+                      </span>
+                      <span v-if="msg.intent" class="assistant-review-pill review-neutral">
+                        {{ formatIntentLabel(msg.intent) }}
+                      </span>
+                    </div>
+                    <div v-if="msg.reviewVerdict?.summary" class="assistant-review-summary">
+                      {{ msg.reviewVerdict.summary }}
+                    </div>
+                    <div v-if="msg.nextAction" class="assistant-next-action">
+                      {{ msg.nextAction }}
+                    </div>
+                    <div v-if="msg.evidenceCards?.length" class="evidence-card-list">
+                      <button
+                        type="button"
+                        class="evidence-toggle-btn"
+                        @click="msg.evidenceExpanded = !msg.evidenceExpanded"
+                      >
+                        <span>回答依据</span>
+                        <span class="evidence-toggle-meta">{{ msg.evidenceCards.length }} 条</span>
+                        <span class="evidence-toggle-action">{{ msg.evidenceExpanded ? '收起' : '展开查看' }}</span>
+                      </button>
+                      <div v-show="msg.evidenceExpanded" class="evidence-card-stack">
+                      <article
+                        v-for="(card, cardIndex) in msg.evidenceCards"
+                        :key="`${msg.content}-${card.title || 'evidence'}-${cardIndex}`"
+                        class="evidence-card"
+                      >
+                        <div class="evidence-card-top">
+                          <span
+                            class="evidence-card-source"
+                            :class="`source-${classifyEvidenceSource(card.source)}`"
+                          >{{ formatEvidenceSource(card.source) }}</span>
+                          <a
+                            v-if="card.uri"
+                            class="evidence-card-link"
+                            :href="card.uri"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            查看来源
+                          </a>
+                        </div>
+                        <div class="evidence-card-title">{{ card.title || formatEvidenceSource(card.source) }}</div>
+                        <div v-if="card.snippet" class="evidence-card-snippet">{{ card.snippet }}</div>
+                      </article>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -269,6 +325,91 @@ const validUsers = [
   { username: 'root2', password: '123456', userId: 'root2' },
   { username: 'root3', password: '123456', userId: 'root3' }
 ]
+
+const reviewStatusLabels = {
+  supported: '已核验',
+  unsupported: '需谨慎',
+  conflicting: '证据冲突',
+  review_unavailable: '待复核'
+}
+
+const intentLabels = {
+  technical_support: '技术支持',
+  knowledge_base: '知识库问答',
+  service_station: '维修站查询',
+  navigation: '导航信息'
+}
+
+const evidenceSourceLabels = {
+  knowledge_base: '知识库 RAG',
+  retrieval: '检索结果',
+  web_search: '网页搜索',
+  web_search_preview: '网页搜索',
+  bailian_web_search: '网页搜索',
+  internet_search: '网页搜索',
+  service_station: '维修站工具',
+  geocode: '定位服务',
+  navigation: '导航服务'
+}
+
+const normalizeReviewVerdict = (reviewVerdict) => {
+  if (!reviewVerdict || typeof reviewVerdict !== 'object') return null
+  return {
+    status: reviewVerdict.status || 'supported',
+    summary: reviewVerdict.summary || '',
+    shouldDowngrade: Boolean(reviewVerdict.should_downgrade),
+    reviewed: reviewVerdict.reviewed !== false
+  }
+}
+
+const normalizeEvidenceCards = (evidenceCards) => {
+  if (!Array.isArray(evidenceCards)) return []
+  return evidenceCards
+    .filter((card) => card && typeof card === 'object')
+    .map((card) => ({
+      title: card.title || '',
+      snippet: card.snippet || '',
+      source: card.source || '',
+      uri: card.uri || ''
+    }))
+}
+
+const extractAssistantMetadata = (payload = {}) => {
+  const reviewVerdict = normalizeReviewVerdict(payload.review_verdict || payload.reviewVerdict)
+  const evidenceCards = normalizeEvidenceCards(payload.evidence_cards || payload.evidenceCards)
+  const references = Array.isArray(payload.references) ? [...payload.references] : []
+  const rawIntent = payload.intent || ''
+  return {
+    reviewVerdict,
+    evidenceCards,
+    references,
+    nextAction: payload.next_action || payload.nextAction || '',
+    intent: rawIntent === 'general' ? '' : rawIntent
+  }
+}
+
+const hasAssistantMetadata = (metadata = {}) => {
+  return Boolean(
+    metadata.reviewVerdict ||
+    (Array.isArray(metadata.evidenceCards) && metadata.evidenceCards.length > 0) ||
+    (Array.isArray(metadata.references) && metadata.references.length > 0) ||
+    metadata.nextAction ||
+    metadata.intent
+  )
+}
+
+const classifyEvidenceSource = (source = '') => {
+  const normalized = String(source || '').toLowerCase()
+  if (normalized.includes('knowledge')) return 'rag'
+  if (normalized.includes('web_search') || normalized.includes('internet') || normalized.includes('search')) return 'web'
+  if (normalized.includes('service_station') || normalized.includes('navigation') || normalized.includes('geocode')) return 'service'
+  return 'other'
+}
+
+const formatEvidenceSource = (source = '') => {
+  const normalized = String(source || '').toLowerCase()
+  return evidenceSourceLabels[normalized] || '参考依据'
+}
 
 export default {
   name: 'ChatPage',
@@ -368,9 +509,64 @@ export default {
       }, 0)
     }
 
+    const formatReviewStatus = (status) => reviewStatusLabels[status] || '审核信息'
+
+    const formatIntentLabel = (intent) => intentLabels[intent] || ''
+
+    const formatEvidenceSourceLabel = (source) => formatEvidenceSource(source)
+
+    const hasAssistantDiagnostics = (message) => hasAssistantMetadata(message)
+
+    const applyAssistantMetadata = (targetMessage, metadata = {}) => {
+      if (!targetMessage || targetMessage.type !== 'assistant' || !hasAssistantMetadata(metadata)) {
+        return
+      }
+
+      if (metadata.reviewVerdict) {
+        targetMessage.reviewVerdict = metadata.reviewVerdict
+      }
+      if (metadata.evidenceCards?.length) {
+        targetMessage.evidenceCards = metadata.evidenceCards
+      }
+      if (metadata.references?.length) {
+        targetMessage.references = metadata.references
+      }
+      if (metadata.nextAction) {
+        targetMessage.nextAction = metadata.nextAction
+      }
+      if (metadata.intent) {
+        targetMessage.intent = metadata.intent
+      }
+      if (typeof targetMessage.evidenceExpanded !== 'boolean') {
+        targetMessage.evidenceExpanded = false
+      }
+    }
+
+    const createAssistantMessage = (content = '', metadata = {}) => {
+      const message = {
+        type: 'assistant',
+        content,
+        evidenceExpanded: false
+      }
+      applyAssistantMetadata(message, metadata)
+      return message
+    }
+
     const normalizeMemoryRole = (role) => {
       if (role === 'process') return 'THINKING'
       return role
+    }
+
+    const normalizeSessionMessage = (msg) => {
+      const type = normalizeMemoryRole(msg.role)
+      if (type === 'assistant') {
+        return createAssistantMessage(msg.content || '', extractAssistantMetadata(msg))
+      }
+      return {
+        type,
+        content: msg.content || '',
+        collapsed: false
+      }
     }
 
     const selectSession = (sessionId) => {
@@ -379,22 +575,20 @@ export default {
       chatMessages.value = []
       processMessages.value = []
       answerText.value = ''
+      pendingApproval.value = session?.pending_approval || null
 
       if (!session?.memory?.length) return
 
       let lastType = null
       session.memory.forEach((msg) => {
         if (!msg?.content) return
-        const type = normalizeMemoryRole(msg.role)
+        const normalizedMessage = normalizeSessionMessage(msg)
+        const type = normalizedMessage.type
 
         if (type === 'THINKING' && lastType === 'THINKING') {
           chatMessages.value[chatMessages.value.length - 1].content += `\n${msg.content}`
         } else {
-          chatMessages.value.push({
-            type,
-            content: msg.content,
-            collapsed: false
-          })
+          chatMessages.value.push(normalizedMessage)
         }
         lastType = type
       })
@@ -420,6 +614,10 @@ export default {
         const data = await response.json()
         if (data.success && Array.isArray(data.sessions)) {
           sessions.value = data.sessions
+          if (selectedSessionId.value) {
+            const currentSession = data.sessions.find((item) => item.session_id === selectedSessionId.value)
+            pendingApproval.value = currentSession?.pending_approval || null
+          }
           if (data.sessions.length > 0 && !selectedSessionId.value) {
             selectSession(data.sessions[0].session_id)
           }
@@ -445,22 +643,35 @@ export default {
       answerText.value = ''
       userInput.value = ''
       selectedSessionId.value = newSessionId
+      pendingApproval.value = null
     }
 
-    const streamTextToAnswer = (text) => {
+    const streamTextToAnswer = (text = '', metadata = {}) => {
       const lastMsg = chatMessages.value[chatMessages.value.length - 1]
-      if ((!text || !text.trim()) && lastMsg && lastMsg.type !== 'assistant') {
+      const normalizedText = (text || '').replace(/ +/g, ' ').replace(/\n+/g, '\n')
+      const hasText = Boolean(normalizedText.trim())
+      const hasMetadata = hasAssistantMetadata(metadata)
+
+      if (!hasText && !hasMetadata) {
         return
       }
 
-      const normalizedText = text.replace(/ +/g, ' ').replace(/\n+/g, '\n')
       if (lastMsg && lastMsg.type === 'assistant') {
-        lastMsg.content += normalizedText
+        if (hasText) {
+          if (hasMetadata) {
+            lastMsg.content = normalizedText
+          } else {
+            lastMsg.content += normalizedText
+          }
+        }
+        applyAssistantMetadata(lastMsg, metadata)
       } else {
-        chatMessages.value.push({ type: 'assistant', content: normalizedText })
+        chatMessages.value.push(createAssistantMessage(hasText ? normalizedText : '', metadata))
       }
       chatMessages.value = [...chatMessages.value]
-      answerText.value += normalizedText
+      if (hasText) {
+        answerText.value = hasMetadata ? normalizedText : (answerText.value + normalizedText)
+      }
       scrollToBottom()
     }
 
@@ -606,8 +817,11 @@ export default {
         let kind
         let text
 
+        let answerMetadata = {}
+
         if (parsedData.content && typeof parsedData.content === 'object') {
           text = parsedData.content.text
+          answerMetadata = extractAssistantMetadata(parsedData.content)
 
           if (parsedData.content.contentType === 'sagegpt/human_approval') {
             pendingApproval.value = {
@@ -638,7 +852,7 @@ export default {
           case 'ANSWER':
             stopThinkingAnimation()
             finalizeProcessCard('completed')
-            streamTextToAnswer(text)
+            streamTextToAnswer(text || '', answerMetadata)
             break
           case 'THINKING':
             break
@@ -910,6 +1124,11 @@ export default {
       handleSend,
       handleCancel,
       toggleSidebar,
+      formatReviewStatus,
+      formatIntentLabel,
+      formatEvidenceSource: formatEvidenceSourceLabel,
+      classifyEvidenceSource,
+      hasAssistantDiagnostics,
       renderMarkdown
     }
   }
@@ -1023,6 +1242,167 @@ export default {
   font-size: 12px;
   line-height: 1.5;
   color: #64748b;
+}
+
+.assistant-diagnostics {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.assistant-review-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.assistant-review-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+}
+
+.assistant-review-pill.review-supported {
+  background: rgba(22, 163, 74, 0.12);
+  color: #166534;
+  border-color: rgba(22, 163, 74, 0.18);
+}
+
+.assistant-review-pill.review-unsupported,
+.assistant-review-pill.review-conflicting {
+  background: rgba(217, 119, 6, 0.12);
+  color: #9a3412;
+  border-color: rgba(217, 119, 6, 0.18);
+}
+
+.assistant-review-pill.review-review_unavailable,
+.assistant-review-pill.review-neutral {
+  background: rgba(15, 23, 42, 0.06);
+  color: #334155;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.assistant-review-summary,
+.assistant-next-action {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.assistant-next-action {
+  padding-left: 12px;
+  border-left: 2px solid rgba(37, 99, 235, 0.2);
+}
+
+.evidence-card-list {
+  display: grid;
+  gap: 10px;
+}
+
+.evidence-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: 14px;
+  background: #f8fbff;
+  color: #0f172a;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.evidence-toggle-meta {
+  margin-left: auto;
+  font-size: 12px;
+  color: #475569;
+}
+
+.evidence-toggle-action {
+  font-size: 12px;
+  color: #2563eb;
+}
+
+.evidence-card-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.evidence-card {
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.98) 100%);
+}
+
+.evidence-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.evidence-card-source {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #334155;
+  background: rgba(148, 163, 184, 0.15);
+}
+
+.evidence-card-source.source-rag {
+  background: rgba(14, 116, 144, 0.14);
+  color: #155e75;
+}
+
+.evidence-card-source.source-web {
+  background: rgba(37, 99, 235, 0.12);
+  color: #1d4ed8;
+}
+
+.evidence-card-source.source-service {
+  background: rgba(22, 163, 74, 0.14);
+  color: #166534;
+}
+
+.evidence-card-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.evidence-card-link:hover {
+  text-decoration: underline;
+}
+
+.evidence-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.evidence-card-snippet {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #475569;
 }
 
 .sidebar-wrapper {
