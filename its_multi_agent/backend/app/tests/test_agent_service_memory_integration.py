@@ -81,3 +81,25 @@ def test_process_task_injects_memory_messages_and_captures_user_memory(monkeypat
 async def _empty_stream():
     if False:
         yield None
+
+
+def test_build_runtime_history_strips_persisted_assistant_metadata():
+    state = SessionMemoryState(
+        system_messages=[{"role": "system", "content": "base system", "intent": "system_meta"}],
+        messages=[
+            {
+                "role": "assistant",
+                "content": "你好，有什么我可以帮你的吗？",
+                "review_verdict": {"status": "supported"},
+                "intent": "general",
+                "evidence_cards": [{"title": "evidence"}],
+            }
+        ],
+    )
+
+    history = session_service.build_runtime_history(state, append_user_message=False)
+
+    assert history == [
+        {"role": "system", "content": "base system"},
+        {"role": "assistant", "content": "你好，有什么我可以帮你的吗？"},
+    ]

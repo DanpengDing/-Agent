@@ -6,6 +6,7 @@ from agents import function_tool
 
 from config.settings import settings
 from infrastructure.logging.logger import logger
+from services.retrieval_evidence_service import retrieval_evidence_service
 
 
 @function_tool
@@ -22,7 +23,13 @@ async def query_knowledge(question: str) -> Dict:
                 timeout=60,
             )
             response.raise_for_status()
-            return response.json()
+            payload = response.json()
+            if isinstance(payload, dict):
+                payload = dict(payload)
+                payload["evidence_items"] = [
+                    item.model_dump() for item in retrieval_evidence_service.normalize(payload)
+                ]
+            return payload
         except httpx.TimeoutException as exc:
             logger.error("knowledge timeout error=%s", exc)
             return {

@@ -19,7 +19,6 @@ from services.memory_service import memory_service
 from services.session_service import session_service
 from services.task_memory_service import task_memory_service
 from services.stream_response_service import extract_backend_error_details_from_result
-from services.structured_output_service import structured_output_service
 from utils.response_util import ResponseFactory
 
 router = APIRouter()
@@ -189,7 +188,11 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
                 return
 
             final_output = result.final_output or ""
-            structured_output = structured_output_service.parse_final_output(final_output)
+            structured_output = MultiAgentService._review_and_finalize_output(
+                approval.query,
+                final_output,
+                task,
+            )
             for backend_error_detail in extract_backend_error_details_from_result(result):
                 yield "data: " + ResponseFactory.build_text(
                     backend_error_detail,
@@ -207,6 +210,7 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
                     session_id=request.context.session_id or "",
                     role="assistant",
                     content=structured_output.answer,
+                    extra_fields=MultiAgentService._build_session_message_extra_fields(structured_output),
                 )
                 if task:
                     task_memory_service.mark_completed(
@@ -217,6 +221,11 @@ async def human_approval(request: HumanApprovalRequest) -> StreamingResponse:
             yield "data: " + ResponseFactory.build_text(
                 structured_output.answer,
                 ContentKind.ANSWER,
+                review_verdict=structured_output.review_verdict,
+                evidence_cards=structured_output.evidence_cards,
+                references=structured_output.references,
+                next_action=structured_output.next_action,
+                intent=structured_output.intent,
             ).model_dump_json() + "\n\n"
         finally:
             hitl_service.consume_approval(approval.token)

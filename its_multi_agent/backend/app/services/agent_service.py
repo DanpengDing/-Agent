@@ -9,12 +9,17 @@ from opentelemetry.trace import SpanKind
 from infrastructure.logging.logger import logger
 from infrastructure.tracing import get_tracer
 from multi_agent.orchestrator_agent import orchestrator_agent
+from schemas.answer_review import ReviewVerdict
 from schemas.request import ChatMessageRequest
 from schemas.response import ContentKind
 from services.approval_details_service import build_service_station_approval_details
+from services.answer_postprocess_service import answer_postprocess_service
+from services.answer_review_service import answer_review_service
 from services.hitl_service import hitl_service
 from services.memory_service import memory_service
 from services.query_rewrite_service import query_rewrite_service
+from services.retrieval_evidence_service import retrieval_evidence_service
+from services.risk_classification_service import risk_classification_service
 from services.session_service import session_service
 from services.stream_response_service import process_stream_response
 from services.structured_output_service import structured_output_service
@@ -35,6 +40,53 @@ class MultiAgentService:
     @staticmethod
     def _normalize_final_output(raw_output: str):
         return structured_output_service.parse_final_output(raw_output)
+
+    @staticmethod
+    def _review_and_finalize_output(query: str, raw_output, active_task):
+        candidate_answer = structured_output_service.parse_candidate_output(raw_output)
+        evidence_items = retrieval_evidence_service.normalize_task_payload(active_task)
+        classification = risk_classification_service.classify(query, candidate_answer, evidence_items)
+        review_verdict = MultiAgentService._safe_review_candidate(
+            candidate_answer=candidate_answer,
+            evidence_items=evidence_items,
+            should_review=classification.should_review,
+        )
+        return answer_postprocess_service.finalize(candidate_answer, review_verdict, evidence_items)
+
+    @staticmethod
+    def _safe_review_candidate(candidate_answer, evidence_items, should_review: bool) -> ReviewVerdict:
+        if not should_review:
+            return ReviewVerdict(
+                status="supported",
+                summary="Review skipped for low-risk answer.",
+                should_downgrade=False,
+                reviewed=False,
+            )
+        try:
+            return answer_review_service.review_answer(candidate_answer, evidence_items)
+        except Exception as exc:
+            logger.warning("[AgentService] answer review fallback triggered error=%s", exc)
+            return ReviewVerdict(
+                status="review_unavailable",
+                summary=f"Review unavailable: {exc}",
+                should_downgrade=True,
+                reviewed=False,
+            )
+
+    @staticmethod
+    def _build_session_message_extra_fields(structured_result) -> dict:
+        extra_fields = {}
+        if getattr(structured_result, "review_verdict", None) is not None:
+            extra_fields["review_verdict"] = structured_result.review_verdict.model_dump()
+        if getattr(structured_result, "evidence_cards", None):
+            extra_fields["evidence_cards"] = [card.model_dump() for card in structured_result.evidence_cards]
+        if getattr(structured_result, "references", None):
+            extra_fields["references"] = list(structured_result.references)
+        if getattr(structured_result, "next_action", None):
+            extra_fields["next_action"] = structured_result.next_action
+        if getattr(structured_result, "intent", None):
+            extra_fields["intent"] = structured_result.intent
+        return extra_fields
 
     @staticmethod
     def _extract_interruptions(result) -> list:
@@ -286,9 +338,13 @@ class MultiAgentService:
                 return
 
             agent_result = streaming_result.final_output or ""
-            structured_result = cls._normalize_final_output(agent_result)
+            structured_result = cls._review_and_finalize_output(user_query, agent_result, active_task)
             formatted_result = re.sub(r"\n+", "\n", structured_result.answer)
             runtime_state = session_service.append_message_to_state(runtime_state, "assistant", formatted_result)
+            runtime_state = session_service.attach_extra_fields_to_last_message(
+                runtime_state,
+                cls._build_session_message_extra_fields(structured_result),
+            )
             session_service.save_session_state(user_id, session_id, runtime_state)
             if active_task:
                 task_memory_service.mark_completed(
@@ -296,6 +352,15 @@ class MultiAgentService:
                     task_id=active_task["task_id"],
                     summary=formatted_result,
                 )
+            yield "data: " + ResponseFactory.build_text(
+                formatted_result,
+                ContentKind.ANSWER,
+                review_verdict=structured_result.review_verdict,
+                evidence_cards=structured_result.evidence_cards,
+                references=structured_result.references,
+                next_action=structured_result.next_action,
+                intent=structured_result.intent,
+            ).model_dump_json() + "\n\n"
             yield "data: " + ResponseFactory.build_finish().model_dump_json() + "\n\n"
 
         except Exception as exc:

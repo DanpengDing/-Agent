@@ -18,6 +18,10 @@ class BaiduMcpAuthError(RuntimeError):
 
 
 LOCATION_QUERY_NOISE_PATTERNS = [
+    r"查询",
+    r"查一下",
+    r"搜索",
+    r"找一下",
     r"最近的?",
     r"离我最近",
     r"附近",
@@ -96,7 +100,9 @@ def _parse_json_response(tool_name: str, raw_text: str) -> dict:
             exc,
             _safe_preview(raw_text, 1000),
         )
-        raise
+        raise ValueError(
+            f"{tool_name} returned non-JSON response: {_safe_preview(raw_text, 200)}"
+        ) from exc
 
 
 def _build_missing_location_payload(original_input: str) -> str:
@@ -215,6 +221,9 @@ async def resolve_user_location_from_text(user_input: str) -> str:
     normalized_input = _normalize_location_query(original_input)
     if normalized_input in relative_locations:
         logger.info("[Location] relative term detected input=%s", normalized_input)
+        normalized_input = ""
+    if normalized_input.lower() in {"查询", "搜索", "查一下", "找一下"}:
+        logger.info("[Location] generic lookup text detected input=%s", normalized_input)
         normalized_input = ""
 
     if normalized_input:
